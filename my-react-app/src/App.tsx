@@ -7,7 +7,8 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { getHorses } from './api.ts'
-import type { HorseShortDto } from './utils/dtos.ts'
+import type { HorseListResponse, HorseShortDto } from './utils/dtos.ts'
+import Pagination from '@mui/material/Pagination';
 
 // TODO: Better Paginated Queries with placeholderData
 
@@ -22,7 +23,13 @@ const indexRoute = createRoute({
 const horsesRoute = createRoute({
   getParentRoute: () => rootRoute, 
   path: '/horses',  
-  component: () => <div><h1>Horses Page</h1><p>Here is a list of horses:</p></div>, 
+  component: () => <HorsesPage />, 
+});
+
+const puzzlesRoute = createRoute({
+  getParentRoute: () => rootRoute, 
+  path: '/puzzles',  
+  component: () => <div><h1>puzzles Page</h1><p>Here is a list of puzzles:</p></div>, 
 });
 
 const levelsRoute = createRoute({
@@ -37,7 +44,7 @@ const breedsRoute = createRoute({
   component: () => <div><h1>Breeds Page</h1><p>Here is a list of breeds:</p></div>, 
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, horsesRoute, levelsRoute, breedsRoute]);
+const routeTree = rootRoute.addChildren([indexRoute, horsesRoute, levelsRoute, breedsRoute, puzzlesRoute]);
 
 const router = createRouter({ routeTree });
 
@@ -47,34 +54,51 @@ const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>      
       <RouterProvider router={router} />  
-        <Horses />
     </QueryClientProvider>
   );
 };
 
+const HorsesPage = () => (
+  <div>
+    <h1>Horses Page</h1>
+    <p>Here is a list of horses:</p>
+    <Horses />
+  </div>
+);
+
+
 function Horses() {
   const queryClient = useQueryClient()
 
-  const { data, isLoading, error } = useQuery<HorseShortDto[]>({
+  // const { data, isLoading, error } = useQuery<HorseShortDto[]>({
+  //   queryKey: ['horses'],
+  //   queryFn: getHorses,
+  // })
+
+  const { data, isLoading, error } = useQuery<HorseListResponse>({
     queryKey: ['horses'],
     queryFn: getHorses,
-  })
+  });
 
   if (isLoading) return <div>Loading...</div>
-  if (error) return <div>Error loading</div>
+  if (error) {
+    console.error("Error fetching horses:", error);
+    return <div>Error loading horses</div>;
+  }
 
   return (
     <div>
-      <ul>
-        {data?.map((horse: HorseShortDto) => (
+        <p>{data?.totalCount} items found</p>
+        {data?.items?.map((horse: HorseShortDto) => (
           <li key={horse.id}>
-            {horse.name} {horse.imgUrl}
+            {horse.name}
+            <button id="updateButton" type="button">Update</button>
+            <button id="deleteButton" type="button">Delete</button>
           </li>
         ))}
-      </ul>
+        <Pagination count={data?.totalPages} variant="outlined"/>
     </div>
   )
 }
-
 
 export default App;

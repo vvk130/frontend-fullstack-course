@@ -3,7 +3,7 @@ import {Gender, Breed} from "./enums"
 export interface HorseShortDto {
 id: string;       
 name: string;
-imgUrl: string;
+imgUrl: string | null;
 }
 
 // export enum CompetitionType {
@@ -37,5 +37,14 @@ export interface ItemCreatedEvent {
 itemId: string;
 itemName: string;
 }
+
+export type HorseListResponse = {
+  items: HorseShortDto[];
+  totalCount: number;
+  pageNumber: number;
+  pageSize: number;
+  totalPages: number;
+};
+
 
 

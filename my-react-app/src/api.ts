@@ -1,10 +1,10 @@
 
-import type { HorseShortDto } from './utils/dtos'
+import type { HorseListResponse, HorseShortDto } from './utils/dtos'
 
 export const API_URL = "http://localhost:5263"
 
-export async function getHorses(): Promise<HorseShortDto[]> {
-  const res = await fetch('http://localhost:5263/api/horses');
+export async function getHorses(): Promise<HorseListResponse> {
+  const res = await fetch('http://localhost:5263/api/Horses/paginated');
 
   if (!res.ok) {
     throw new Error('Failed to fetch horses');

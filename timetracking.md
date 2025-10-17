@@ -1,9 +1,9 @@
-|||||
-11-10-2025 | 2h | Setting up project
-12-10-2025 | 1,5h | Types, dtos and enums, fetching, tanstackQuery
-17-10-2025 | 17:45 | 1h | Pagination component, adjusting types, looking for components
-17-10-2025 | 19:10 | 1h | Starting forms
-17-10-2025 | 20:10 | 1h | Reusable form Auth
-17-10-2025 | 21:10 | 1h | PuzzleGrid
+
+|11-10-2025 | 2h | Setting up project
+|12-10-2025 | 1,5h | Types, dtos and enums, fetching, tanstackQuery
+|17-10-2025 | 17:45 | 1h | Pagination component, adjusting types, looking for components
+|17-10-2025 | 19:10 | 1h | Starting forms
+|17-10-2025 | 20:10 | 1h | Reusable form Auth
+|17-10-2025 | 21:10 | 1h | PuzzleGrid
 
 total. h

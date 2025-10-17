@@ -9,15 +9,18 @@ import {
 import { getHorses } from './api.ts'
 import type { HorseListResponse, HorseShortDto } from './utils/dtos.ts'
 import Pagination from '@mui/material/Pagination';
+import Grid from '@mui/material/Grid';
+import AuthForm from './pages/AuthForm.tsx';
+import ImgList from './pages/ImgList.tsx';
 
-// TODO: Better Paginated Queries with placeholderData
+// TODO: (Maybe?) Better Paginated Queries with placeholderData
 
 const rootRoute = createRootRoute();
 
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,  
   path: '/',  
-  component: () => <div>Hello World</div>,  
+  component: () => <><AuthForm message="Sign Up" endpoint='register'/><AuthForm message="Log In" endpoint='login'/></>,  
 });
 
 const horsesRoute = createRoute({
@@ -29,7 +32,7 @@ const horsesRoute = createRoute({
 const puzzlesRoute = createRoute({
   getParentRoute: () => rootRoute, 
   path: '/puzzles',  
-  component: () => <div><h1>puzzles Page</h1><p>Here is a list of puzzles:</p></div>, 
+  component: () => <PuzzlesPage />, 
 });
 
 const levelsRoute = createRoute({
@@ -61,6 +64,8 @@ const App: React.FC = () => {
 const HorsesPage = () => (
   <div>
     <h1>Horses Page</h1>
+    <h2>Breed a horse</h2>
+    <h2>Search horses</h2>
     <p>Here is a list of horses:</p>
     <Horses />
   </div>
@@ -69,11 +74,6 @@ const HorsesPage = () => (
 
 function Horses() {
   const queryClient = useQueryClient()
-
-  // const { data, isLoading, error } = useQuery<HorseShortDto[]>({
-  //   queryKey: ['horses'],
-  //   queryFn: getHorses,
-  // })
 
   const { data, isLoading, error } = useQuery<HorseListResponse>({
     queryKey: ['horses'],
@@ -100,5 +100,13 @@ function Horses() {
     </div>
   )
 }
+
+const PuzzlesPage = () => (
+  <div>
+    <h1>Puzzles Page</h1>
+    <p>Here is a list of horses:</p>
+    <ImgList/>
+  </div>
+);
 
 export default App;

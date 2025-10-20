@@ -9,9 +9,11 @@ import {
 import { getHorses } from './api.ts'
 import type { HorseListResponse, HorseShortDto } from './utils/dtos.ts'
 import Pagination from '@mui/material/Pagination';
-import Grid from '@mui/material/Grid';
 import AuthForm from './pages/AuthForm.tsx';
 import ImgList from './pages/ImgList.tsx';
+import horseGif from './assets/horse-11591_256.gif';
+import bannerImg from './assets/bannerImg.jpg';
+import Layout from './components/Layout.tsx';
 
 // TODO: (Maybe?) Better Paginated Queries with placeholderData
 
@@ -26,7 +28,7 @@ const indexRoute = createRoute({
 const horsesRoute = createRoute({
   getParentRoute: () => rootRoute, 
   path: '/horses',  
-  component: () => <HorsesPage />, 
+  component: () => <Layout><HorsesPage /></Layout>, 
 });
 
 const puzzlesRoute = createRoute({
@@ -55,20 +57,22 @@ const queryClient = new QueryClient()
 
 const App: React.FC = () => {
   return (
-    <QueryClientProvider client={queryClient}>      
-      <RouterProvider router={router} />  
+    <>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
     </QueryClientProvider>
+    </>
   );
 };
 
 const HorsesPage = () => (
-  <div>
+  <>
     <h1>Horses Page</h1>
     <h2>Breed a horse</h2>
     <h2>Search horses</h2>
     <p>Here is a list of horses:</p>
     <Horses />
-  </div>
+  </>
 );
 
 
@@ -80,7 +84,7 @@ function Horses() {
     queryFn: getHorses,
   });
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return <div><img src={horseGif} alt="Loading" /><img src={bannerImg} alt="Loading" /><p>Loading...</p></div>
   if (error) {
     console.error("Error fetching horses:", error);
     return <div>Error loading horses</div>;

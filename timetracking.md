@@ -7,5 +7,6 @@
 |17-10-2025 | 19:10 | 1h | Starting forms
 |17-10-2025 | 20:10 | 1h | Reusable form Auth
 |17-10-2025 | 21:10 | 1h | PuzzleGrid
+|20-10-2025 | | 1,5 | Layout
 
 total. h

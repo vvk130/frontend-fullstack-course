@@ -6,20 +6,22 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-import { getHorses } from './api.ts'
-import type { HorseListResponse, HorseShortDto } from './utils/dtos.ts'
+import { getHorses } from '../../my-app/src/api.ts'
+import type { HorseListResponse, HorseShortDto } from '../../my-app/src/utils/dtos.ts'
 import Pagination from '@mui/material/Pagination';
 import AuthForm from './pages/AuthForm.tsx';
 import ImgList from './pages/ImgList.tsx';
 import horseGif from './assets/horse-11591_256.gif';
 import bannerImg from './assets/bannerImg.jpg';
-import Layout from './components/Layout.tsx';
+import Layout from './routes/app/AppLayout.tsx';
 
 // TODO: (Maybe?) Better Paginated Queries with placeholderData
 
-const rootRoute = createRootRoute();
+// const rootRoute = createRootRoute({
+//   component: ( {children} : {children: React.ReactNode} ) => <Layout>{children}</Layout>, 
+// });
 
-const indexRoute = createRoute({
+const indexRoute = createRootRoute({
   getParentRoute: () => rootRoute,  
   path: '/',  
   component: () => <><AuthForm message="Sign Up" endpoint='register'/><AuthForm message="Log In" endpoint='login'/></>,  
@@ -74,7 +76,6 @@ const HorsesPage = () => (
     <Horses />
   </>
 );
-
 
 function Horses() {
   const queryClient = useQueryClient()

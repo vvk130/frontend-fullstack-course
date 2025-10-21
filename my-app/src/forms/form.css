@@ -1,0 +1,32 @@
+.form-style {
+  display: flex;
+  flex-direction: column;
+  max-width: 50vw;
+}
+
+.form-group {
+  display: flex;
+  margin-bottom: 15px; 
+  align-items: center; 
+}
+
+.form-label {
+  min-width: 5em; 
+  margin-right: 10px; 
+  text-align: left; 
+}
+
+.form-input {
+  flex-grow: 1; 
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-btn {
+  margin-top: 1em;
+  margin-right: 1em;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

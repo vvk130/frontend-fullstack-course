@@ -12,14 +12,10 @@ function HorseForm() {
     console.log('Horse Data Submitted:', data);
   };
 
-  const handleCancel = () => {
-    console.log('Form Cancelled');
-  };
-
   return (
     <div>
       <h2>Edit a horse</h2>
-      <BasicForm model={initialHorse} onSubmit={handleHorseSubmit} onCancel={handleCancel} />
+      <BasicForm model={initialHorse} onSubmit={handleHorseSubmit} />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import CheckResultsForm from '@/forms/CheckResults'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/leaderboard')({
@@ -5,5 +6,5 @@ export const Route = createFileRoute('/leaderboard')({
 })
 
 function RouteComponent() {
-  return <div>Hello "/leaderboard"!</div>
+  return (<><div>Hello "/leaderboard"!</div><CheckResultsForm/></>)
 }

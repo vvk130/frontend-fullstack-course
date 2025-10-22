@@ -4,10 +4,9 @@ import './form.css';
 type FormProps<T> = {
   model: T;
   onSubmit: (data: T) => void;
-  onCancel: () => void;
 };
 
-function BasicForm<T extends object>({ model, onSubmit, onCancel }: FormProps<T>) {
+function BasicForm<T extends object>({ model, onSubmit}: FormProps<T>) {
   const [formData, setFormData] = useState<T>(model);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,9 +34,6 @@ function BasicForm<T extends object>({ model, onSubmit, onCancel }: FormProps<T>
         </div>
       ))}
       <button type="submit" className="form-btn">Submit</button>
-      <button type="button" className="form-btn" onClick={onCancel}>
-        Cancel
-      </button>
     </form>
   );
 }

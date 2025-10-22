@@ -1,3 +1,4 @@
+import ImgList from '@/components/ImgList'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/puzzles')({
@@ -5,5 +6,5 @@ export const Route = createFileRoute('/puzzles')({
 })
 
 function RouteComponent() {
-  return <div>Hello "/puzzles"!</div>
+  return (<><div>Hello "/puzzles"!</div><ImgList/></>)
 }

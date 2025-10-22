@@ -1,3 +1,4 @@
+import CompeteForm from '@/forms/CompeteForm';
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/competitions')({
@@ -5,5 +6,10 @@ export const Route = createFileRoute('/competitions')({
 })
 
 function RouteComponent() {
-  return <div>Hello "/competitions"!</div>
-}
+  return (
+  <>
+  <div>Hello "/competitions"!</div>
+  <CompeteForm/>
+  </>
+  );
+};

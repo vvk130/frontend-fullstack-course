@@ -6,6 +6,18 @@ name: string;
 imgUrl: string | null;
 }
 
+export interface SalesAdCreateDto {
+  price: number;
+  endDate: string;
+  horseId: string; 
+  ownerId: string; 
+}
+
+export interface WalletCreateDto {
+money: number;       
+ownerId: string; 
+}
+
 // export enum CompetitionType {
 
 // }

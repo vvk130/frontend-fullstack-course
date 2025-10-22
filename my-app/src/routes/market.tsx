@@ -1,4 +1,5 @@
 import Dropdown from '@/components/dropdown';
+import SalesAdForm from '@/forms/SalesAdForm';
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/market')({
@@ -20,5 +21,6 @@ function RouteComponent() {
   options={['Volvo', 'Saab', 'Opel', 'Audi']}
   onSubmit={handleHorseSelectionSubmit}
   />
+  <SalesAdForm/>
   </>);
 }

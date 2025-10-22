@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WalletRouteImport } from './routes/wallet'
+import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as PuzzlesRouteImport } from './routes/puzzles'
 import { Route as MyhorsesRouteImport } from './routes/myhorses'
 import { Route as MarketRouteImport } from './routes/market'
@@ -20,6 +22,16 @@ import { Route as CompetitionsRouteImport } from './routes/competitions'
 import { Route as BreedsRouteImport } from './routes/breeds'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WalletRoute = WalletRouteImport.update({
+  id: '/wallet',
+  path: '/wallet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizRoute = QuizRouteImport.update({
+  id: '/quiz',
+  path: '/quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PuzzlesRoute = PuzzlesRouteImport.update({
   id: '/puzzles',
   path: '/puzzles',
@@ -82,6 +94,8 @@ export interface FileRoutesByFullPath {
   '/market': typeof MarketRoute
   '/myhorses': typeof MyhorsesRoute
   '/puzzles': typeof PuzzlesRoute
+  '/quiz': typeof QuizRoute
+  '/wallet': typeof WalletRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -94,6 +108,8 @@ export interface FileRoutesByTo {
   '/market': typeof MarketRoute
   '/myhorses': typeof MyhorsesRoute
   '/puzzles': typeof PuzzlesRoute
+  '/quiz': typeof QuizRoute
+  '/wallet': typeof WalletRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -107,6 +123,8 @@ export interface FileRoutesById {
   '/market': typeof MarketRoute
   '/myhorses': typeof MyhorsesRoute
   '/puzzles': typeof PuzzlesRoute
+  '/quiz': typeof QuizRoute
+  '/wallet': typeof WalletRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,6 +139,8 @@ export interface FileRouteTypes {
     | '/market'
     | '/myhorses'
     | '/puzzles'
+    | '/quiz'
+    | '/wallet'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,6 +153,8 @@ export interface FileRouteTypes {
     | '/market'
     | '/myhorses'
     | '/puzzles'
+    | '/quiz'
+    | '/wallet'
   id:
     | '__root__'
     | '/'
@@ -145,6 +167,8 @@ export interface FileRouteTypes {
     | '/market'
     | '/myhorses'
     | '/puzzles'
+    | '/quiz'
+    | '/wallet'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -158,10 +182,26 @@ export interface RootRouteChildren {
   MarketRoute: typeof MarketRoute
   MyhorsesRoute: typeof MyhorsesRoute
   PuzzlesRoute: typeof PuzzlesRoute
+  QuizRoute: typeof QuizRoute
+  WalletRoute: typeof WalletRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wallet': {
+      id: '/wallet'
+      path: '/wallet'
+      fullPath: '/wallet'
+      preLoaderRoute: typeof WalletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz': {
+      id: '/quiz'
+      path: '/quiz'
+      fullPath: '/quiz'
+      preLoaderRoute: typeof QuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/puzzles': {
       id: '/puzzles'
       path: '/puzzles'
@@ -246,6 +286,8 @@ const rootRouteChildren: RootRouteChildren = {
   MarketRoute: MarketRoute,
   MyhorsesRoute: MyhorsesRoute,
   PuzzlesRoute: PuzzlesRoute,
+  QuizRoute: QuizRoute,
+  WalletRoute: WalletRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

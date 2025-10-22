@@ -20,6 +20,8 @@ export const Route = createRootRoute({
             <a href="/instructions">Instructions</a>
             <a href="/competitions">Competitions</a>
             <a href="/market">Market</a>
+            <a href="/quiz">Quiz</a>
+            <a href="/wallet">Wallet</a>
           </ul>
         </nav>
         <div className="item-bar">$: 10000 Level: 1</div>

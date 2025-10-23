@@ -3,7 +3,6 @@ import type { HorseListResponse, HorseShortDto } from '@/utils/dtos';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router'
 import horseGif from '../assets/horse-11591_256.gif'
-import bannerImg from '../assets/bannerImg.jpg' 
 import Pagination from '@mui/material/Pagination'
 import HorseForm from '@/forms/HorseForm';
 import HorseSearchForm from '@/forms/HorseSearchForm';
@@ -32,7 +31,7 @@ function HorsesFetch() {
     queryFn: getHorses,
   });
 
-  if (isLoading) return <div><img src={horseGif} alt="Loading" /><img src={bannerImg} alt="Loading" /><p>Loading...</p></div>
+  if (isLoading) return <div><img src={horseGif} alt="Loading" /><p>Loading...</p></div>
   if (error) {
     console.error("Error fetching horses:", error);
     return <div>Error loading horses</div>;

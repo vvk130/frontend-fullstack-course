@@ -14,6 +14,7 @@
 |21-10-2025 | | 0,5 | Fixing git tracking problem with subfolder
 |22-10-2025 | | 0,75 | Forms
 |22-10-2025 | | 1 | More forms
+|22-10-2025 | | 3 | Adding pages, bug with the router fixed
 
 total. h
 

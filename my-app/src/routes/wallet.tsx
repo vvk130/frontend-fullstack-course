@@ -6,5 +6,7 @@ export const Route = createFileRoute('/wallet')({
 })
 
 function RouteComponent() {
-  return (<><div>Hello "/wallet"!</div><WalletForm/></>)
+  return (<>
+  <h1>Wallet</h1>
+  <WalletForm/></>)
 }

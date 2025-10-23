@@ -5,5 +5,43 @@ export const Route = createFileRoute('/instructions')({
 })
 
 function RouteComponent() {
-  return <div>Hello "/instructions"!</div>
+  return (<>
+  <h1>Instructions - how to play</h1>
+  <details><summary>Start the Game</summary>
+  <li>sdiosd</li>
+  <li>sdfsdf</li>
+  <li>sdfsdf</li>
+  <li>sdfsfds</li>
+  </details>
+  <details><summary>Start the Game</summary>
+  <li>sdiosd</li>
+  <li>sdfsdf</li>
+  <li>sdfsdf</li>
+  <li>sdfsfds</li>
+  </details>
+  <details><summary>Start the Game</summary>
+  <li>sdiosd</li>
+  <li>sdfsdf</li>
+  <li>sdfsdf</li>
+  <li>sdfsfds</li>
+  </details>
+  <details><summary>Start the Game</summary>
+  <li>sdiosd</li>
+  <li>sdfsdf</li>
+  <li>sdfsdf</li>
+  <li>sdfsfds</li>
+  </details>
+  <details><summary>Start the Game</summary>
+  <li>sdiosd</li>
+  <li>sdfsdf</li>
+  <li>sdfsdf</li>
+  <li>sdfsfds</li>
+  </details>
+  <details><summary>Start the Game</summary>
+  <li>sdiosd</li>
+  <li>sdfsdf</li>
+  <li>sdfsdf</li>
+  <li>sdfsfds</li>
+  </details>
+  </>);
 }

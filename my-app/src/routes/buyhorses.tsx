@@ -3,7 +3,7 @@ import AdSearchForm from '@/forms/AdSearchForm';
 import SalesAdForm from '@/forms/SalesAdForm';
 import { createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/market')({
+export const Route = createFileRoute('/buyhorses')({
   component: RouteComponent,
 })
 

@@ -13,14 +13,17 @@ import { Route as WalletRouteImport } from './routes/wallet'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as PuzzlesRouteImport } from './routes/puzzles'
 import { Route as MyhorsesRouteImport } from './routes/myhorses'
-import { Route as MarketRouteImport } from './routes/market'
 import { Route as LevelsRouteImport } from './routes/levels'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as InstructionsRouteImport } from './routes/instructions'
 import { Route as HorsesRouteImport } from './routes/horses'
 import { Route as CompetitionsRouteImport } from './routes/competitions'
+import { Route as BuyhorsesRouteImport } from './routes/buyhorses'
 import { Route as BreedsRouteImport } from './routes/breeds'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MarketAdRouteImport } from './routes/market.$ad'
+import { Route as HorseHorseIdRouteImport } from './routes/horse.$horseId'
+import { Route as CompetitionCompetitionIdRouteImport } from './routes/competition.$competitionId'
 
 const WalletRoute = WalletRouteImport.update({
   id: '/wallet',
@@ -40,11 +43,6 @@ const PuzzlesRoute = PuzzlesRouteImport.update({
 const MyhorsesRoute = MyhorsesRouteImport.update({
   id: '/myhorses',
   path: '/myhorses',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MarketRoute = MarketRouteImport.update({
-  id: '/market',
-  path: '/market',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LevelsRoute = LevelsRouteImport.update({
@@ -72,6 +70,11 @@ const CompetitionsRoute = CompetitionsRouteImport.update({
   path: '/competitions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuyhorsesRoute = BuyhorsesRouteImport.update({
+  id: '/buyhorses',
+  path: '/buyhorses',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BreedsRoute = BreedsRouteImport.update({
   id: '/breeds',
   path: '/breeds',
@@ -82,108 +85,144 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarketAdRoute = MarketAdRouteImport.update({
+  id: '/$ad',
+  path: '/$ad',
+  getParentRoute: () => MarketRoute,
+} as any)
+const HorseHorseIdRoute = HorseHorseIdRouteImport.update({
+  id: '/horse/$horseId',
+  path: '/horse/$horseId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompetitionCompetitionIdRoute =
+  CompetitionCompetitionIdRouteImport.update({
+    id: '/competition/$competitionId',
+    path: '/competition/$competitionId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/breeds': typeof BreedsRoute
+  '/buyhorses': typeof BuyhorsesRoute
   '/competitions': typeof CompetitionsRoute
   '/horses': typeof HorsesRoute
   '/instructions': typeof InstructionsRoute
   '/leaderboard': typeof LeaderboardRoute
   '/levels': typeof LevelsRoute
-  '/market': typeof MarketRoute
   '/myhorses': typeof MyhorsesRoute
   '/puzzles': typeof PuzzlesRoute
   '/quiz': typeof QuizRoute
   '/wallet': typeof WalletRoute
+  '/competition/$competitionId': typeof CompetitionCompetitionIdRoute
+  '/horse/$horseId': typeof HorseHorseIdRoute
+  '/market/$ad': typeof MarketAdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/breeds': typeof BreedsRoute
+  '/buyhorses': typeof BuyhorsesRoute
   '/competitions': typeof CompetitionsRoute
   '/horses': typeof HorsesRoute
   '/instructions': typeof InstructionsRoute
   '/leaderboard': typeof LeaderboardRoute
   '/levels': typeof LevelsRoute
-  '/market': typeof MarketRoute
   '/myhorses': typeof MyhorsesRoute
   '/puzzles': typeof PuzzlesRoute
   '/quiz': typeof QuizRoute
   '/wallet': typeof WalletRoute
+  '/competition/$competitionId': typeof CompetitionCompetitionIdRoute
+  '/horse/$horseId': typeof HorseHorseIdRoute
+  '/market/$ad': typeof MarketAdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/breeds': typeof BreedsRoute
+  '/buyhorses': typeof BuyhorsesRoute
   '/competitions': typeof CompetitionsRoute
   '/horses': typeof HorsesRoute
   '/instructions': typeof InstructionsRoute
   '/leaderboard': typeof LeaderboardRoute
   '/levels': typeof LevelsRoute
-  '/market': typeof MarketRoute
   '/myhorses': typeof MyhorsesRoute
   '/puzzles': typeof PuzzlesRoute
   '/quiz': typeof QuizRoute
   '/wallet': typeof WalletRoute
+  '/competition/$competitionId': typeof CompetitionCompetitionIdRoute
+  '/horse/$horseId': typeof HorseHorseIdRoute
+  '/market/$ad': typeof MarketAdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/breeds'
+    | '/buyhorses'
     | '/competitions'
     | '/horses'
     | '/instructions'
     | '/leaderboard'
     | '/levels'
-    | '/market'
     | '/myhorses'
     | '/puzzles'
     | '/quiz'
     | '/wallet'
+    | '/competition/$competitionId'
+    | '/horse/$horseId'
+    | '/market/$ad'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/breeds'
+    | '/buyhorses'
     | '/competitions'
     | '/horses'
     | '/instructions'
     | '/leaderboard'
     | '/levels'
-    | '/market'
     | '/myhorses'
     | '/puzzles'
     | '/quiz'
     | '/wallet'
+    | '/competition/$competitionId'
+    | '/horse/$horseId'
+    | '/market/$ad'
   id:
     | '__root__'
     | '/'
     | '/breeds'
+    | '/buyhorses'
     | '/competitions'
     | '/horses'
     | '/instructions'
     | '/leaderboard'
     | '/levels'
-    | '/market'
     | '/myhorses'
     | '/puzzles'
     | '/quiz'
     | '/wallet'
+    | '/competition/$competitionId'
+    | '/horse/$horseId'
+    | '/market/$ad'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BreedsRoute: typeof BreedsRoute
+  BuyhorsesRoute: typeof BuyhorsesRoute
   CompetitionsRoute: typeof CompetitionsRoute
   HorsesRoute: typeof HorsesRoute
   InstructionsRoute: typeof InstructionsRoute
   LeaderboardRoute: typeof LeaderboardRoute
   LevelsRoute: typeof LevelsRoute
-  MarketRoute: typeof MarketRoute
   MyhorsesRoute: typeof MyhorsesRoute
   PuzzlesRoute: typeof PuzzlesRoute
   QuizRoute: typeof QuizRoute
   WalletRoute: typeof WalletRoute
+  CompetitionCompetitionIdRoute: typeof CompetitionCompetitionIdRoute
+  HorseHorseIdRoute: typeof HorseHorseIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -214,13 +253,6 @@ declare module '@tanstack/react-router' {
       path: '/myhorses'
       fullPath: '/myhorses'
       preLoaderRoute: typeof MyhorsesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/market': {
-      id: '/market'
-      path: '/market'
-      fullPath: '/market'
-      preLoaderRoute: typeof MarketRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/levels': {
@@ -258,6 +290,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompetitionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/buyhorses': {
+      id: '/buyhorses'
+      path: '/buyhorses'
+      fullPath: '/buyhorses'
+      preLoaderRoute: typeof BuyhorsesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/breeds': {
       id: '/breeds'
       path: '/breeds'
@@ -272,22 +311,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/market/$ad': {
+      id: '/market/$ad'
+      path: '/$ad'
+      fullPath: '/market/$ad'
+      preLoaderRoute: typeof MarketAdRouteImport
+      parentRoute: typeof MarketRoute
+    }
+    '/horse/$horseId': {
+      id: '/horse/$horseId'
+      path: '/horse/$horseId'
+      fullPath: '/horse/$horseId'
+      preLoaderRoute: typeof HorseHorseIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/competition/$competitionId': {
+      id: '/competition/$competitionId'
+      path: '/competition/$competitionId'
+      fullPath: '/competition/$competitionId'
+      preLoaderRoute: typeof CompetitionCompetitionIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BreedsRoute: BreedsRoute,
+  BuyhorsesRoute: BuyhorsesRoute,
   CompetitionsRoute: CompetitionsRoute,
   HorsesRoute: HorsesRoute,
   InstructionsRoute: InstructionsRoute,
   LeaderboardRoute: LeaderboardRoute,
   LevelsRoute: LevelsRoute,
-  MarketRoute: MarketRoute,
   MyhorsesRoute: MyhorsesRoute,
   PuzzlesRoute: PuzzlesRoute,
   QuizRoute: QuizRoute,
   WalletRoute: WalletRoute,
+  CompetitionCompetitionIdRoute: CompetitionCompetitionIdRoute,
+  HorseHorseIdRoute: HorseHorseIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

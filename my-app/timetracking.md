@@ -13,12 +13,14 @@
 |21-10-2025 | | 1 | Forms
 |21-10-2025 | | 0,5 | Fixing git tracking problem with subfolder
 |22-10-2025 | | 0,75 | Forms
-|22-10-2025 | | 1 | More forms
-|22-10-2025 | | 3 | Adding pages, bug with the router fixed
+|23-10-2025 | | 1 | More forms
+|23-10-2025 | | 3 | Adding pages, bug with the router fixed
+|23-10-2025 | | 3 | Page structuring, styling components, enum strings to work (backend tasks timetracked here done concurrently: enums to strings in frontend, image seeding (dragging them to clientside, rawsql random int didn't get it to work, name mismatched in salesad caused a mapping error))
+|23-10-2025 | |  |
 
 total. h
 
-TODO TODAY:
+TODO:
 [] leaderboard listing
 [] levels listing
 [] breeds listing

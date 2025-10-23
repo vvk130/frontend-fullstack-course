@@ -1,11 +1,12 @@
 import { getHorses } from '@/api';
 import type { HorseListResponse, HorseShortDto } from '@/utils/dtos';
 import { useQuery } from '@tanstack/react-query';
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import horseGif from '../assets/horse-11591_256.gif'
 import Pagination from '@mui/material/Pagination'
 import HorseForm from '@/forms/HorseForm';
 import HorseSearchForm from '@/forms/HorseSearchForm';
+import '../css/horses.css';
 
 export const Route = createFileRoute('/horses')({
   component: Horses,
@@ -41,11 +42,24 @@ function HorsesFetch() {
     <div>
         <p>{data?.totalCount} items found</p>
         {data?.items?.map((horse: HorseShortDto) => (
-          <li key={horse.id}>
-            {horse.name}
-            <button id="updateButton" type="button">Update</button>
-            <button id="deleteButton" type="button">Delete</button>
-          </li>
+        <div key={horse.id} className="horse-row">
+          {horse.imgUrl ? (
+            <img src={horse.imgUrl} alt={horse.name} className="horse-image" />
+          ) : (
+            <div className="no-image">No Image</div>
+          )}
+
+          <div className="horse-info">
+            <Link to="/horse/$horseId" params={{horseId: horse.id}}>{horse.name}</Link> — {horse.breed}
+          </div>
+
+          <button id="updateButton" type="button">
+            Update
+          </button>
+          <button id="deleteButton" type="button">
+            Delete
+          </button>
+        </div>
         ))}
         <Pagination count={data?.totalPages} variant="outlined"/>
     </div>

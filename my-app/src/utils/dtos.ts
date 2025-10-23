@@ -18,6 +18,25 @@ money: number;
 ownerId: string; 
 }
 
+export interface HorseSearchDto {
+  genders?: Gender[];      
+  breeds?: Breed[];        
+  minAge?: number;        
+  maxAge?: number;         
+  ownerId?: string;        
+  sireId?: string;         
+  damId?: string;         
+}
+
+export interface AdSearchDto extends HorseSearchDto {
+  maxPrice?: number;    
+  endTimeAfter: Date;       
+}
+
+export interface CompetitionSearchDto {    
+  endTimeAfter: Date;       
+}
+
 // export enum CompetitionType {
 
 // }

@@ -6,6 +6,7 @@ import horseGif from '../assets/horse-11591_256.gif'
 import bannerImg from '../assets/bannerImg.jpg' 
 import Pagination from '@mui/material/Pagination'
 import HorseForm from '@/forms/HorseForm';
+import HorseSearchForm from '@/forms/HorseSearchForm';
 
 export const Route = createFileRoute('/horses')({
   component: Horses,
@@ -17,6 +18,7 @@ return (
     <h1>Horses Page</h1>
     <h2>Breed a horse</h2>
     <HorseForm/>
+    <HorseSearchForm/>
     <p>Here is a list of horses:</p>
     <HorsesFetch/>
   </>

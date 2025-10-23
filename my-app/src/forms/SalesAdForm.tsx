@@ -4,7 +4,7 @@ import BasicForm from './BasicForm';
 const newAd: SalesAdCreateDto = {
   price: 1500,
   endDate: new Date("2025-12-31").toISOString(),
-  horseId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+  horseId: "d2719d3f-e4fc-4c8f-bf1d-6e2c75b4768c",
   ownerId: "d2719d3f-e4fc-4c8f-bf1d-6e2c75b4768c"
 };
 

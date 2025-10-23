@@ -1,4 +1,5 @@
 import Dropdown from '@/components/dropdown';
+import AdSearchForm from '@/forms/AdSearchForm';
 import SalesAdForm from '@/forms/SalesAdForm';
 import { createFileRoute } from '@tanstack/react-router'
 
@@ -22,5 +23,7 @@ function RouteComponent() {
   onSubmit={handleHorseSelectionSubmit}
   />
   <SalesAdForm/>
+  <p>Search Ads</p>
+  <AdSearchForm/>
   </>);
 }

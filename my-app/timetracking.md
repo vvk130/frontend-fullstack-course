@@ -16,7 +16,7 @@
 |23-10-2025 | | 1 | More forms
 |23-10-2025 | | 3 | Adding pages, bug with the router fixed
 |23-10-2025 | | 3 | Page structuring, styling components, enum strings to work (backend tasks timetracked here done concurrently: enums to strings in frontend, image seeding (dragging them to clientside, rawsql random int didn't get it to work, name mismatched in salesad caused a mapping error))
-|23-10-2025 | |  |
+|23-10-2025 | | 1 | Clean stable page, styling
 
 total. h
 

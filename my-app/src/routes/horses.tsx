@@ -53,10 +53,10 @@ function HorsesFetch() {
             <Link to="/horse/$horseId" params={{horseId: horse.id}}>{horse.name}</Link> — {horse.breed}
           </div>
 
-          <button id="updateButton" type="button">
+          <button className="btn" id="updateButton" type="button">
             Update
           </button>
-          <button id="deleteButton" type="button">
+          <button className="btn" id="deleteButton" type="button">
             Delete
           </button>
         </div>

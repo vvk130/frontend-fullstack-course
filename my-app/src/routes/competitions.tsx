@@ -21,7 +21,7 @@ function RouteComponent() {
 function CompFetch() {
   return (
     <GenericPaginatedList<CompDto>
-      url="http://localhost:5263/api/competitions/paginated?PageNumber=1&PageSize=10"
+      url="api/competitions/paginated?PageNumber=1&PageSize=10"
       queryKey="horses"
       renderItem={(comp: CompDto) => (
         <div key={comp.id} className="horse-row">

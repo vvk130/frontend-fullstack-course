@@ -19,6 +19,7 @@
 |23-10-2025 | | 1 | Clean stable page, styling
 |24-10-2025 | | 2 | Script to add pages to nav (problems), refactoring, Backend some refactoring
 |24-10-2025 | | 2 | Paginated components, refactoring
+|24-10-2025 | | 2 | Styling components, refactoring
 
 
 total. h

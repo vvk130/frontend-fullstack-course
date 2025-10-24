@@ -26,7 +26,7 @@ export default function GenericPaginatedList<T>({
   const { data, isLoading, error } = useQuery<PaginatedResponse<T>>({
     queryKey: Array.isArray(queryKey) ? [...queryKey, page] : [queryKey, page],
     queryFn: async () => {
-      const res = await fetch(`${url}&Pagination.PageNumber=${page}&Pagination.PageSize=${pageSize}`);
+      const res = await fetch(`http://localhost:5263/${url}&Pagination.PageNumber=${page}&Pagination.PageSize=${pageSize}`);
       if (!res.ok) throw new Error('Failed to fetch');
       return res.json();
     },

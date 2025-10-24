@@ -27,7 +27,7 @@ return (
 function HorsesFetch() {
   return (
     <GenericPaginatedList<HorseShortDto>
-      url="http://localhost:5263/api/Horses/paginated?PageNumber=1&PageSize=10"
+      url="api/Horses/paginated?PageNumber=1&PageSize=10"
       queryKey="horses"
       renderItem={(horse: HorseShortDto) => (
         <div key={horse.id} className="horse-row">

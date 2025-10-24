@@ -1,7 +1,9 @@
 import Dropdown from '@/components/dropdown';
+import GenericPaginatedList from '@/components/GenericPaginatedList';
 import AdSearchForm from '@/forms/AdSearchForm';
 import SalesAdForm from '@/forms/SalesAdForm';
-import { createFileRoute } from '@tanstack/react-router'
+import type { HorseShortDto } from '@/utils/dtos';
+import { createFileRoute, Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/buyhorses')({
   component: RouteComponent,
@@ -23,7 +25,30 @@ function RouteComponent() {
   onSubmit={handleHorseSelectionSubmit}
   />
   <SalesAdForm/>
-  <p>Search Ads</p>
-  <AdSearchForm/>
+  {/* <AdsFetch/> */}
   </>);
 }
+
+// function AdsFetch() {
+//   return (
+//     <GenericPaginatedList<HorseShortDto>
+//       url="/api/salesad/paginated?PageNumber=1&PageSize=10"
+//       queryKey="horses"
+//       renderItem={(horse: HorseShortDto) => (
+//         <div key={horse.id} className="horse-row">
+//           {horse.imgUrl ? (
+//             <img src={horse.imgUrl} alt={horse.name} className="horse-image" />
+//           ) : (
+//             <div className="no-image">No Image</div>
+//           )}
+//           <div className="horse-info">
+//             <Link to="/horse/$horseId" params={{horseId: horse.id}}>{horse.name}</Link> — {horse.breed}
+//           </div>
+//           <button className="btn" id="buyButton" type="button">
+//             Buy Horse
+//           </button>
+//         </div>
+//       )}
+//     />
+//   );
+// }

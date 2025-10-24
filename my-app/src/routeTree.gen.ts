@@ -13,7 +13,6 @@ import { Route as WalletRouteImport } from './routes/wallet'
 import { Route as QuizesRouteImport } from './routes/quizes'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as PuzzlesRouteImport } from './routes/puzzles'
-import { Route as PageRouteImport } from './routes/page'
 import { Route as MyhorsesRouteImport } from './routes/myhorses'
 import { Route as LevelsRouteImport } from './routes/levels'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
@@ -53,11 +52,6 @@ const QuizRoute = QuizRouteImport.update({
 const PuzzlesRoute = PuzzlesRouteImport.update({
   id: '/puzzles',
   path: '/puzzles',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PageRoute = PageRouteImport.update({
-  id: '/page',
-  path: '/page',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MyhorsesRoute = MyhorsesRouteImport.update({
@@ -174,7 +168,6 @@ export interface FileRoutesByFullPath {
   '/leaderboard': typeof LeaderboardRoute
   '/levels': typeof LevelsRoute
   '/myhorses': typeof MyhorsesRoute
-  '/page': typeof PageRoute
   '/puzzles': typeof PuzzlesRoute
   '/quiz': typeof QuizRouteWithChildren
   '/quizes': typeof QuizesRoute
@@ -201,7 +194,6 @@ export interface FileRoutesByTo {
   '/leaderboard': typeof LeaderboardRoute
   '/levels': typeof LevelsRoute
   '/myhorses': typeof MyhorsesRoute
-  '/page': typeof PageRoute
   '/puzzles': typeof PuzzlesRoute
   '/quiz': typeof QuizRouteWithChildren
   '/quizes': typeof QuizesRoute
@@ -229,7 +221,6 @@ export interface FileRoutesById {
   '/leaderboard': typeof LeaderboardRoute
   '/levels': typeof LevelsRoute
   '/myhorses': typeof MyhorsesRoute
-  '/page': typeof PageRoute
   '/puzzles': typeof PuzzlesRoute
   '/quiz': typeof QuizRouteWithChildren
   '/quizes': typeof QuizesRoute
@@ -258,7 +249,6 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/levels'
     | '/myhorses'
-    | '/page'
     | '/puzzles'
     | '/quiz'
     | '/quizes'
@@ -285,7 +275,6 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/levels'
     | '/myhorses'
-    | '/page'
     | '/puzzles'
     | '/quiz'
     | '/quizes'
@@ -312,7 +301,6 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/levels'
     | '/myhorses'
-    | '/page'
     | '/puzzles'
     | '/quiz'
     | '/quizes'
@@ -340,7 +328,6 @@ export interface RootRouteChildren {
   LeaderboardRoute: typeof LeaderboardRoute
   LevelsRoute: typeof LevelsRoute
   MyhorsesRoute: typeof MyhorsesRoute
-  PageRoute: typeof PageRoute
   PuzzlesRoute: typeof PuzzlesRoute
   QuizRoute: typeof QuizRouteWithChildren
   QuizesRoute: typeof QuizesRoute
@@ -378,13 +365,6 @@ declare module '@tanstack/react-router' {
       path: '/puzzles'
       fullPath: '/puzzles'
       preLoaderRoute: typeof PuzzlesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/page': {
-      id: '/page'
-      path: '/page'
-      fullPath: '/page'
-      preLoaderRoute: typeof PageRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/myhorses': {
@@ -605,7 +585,6 @@ const rootRouteChildren: RootRouteChildren = {
   LeaderboardRoute: LeaderboardRoute,
   LevelsRoute: LevelsRoute,
   MyhorsesRoute: MyhorsesRoute,
-  PageRoute: PageRoute,
   PuzzlesRoute: PuzzlesRoute,
   QuizRoute: QuizRouteWithChildren,
   QuizesRoute: QuizesRoute,

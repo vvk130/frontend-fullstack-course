@@ -19,7 +19,7 @@ function RouteComponent() {
 function LeaderBoardFetch() {
   return (
     <GenericPaginatedList<HorseCompDto>
-      url="/api/CompStatistics/statistics-paginated?PageNumber=1&PageSize=10"
+      url="api/CompStatistics/statistics-paginated?PageNumber=1&PageSize=10"
       queryKey="horses"
       renderItem={(horse: HorseCompDto) => (
         <div key={horse.horseId} className="horse-row">

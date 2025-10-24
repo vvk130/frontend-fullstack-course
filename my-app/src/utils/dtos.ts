@@ -2,6 +2,7 @@ import {Gender, Breed} from "./enums"
 
 export interface HorseShortDto {
 breed: keyof typeof Breed;
+gender: keyof typeof Gender;
 id: string;       
 name: string;
 imgUrl: string | null;

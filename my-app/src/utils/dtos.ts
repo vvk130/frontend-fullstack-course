@@ -7,6 +7,19 @@ name: string;
 imgUrl: string | null;
 }
 
+export interface CompDto {
+  id: string; 
+  endTime: string; 
+}
+
+export interface HorseCompDto {
+horseId: string;
+totalMoneyWon: number;
+averageRanking: number;
+bestRanking: number;
+compEntriesCount: number;     
+}
+
 export interface SalesAdCreateDto {
   price: number;
   endDate: string;

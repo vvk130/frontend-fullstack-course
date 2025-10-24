@@ -38,7 +38,7 @@ export const Route = createRootRoute({
           {/* NAV END */}
           </ul>
         </nav>
-        <div className="item-bar">$: 10000 Level: 1</div>
+        <div className="item-bar">$: 10000 Level: 1 Weather:☀️</div>
       <Outlet />
       <TanStackDevtools
         config={{

@@ -12,3 +12,9 @@ export async function getHorses(): Promise<HorseListResponse> {
 
   return res.json();
 }
+
+export async function fetchItems<T>(url: string): Promise<T[]> {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Failed to fetch");
+  return res.json();
+}

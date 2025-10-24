@@ -5,6 +5,7 @@ const initialHorse: HorseShortDto = {
   id: '',
   name: '',
   imgUrl: '',
+  breed: 'Unknown'
 };
 
 function HorseForm() {

@@ -17,12 +17,14 @@
 |23-10-2025 | | 3 | Adding pages, bug with the router fixed
 |23-10-2025 | | 3 | Page structuring, styling components, enum strings to work (backend tasks timetracked here done concurrently: enums to strings in frontend, image seeding (dragging them to clientside, rawsql random int didn't get it to work, name mismatched in salesad caused a mapping error))
 |23-10-2025 | | 1 | Clean stable page, styling
+|24-10-2025 | | 2 | Script to add pages to nav (problems), refactoring, Backend some refactoring
 
 total. h
 
-TODO:
-[] leaderboard listing
-[] levels listing
-[] breeds listing
-[] horses listing
+TODO TODAY:
 [] horse individual page
+[] horse individual sub pages
+[] paginated listing components
+[] fix script add pages to nav
+[] puzzle page 
+[] quiz page

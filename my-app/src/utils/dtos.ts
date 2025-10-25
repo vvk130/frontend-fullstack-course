@@ -13,6 +13,11 @@ export interface CompDto {
   endTime: string; 
 }
 
+export interface WalletDto {
+  id: string; 
+  balance: string; 
+}
+
 export interface HorseCompDto {
 horseId: string;
 totalMoneyWon: number;

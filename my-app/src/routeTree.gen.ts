@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WalletRouteImport } from './routes/wallet'
 import { Route as QuizesRouteImport } from './routes/quizes'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as PuzzlesRouteImport } from './routes/puzzles'
@@ -23,6 +22,7 @@ import { Route as CleanstableRouteImport } from './routes/cleanstable'
 import { Route as BuyhorsesRouteImport } from './routes/buyhorses'
 import { Route as BreedsRouteImport } from './routes/breeds'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WalletWalletIdRouteImport } from './routes/wallet.$walletId'
 import { Route as QuizQuizIdRouteImport } from './routes/quiz.$quizId'
 import { Route as MarketAdRouteImport } from './routes/market.$ad'
 import { Route as HorseHorseIdRouteImport } from './routes/horse.$horseId'
@@ -32,13 +32,9 @@ import { Route as MarketAdUpdateRouteImport } from './routes/market.$ad.update'
 import { Route as HorseHorseIdUpdateRouteImport } from './routes/horse.$horseId.update'
 import { Route as HorseHorseIdFoalsRouteImport } from './routes/horse.$horseId.foals'
 import { Route as HorseHorseIdCompstatsRouteImport } from './routes/horse.$horseId.compstats'
+import { Route as HorseHorseIdBreedRouteImport } from './routes/horse.$horseId.breed'
 import { Route as CompetitionCompetitionIdUpdateRouteImport } from './routes/competition.$competitionId.update'
 
-const WalletRoute = WalletRouteImport.update({
-  id: '/wallet',
-  path: '/wallet',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const QuizesRoute = QuizesRouteImport.update({
   id: '/quizes',
   path: '/quizes',
@@ -104,6 +100,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WalletWalletIdRoute = WalletWalletIdRouteImport.update({
+  id: '/wallet/$walletId',
+  path: '/wallet/$walletId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QuizQuizIdRoute = QuizQuizIdRouteImport.update({
   id: '/$quizId',
   path: '/$quizId',
@@ -150,6 +151,11 @@ const HorseHorseIdCompstatsRoute = HorseHorseIdCompstatsRouteImport.update({
   path: '/compstats',
   getParentRoute: () => HorseHorseIdRoute,
 } as any)
+const HorseHorseIdBreedRoute = HorseHorseIdBreedRouteImport.update({
+  id: '/breed',
+  path: '/breed',
+  getParentRoute: () => HorseHorseIdRoute,
+} as any)
 const CompetitionCompetitionIdUpdateRoute =
   CompetitionCompetitionIdUpdateRouteImport.update({
     id: '/update',
@@ -171,12 +177,13 @@ export interface FileRoutesByFullPath {
   '/puzzles': typeof PuzzlesRoute
   '/quiz': typeof QuizRouteWithChildren
   '/quizes': typeof QuizesRoute
-  '/wallet': typeof WalletRoute
   '/competition/$competitionId': typeof CompetitionCompetitionIdRouteWithChildren
   '/horse/$horseId': typeof HorseHorseIdRouteWithChildren
   '/market/$ad': typeof MarketAdRouteWithChildren
   '/quiz/$quizId': typeof QuizQuizIdRouteWithChildren
+  '/wallet/$walletId': typeof WalletWalletIdRoute
   '/competition/$competitionId/update': typeof CompetitionCompetitionIdUpdateRoute
+  '/horse/$horseId/breed': typeof HorseHorseIdBreedRoute
   '/horse/$horseId/compstats': typeof HorseHorseIdCompstatsRoute
   '/horse/$horseId/foals': typeof HorseHorseIdFoalsRoute
   '/horse/$horseId/update': typeof HorseHorseIdUpdateRoute
@@ -197,12 +204,13 @@ export interface FileRoutesByTo {
   '/puzzles': typeof PuzzlesRoute
   '/quiz': typeof QuizRouteWithChildren
   '/quizes': typeof QuizesRoute
-  '/wallet': typeof WalletRoute
   '/competition/$competitionId': typeof CompetitionCompetitionIdRouteWithChildren
   '/horse/$horseId': typeof HorseHorseIdRouteWithChildren
   '/market/$ad': typeof MarketAdRouteWithChildren
   '/quiz/$quizId': typeof QuizQuizIdRouteWithChildren
+  '/wallet/$walletId': typeof WalletWalletIdRoute
   '/competition/$competitionId/update': typeof CompetitionCompetitionIdUpdateRoute
+  '/horse/$horseId/breed': typeof HorseHorseIdBreedRoute
   '/horse/$horseId/compstats': typeof HorseHorseIdCompstatsRoute
   '/horse/$horseId/foals': typeof HorseHorseIdFoalsRoute
   '/horse/$horseId/update': typeof HorseHorseIdUpdateRoute
@@ -224,12 +232,13 @@ export interface FileRoutesById {
   '/puzzles': typeof PuzzlesRoute
   '/quiz': typeof QuizRouteWithChildren
   '/quizes': typeof QuizesRoute
-  '/wallet': typeof WalletRoute
   '/competition/$competitionId': typeof CompetitionCompetitionIdRouteWithChildren
   '/horse/$horseId': typeof HorseHorseIdRouteWithChildren
   '/market/$ad': typeof MarketAdRouteWithChildren
   '/quiz/$quizId': typeof QuizQuizIdRouteWithChildren
+  '/wallet/$walletId': typeof WalletWalletIdRoute
   '/competition/$competitionId/update': typeof CompetitionCompetitionIdUpdateRoute
+  '/horse/$horseId/breed': typeof HorseHorseIdBreedRoute
   '/horse/$horseId/compstats': typeof HorseHorseIdCompstatsRoute
   '/horse/$horseId/foals': typeof HorseHorseIdFoalsRoute
   '/horse/$horseId/update': typeof HorseHorseIdUpdateRoute
@@ -252,12 +261,13 @@ export interface FileRouteTypes {
     | '/puzzles'
     | '/quiz'
     | '/quizes'
-    | '/wallet'
     | '/competition/$competitionId'
     | '/horse/$horseId'
     | '/market/$ad'
     | '/quiz/$quizId'
+    | '/wallet/$walletId'
     | '/competition/$competitionId/update'
+    | '/horse/$horseId/breed'
     | '/horse/$horseId/compstats'
     | '/horse/$horseId/foals'
     | '/horse/$horseId/update'
@@ -278,12 +288,13 @@ export interface FileRouteTypes {
     | '/puzzles'
     | '/quiz'
     | '/quizes'
-    | '/wallet'
     | '/competition/$competitionId'
     | '/horse/$horseId'
     | '/market/$ad'
     | '/quiz/$quizId'
+    | '/wallet/$walletId'
     | '/competition/$competitionId/update'
+    | '/horse/$horseId/breed'
     | '/horse/$horseId/compstats'
     | '/horse/$horseId/foals'
     | '/horse/$horseId/update'
@@ -304,12 +315,13 @@ export interface FileRouteTypes {
     | '/puzzles'
     | '/quiz'
     | '/quizes'
-    | '/wallet'
     | '/competition/$competitionId'
     | '/horse/$horseId'
     | '/market/$ad'
     | '/quiz/$quizId'
+    | '/wallet/$walletId'
     | '/competition/$competitionId/update'
+    | '/horse/$horseId/breed'
     | '/horse/$horseId/compstats'
     | '/horse/$horseId/foals'
     | '/horse/$horseId/update'
@@ -331,21 +343,14 @@ export interface RootRouteChildren {
   PuzzlesRoute: typeof PuzzlesRoute
   QuizRoute: typeof QuizRouteWithChildren
   QuizesRoute: typeof QuizesRoute
-  WalletRoute: typeof WalletRoute
   CompetitionCompetitionIdRoute: typeof CompetitionCompetitionIdRouteWithChildren
   HorseHorseIdRoute: typeof HorseHorseIdRouteWithChildren
   MarketAdRoute: typeof MarketAdRouteWithChildren
+  WalletWalletIdRoute: typeof WalletWalletIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/wallet': {
-      id: '/wallet'
-      path: '/wallet'
-      fullPath: '/wallet'
-      preLoaderRoute: typeof WalletRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/quizes': {
       id: '/quizes'
       path: '/quizes'
@@ -437,6 +442,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wallet/$walletId': {
+      id: '/wallet/$walletId'
+      path: '/wallet/$walletId'
+      fullPath: '/wallet/$walletId'
+      preLoaderRoute: typeof WalletWalletIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quiz/$quizId': {
       id: '/quiz/$quizId'
       path: '/$quizId'
@@ -500,6 +512,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HorseHorseIdCompstatsRouteImport
       parentRoute: typeof HorseHorseIdRoute
     }
+    '/horse/$horseId/breed': {
+      id: '/horse/$horseId/breed'
+      path: '/breed'
+      fullPath: '/horse/$horseId/breed'
+      preLoaderRoute: typeof HorseHorseIdBreedRouteImport
+      parentRoute: typeof HorseHorseIdRoute
+    }
     '/competition/$competitionId/update': {
       id: '/competition/$competitionId/update'
       path: '/update'
@@ -547,12 +566,14 @@ const CompetitionCompetitionIdRouteWithChildren =
   )
 
 interface HorseHorseIdRouteChildren {
+  HorseHorseIdBreedRoute: typeof HorseHorseIdBreedRoute
   HorseHorseIdCompstatsRoute: typeof HorseHorseIdCompstatsRoute
   HorseHorseIdFoalsRoute: typeof HorseHorseIdFoalsRoute
   HorseHorseIdUpdateRoute: typeof HorseHorseIdUpdateRoute
 }
 
 const HorseHorseIdRouteChildren: HorseHorseIdRouteChildren = {
+  HorseHorseIdBreedRoute: HorseHorseIdBreedRoute,
   HorseHorseIdCompstatsRoute: HorseHorseIdCompstatsRoute,
   HorseHorseIdFoalsRoute: HorseHorseIdFoalsRoute,
   HorseHorseIdUpdateRoute: HorseHorseIdUpdateRoute,
@@ -588,10 +609,10 @@ const rootRouteChildren: RootRouteChildren = {
   PuzzlesRoute: PuzzlesRoute,
   QuizRoute: QuizRouteWithChildren,
   QuizesRoute: QuizesRoute,
-  WalletRoute: WalletRoute,
   CompetitionCompetitionIdRoute: CompetitionCompetitionIdRouteWithChildren,
   HorseHorseIdRoute: HorseHorseIdRouteWithChildren,
   MarketAdRoute: MarketAdRouteWithChildren,
+  WalletWalletIdRoute: WalletWalletIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

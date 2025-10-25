@@ -1,7 +1,5 @@
-import type { HorseListResponse, HorseShortDto } from '@/utils/dtos';
-import { useQuery } from '@tanstack/react-query';
-import { createFileRoute, Link } from '@tanstack/react-router'
-import Pagination from '@mui/material/Pagination'
+import type { HorseShortDto } from '@/utils/dtos';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import HorseForm from '@/forms/HorseForm';
 import HorseSearchForm from '@/forms/HorseSearchForm';
 import '../css/horses.css';
@@ -37,8 +35,13 @@ function HorsesFetch() {
             <div className="no-image">No Image</div>
           )}
           <div className="horse-info">
-            <Link to="/horse/$horseId" params={{horseId: horse.id}}>{horse.name}</Link> — {horse.breed}
+            <Link to="/horse/$horseId" params={{horseId: horse.id}}>{horse.name}</Link> — {horse.gender} — {horse.breed}
           </div>
+          {horse.gender !== "Gelding" && (
+            <button className="btn" id="updateButton" type="button">
+              Breed
+            </button>
+          )}
           <button className="btn" id="updateButton" type="button">
             Update
           </button>

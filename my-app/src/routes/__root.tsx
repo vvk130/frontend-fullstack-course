@@ -2,7 +2,7 @@ import { Outlet, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import ImageBanner from '../components/ImageBanner'
-
+import WalletBalance from '@/components/walletBalance'
             // <a href="/">Login/SignUp</a>
             // <a href="/leaderboard">Leaderboard</a>
             // <a href="/myhorses">MyHorses</a>
@@ -39,6 +39,7 @@ export const Route = createRootRoute({
           </ul>
         </nav>
         <div className="item-bar">$: 10000 Level: 1 Weather:☀️</div>
+        <WalletBalance walletId='29b934de-c865-472f-9473-3cc09cf6bdff'/>
       <Outlet />
       <TanStackDevtools
         config={{

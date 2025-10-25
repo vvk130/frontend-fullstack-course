@@ -96,3 +96,12 @@ export type Breed = typeof Breed[keyof typeof Breed];
 export type Gender = typeof Gender[keyof typeof Gender];
 
 export type Color = typeof Color[keyof typeof Color];
+
+export enum AdType {
+  PaidAd,
+  NormalAd,
+  Auction
+}
+
+export type AdTypeKey = keyof typeof AdType;
+

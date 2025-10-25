@@ -21,12 +21,13 @@
 |24-10-2025 | | 2 | Paginated components, refactoring
 |24-10-2025 | | 2 | Styling components, refactoring
 |24-10-2025 | | 3 | Tanstack dataloader different use cases, components, refactoring
-|24-10-2025 | | 2 | Wallet
+|25-10-2025 | | 2 | Wallet
+|25-10-2025 | | 2 | Components
 
 total. h
 
 TODO TODAY:
-[] horse individual page
+[x] horse individual page
 [] horse individual sub pages
 [] paginated listing components
 [] Add state to paginations that need it

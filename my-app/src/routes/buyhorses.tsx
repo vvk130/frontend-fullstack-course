@@ -1,8 +1,8 @@
 import Dropdown from '@/components/dropdown';
 import GenericPaginatedList from '@/components/GenericPaginatedList';
-import AdSearchForm from '@/forms/AdSearchForm';
+// import AdSearchForm from '@/forms/AdSearchForm';
 import SalesAdForm from '@/forms/SalesAdForm';
-import type { HorseShortDto } from '@/utils/dtos';
+import type { SalesDto } from '@/utils/dtos';
 import { createFileRoute, Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/buyhorses')({
@@ -25,30 +25,30 @@ function RouteComponent() {
   onSubmit={handleHorseSelectionSubmit}
   />
   <SalesAdForm/>
-  {/* <AdsFetch/> */}
+  <AdsFetch/>
   </>);
 }
 
-// function AdsFetch() {
-//   return (
-//     <GenericPaginatedList<HorseShortDto>
-//       url="/api/salesad/paginated?PageNumber=1&PageSize=10"
-//       queryKey="horses"
-//       renderItem={(horse: HorseShortDto) => (
-//         <div key={horse.id} className="horse-row">
-//           {horse.imgUrl ? (
-//             <img src={horse.imgUrl} alt={horse.name} className="horse-image" />
-//           ) : (
-//             <div className="no-image">No Image</div>
-//           )}
-//           <div className="horse-info">
-//             <Link to="/horse/$horseId" params={{horseId: horse.id}}>{horse.name}</Link> — {horse.breed}
-//           </div>
-//           <button className="btn" id="buyButton" type="button">
-//             Buy Horse
-//           </button>
-//         </div>
-//       )}
-//     />
-//   );
-// }
+function AdsFetch() {
+  return (
+    <GenericPaginatedList<SalesDto>
+      url="api/salesad/paginated-with-horse?PageNumber=1&PageSize=10"
+      queryKey="horses"
+      renderItem={(ad: SalesDto) => (
+        <div key={ad.horse.id} className="horse-row">
+          {ad.horse.imgUrl ? (
+            <img src={ad.horse.imgUrl} alt={ad.horse.name} className="horse-image" />
+          ) : (
+            <div className="no-image">No Image</div>
+          )}
+          <div className="horse-info">
+            <Link to="/horse/$horseId/info" params={{horseId: ad.horse.id}}>{ad.horse.name}</Link> — {ad.horse.breed}
+          </div>
+          <button className="btn" id="buyButton" type="button">
+            Buy Horse for {ad.price} | {ad.type}
+          </button>
+        </div>
+      )}
+    />
+  );
+}

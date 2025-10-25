@@ -32,14 +32,14 @@ export const Route = createRootRoute({
           <a href="/levels">Levels</a>
           <a href="/instructions">Instructions</a>
           <a href="/competitions">Competitions</a>
-          <a href="/market">Market</a>
           <a href="/quiz">Quiz</a>
           <a href="/wallet">Wallet</a>
+          <a href="/cleanstable">Clean stable</a>
+          <a href="/buyhorses">Buy Horses</a>
           {/* NAV END */}
           </ul>
         </nav>
-        <div className="item-bar">$: 10000 Level: 1 Weather:☀️</div>
-        <WalletBalance walletId='29b934de-c865-472f-9473-3cc09cf6bdff'/>
+        <div className="item-bar">sadadasd<WalletBalance walletId='d63793de-dd66-4130-bf13-e78292f074a8'/> Level: 1 Weather:☀️</div>
       <Outlet />
       <TanStackDevtools
         config={{

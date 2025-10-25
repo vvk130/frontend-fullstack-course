@@ -35,7 +35,7 @@ function HorsesFetch() {
             <div className="no-image">No Image</div>
           )}
           <div className="horse-info">
-            <Link to="/horse/$horseId" params={{horseId: horse.id}}>{horse.name}</Link> — {horse.gender} — {horse.breed}
+            <Link to="/horse/$horseId/info" params={{horseId: horse.id}}>{horse.name}</Link> — {horse.gender} — {horse.breed}
           </div>
           {horse.gender !== "Gelding" && (
             <button className="btn" id="updateButton" type="button">

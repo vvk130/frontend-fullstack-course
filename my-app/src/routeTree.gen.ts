@@ -30,6 +30,7 @@ import { Route as CompetitionCompetitionIdRouteImport } from './routes/competiti
 import { Route as QuizQuizIdUpdateRouteImport } from './routes/quiz.$quizId.update'
 import { Route as MarketAdUpdateRouteImport } from './routes/market.$ad.update'
 import { Route as HorseHorseIdUpdateRouteImport } from './routes/horse.$horseId.update'
+import { Route as HorseHorseIdInfoRouteImport } from './routes/horse.$horseId.info'
 import { Route as HorseHorseIdFoalsRouteImport } from './routes/horse.$horseId.foals'
 import { Route as HorseHorseIdCompstatsRouteImport } from './routes/horse.$horseId.compstats'
 import { Route as HorseHorseIdBreedRouteImport } from './routes/horse.$horseId.breed'
@@ -141,6 +142,11 @@ const HorseHorseIdUpdateRoute = HorseHorseIdUpdateRouteImport.update({
   path: '/update',
   getParentRoute: () => HorseHorseIdRoute,
 } as any)
+const HorseHorseIdInfoRoute = HorseHorseIdInfoRouteImport.update({
+  id: '/info',
+  path: '/info',
+  getParentRoute: () => HorseHorseIdRoute,
+} as any)
 const HorseHorseIdFoalsRoute = HorseHorseIdFoalsRouteImport.update({
   id: '/foals',
   path: '/foals',
@@ -186,6 +192,7 @@ export interface FileRoutesByFullPath {
   '/horse/$horseId/breed': typeof HorseHorseIdBreedRoute
   '/horse/$horseId/compstats': typeof HorseHorseIdCompstatsRoute
   '/horse/$horseId/foals': typeof HorseHorseIdFoalsRoute
+  '/horse/$horseId/info': typeof HorseHorseIdInfoRoute
   '/horse/$horseId/update': typeof HorseHorseIdUpdateRoute
   '/market/$ad/update': typeof MarketAdUpdateRoute
   '/quiz/$quizId/update': typeof QuizQuizIdUpdateRoute
@@ -213,6 +220,7 @@ export interface FileRoutesByTo {
   '/horse/$horseId/breed': typeof HorseHorseIdBreedRoute
   '/horse/$horseId/compstats': typeof HorseHorseIdCompstatsRoute
   '/horse/$horseId/foals': typeof HorseHorseIdFoalsRoute
+  '/horse/$horseId/info': typeof HorseHorseIdInfoRoute
   '/horse/$horseId/update': typeof HorseHorseIdUpdateRoute
   '/market/$ad/update': typeof MarketAdUpdateRoute
   '/quiz/$quizId/update': typeof QuizQuizIdUpdateRoute
@@ -241,6 +249,7 @@ export interface FileRoutesById {
   '/horse/$horseId/breed': typeof HorseHorseIdBreedRoute
   '/horse/$horseId/compstats': typeof HorseHorseIdCompstatsRoute
   '/horse/$horseId/foals': typeof HorseHorseIdFoalsRoute
+  '/horse/$horseId/info': typeof HorseHorseIdInfoRoute
   '/horse/$horseId/update': typeof HorseHorseIdUpdateRoute
   '/market/$ad/update': typeof MarketAdUpdateRoute
   '/quiz/$quizId/update': typeof QuizQuizIdUpdateRoute
@@ -270,6 +279,7 @@ export interface FileRouteTypes {
     | '/horse/$horseId/breed'
     | '/horse/$horseId/compstats'
     | '/horse/$horseId/foals'
+    | '/horse/$horseId/info'
     | '/horse/$horseId/update'
     | '/market/$ad/update'
     | '/quiz/$quizId/update'
@@ -297,6 +307,7 @@ export interface FileRouteTypes {
     | '/horse/$horseId/breed'
     | '/horse/$horseId/compstats'
     | '/horse/$horseId/foals'
+    | '/horse/$horseId/info'
     | '/horse/$horseId/update'
     | '/market/$ad/update'
     | '/quiz/$quizId/update'
@@ -324,6 +335,7 @@ export interface FileRouteTypes {
     | '/horse/$horseId/breed'
     | '/horse/$horseId/compstats'
     | '/horse/$horseId/foals'
+    | '/horse/$horseId/info'
     | '/horse/$horseId/update'
     | '/market/$ad/update'
     | '/quiz/$quizId/update'
@@ -498,6 +510,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HorseHorseIdUpdateRouteImport
       parentRoute: typeof HorseHorseIdRoute
     }
+    '/horse/$horseId/info': {
+      id: '/horse/$horseId/info'
+      path: '/info'
+      fullPath: '/horse/$horseId/info'
+      preLoaderRoute: typeof HorseHorseIdInfoRouteImport
+      parentRoute: typeof HorseHorseIdRoute
+    }
     '/horse/$horseId/foals': {
       id: '/horse/$horseId/foals'
       path: '/foals'
@@ -569,6 +588,7 @@ interface HorseHorseIdRouteChildren {
   HorseHorseIdBreedRoute: typeof HorseHorseIdBreedRoute
   HorseHorseIdCompstatsRoute: typeof HorseHorseIdCompstatsRoute
   HorseHorseIdFoalsRoute: typeof HorseHorseIdFoalsRoute
+  HorseHorseIdInfoRoute: typeof HorseHorseIdInfoRoute
   HorseHorseIdUpdateRoute: typeof HorseHorseIdUpdateRoute
 }
 
@@ -576,6 +596,7 @@ const HorseHorseIdRouteChildren: HorseHorseIdRouteChildren = {
   HorseHorseIdBreedRoute: HorseHorseIdBreedRoute,
   HorseHorseIdCompstatsRoute: HorseHorseIdCompstatsRoute,
   HorseHorseIdFoalsRoute: HorseHorseIdFoalsRoute,
+  HorseHorseIdInfoRoute: HorseHorseIdInfoRoute,
   HorseHorseIdUpdateRoute: HorseHorseIdUpdateRoute,
 }
 

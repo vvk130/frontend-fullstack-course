@@ -90,12 +90,64 @@ export const BreedLabels: Record<Breed, string> = {
   [Breed.Finnhorse]: 'Finnhorse',
 };
 
+export const AlpacaColor = {
+  White: 0,
+  Beige: 1,
+  LightFawn: 2,
+  MediumFawn: 3,
+  DarkFawn: 4,
+  LightBrown: 5,
+  MediumBrown: 6,
+  DarkBrown: 7,
+  BayBlack: 8,
+  TrueBlack: 9,
+  LightSilverGrey: 10,
+  MediumSilverGrey: 11,
+  DarkSilverGrey: 12,
+  LightRoseGrey: 13,
+  MediumRoseGrey: 14,
+  DarkRoseGrey: 15,
+} as const;
+
+export const AlpacaColorLabels: Record<number, string> = {
+  [AlpacaColor.White]: "White",
+  [AlpacaColor.Beige]: "Beige",
+  [AlpacaColor.LightFawn]: "Light Fawn",
+  [AlpacaColor.MediumFawn]: "Medium Fawn",
+  [AlpacaColor.DarkFawn]: "Dark Fawn",
+  [AlpacaColor.LightBrown]: "Light Brown",
+  [AlpacaColor.MediumBrown]: "Medium Brown",
+  [AlpacaColor.DarkBrown]: "Dark Brown",
+  [AlpacaColor.BayBlack]: "Bay Black",
+  [AlpacaColor.TrueBlack]: "True Black",
+  [AlpacaColor.LightSilverGrey]: "Light Silver Grey",
+  [AlpacaColor.MediumSilverGrey]: "Medium Silver Grey",
+  [AlpacaColor.DarkSilverGrey]: "Dark Silver Grey",
+  [AlpacaColor.LightRoseGrey]: "Light Rose Grey",
+  [AlpacaColor.MediumRoseGrey]: "Medium Rose Grey",
+  [AlpacaColor.DarkRoseGrey]: "Dark Rose Grey",
+};
+
+export const AlpacaBreed = {
+  Unknown: 0,
+  Huacaya: 1,
+  Suri: 2,
+} as const;
+
+export const AlpacaBreedLabels: Record<number, string> = {
+  [AlpacaBreed.Huacaya]: "Huacaya",
+  [AlpacaBreed.Suri]: "Suri",
+};
 
 export type Breed = typeof Breed[keyof typeof Breed];
 
 export type Gender = typeof Gender[keyof typeof Gender];
 
 export type Color = typeof Color[keyof typeof Color];
+
+export type AlpacaColor = typeof AlpacaColor[keyof typeof AlpacaColor];
+
+export type AlpacaBreed = typeof AlpacaBreed[keyof typeof AlpacaBreed];
 
 export enum AdType {
   PaidAd,
@@ -104,4 +156,5 @@ export enum AdType {
 }
 
 export type AdTypeKey = keyof typeof AdType;
+
 

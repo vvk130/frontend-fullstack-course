@@ -1,4 +1,4 @@
-import {Gender, Breed, AdType} from "./enums"
+import {Gender, Breed, AdType, AlpacaBreed, AlpacaColor} from "./enums"
 
 export interface HorseShortDto {
 breed: keyof typeof Breed;
@@ -150,6 +150,36 @@ export interface HorseDto extends HorseShortDto {
     discovered: boolean;
     severity: number;
   }>;
+  personalities: Array<{
+    personalityTrait: string;
+    severity: number;
+    discovered: boolean;
+  }>;
+}
+
+export interface AlpacaQualities {
+  Agility: number;
+  Speed: number;
+  Stamina: number;
+  FleeceQuality: number;
+  SocialSkill: number;
+}
+
+export interface AlpacaDto {
+  id: string;
+  imgUrl?: string;
+  name: string;
+  age: number;
+  alpacaColor: AlpacaColor;
+  gender: Gender;
+  alpacaBreed: AlpacaBreed;
+  capacity: number;
+  relationship: number;
+  energy: number;
+  ownerId?: string;
+  sireId?: string;
+  damId?: string;
+  alpacaQualities: AlpacaQualities;
   personalities: Array<{
     personalityTrait: string;
     severity: number;

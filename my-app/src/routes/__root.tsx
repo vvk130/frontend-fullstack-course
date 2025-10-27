@@ -39,7 +39,7 @@ export const Route = createRootRoute({
           {/* NAV END */}
           </ul>
         </nav>
-        <div className="item-bar">sadadasd<WalletBalance walletId='d63793de-dd66-4130-bf13-e78292f074a8'/> Level: 1 Weather:☀️</div>
+        <div className="item-bar"><WalletBalance walletId='d63793de-dd66-4130-bf13-e78292f074a8'/> <span>Level: 1</span> Weather:☀️</div>
       <Outlet />
       <TanStackDevtools
         config={{

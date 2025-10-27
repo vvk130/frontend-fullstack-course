@@ -8,10 +8,10 @@ export const Route = createFileRoute('/horse/$horseId/foals')({
 })
 
 function RouteComponent() {
-  const horse = ParentRoute.useLoaderData()
+  const data = ParentRoute.useLoaderData()
 
   const endpoint =
-    horse.gender === 'Mare'
+    data.gender === 'Mare'
       ? `api/Horses/search?Filter.SireId=${horse.id}`
       : `api/Horses/search?Filter.SireId=${horse.id}`
 

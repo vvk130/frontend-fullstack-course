@@ -1,52 +1,52 @@
-import { fetchItemById } from '@/fetch';
-import type { AnimalDtoMap, AnimalType } from '@/utils/dtos';
-import { createFileRoute, Link, Outlet } from '@tanstack/react-router';
+import { createFileRoute, Link, Outlet } from '@tanstack/react-router'
+import { fetchItemById } from '@/fetch'
+import type { AnimalDtoMap, AnimalType } from '@/utils/dtos'
 
-export const AnimalRoute = createFileRoute('/animal/$animalId')({
+export const Route = createFileRoute('/animal/$animalId')({
   loader: async ({ params }) => {
-    const { animalId } = params;
+    const { animalId } = params
 
-    const [animalType, id] = animalId.split('-') as [AnimalType, string];
+    const [animalType, id] = animalId.split('_') as [AnimalType, string]
 
-    const endpoint = `api/${animalType.charAt(0).toUpperCase() + animalType.slice(1)}s/`;
+    const endpoint = `api/${animalType}s/`
+    const data = await fetchItemById(endpoint, id)
 
-    const data = await fetchItemById(endpoint, id);
+    console.log(endpoint);
+    console.log(id);
 
-    return { animalType, data };
+    return { animalType, data }
   },
-  component: AnimalRouteComponent,
-});
+  component: RouteComponent,
+})
 
-function AnimalRouteComponent() {
-  const { animalType, data } = AnimalRoute.useLoaderData() as {
-    animalType: AnimalType;
-    data: AnimalDtoMap[AnimalType];
-  };
+function RouteComponent() {
+  const { animalType, data } = Route.useLoaderData() as {
+    animalType: AnimalType
+    data: AnimalDtoMap[AnimalType]
+  }
 
-  const animalIdParam = `${animalType}-${data.id}`;
+  const animalIdParam = `${animalType}-${data.id}`
+
+  const tabs = [
+    { label: 'Basic Info', path: '/animal/$animalId/info' },
+    { label: 'Foals', path: '/animal/$animalId/foals' },
+    { label: 'CompStats', path: '/animal/$animalId/compstats' },
+    { label: 'Update', path: '/animal/$animalId/update' },
+    { label: 'Breed', path: '/animal/$animalId/breed' },
+  ]
 
   return (
     <>
-      <nav>
-        <Link to="/animal/$animalId/info" params={{ animalId: animalIdParam }}>
-          Basic Info
-        </Link>
-        <Link to="/animal/$animalId/foals" params={{ animalId: animalIdParam }}>
-          Foals
-        </Link>
-        <Link to="/animal/$animalId/compstats" params={{ animalId: animalIdParam }}>
-          CompStats
-        </Link>
-        <Link to="/animal/$animalId/update" params={{ animalId: animalIdParam }}>
-          Update
-        </Link>
-        <Link to="/animal/$animalId/breed" params={{ animalId: animalIdParam }}>
-          Breed
-        </Link>
+      <nav className="item-bar">
+        {tabs.map(({ label, path }) => (
+          <Link key={label} to={path} params={{ animalId: animalIdParam }}>
+            {label}
+          </Link>
+        ))}
       </nav>
       <Outlet />
     </>
-  );
+  )
 }
 
-export { fetchItemById };
+export { fetchItemById }

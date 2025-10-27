@@ -1,34 +1,34 @@
+import { createFileRoute } from '@tanstack/react-router'
 import { DetailTable } from '@/components/DetailTable'
 import { fetchItemById } from '@/fetch'
-import { createFileRoute } from '@tanstack/react-router'
 import type { AnimalDtoMap, AnimalType } from '@/utils/dtos'
 
 export const Route = createFileRoute('/animal/$animalId/info')({
   loader: async ({ params }) => {
     const { animalId } = params
 
-    const endpoint = `api/${animal.charAt(0).toUpperCase() + animal.slice(1)}s/`
+    const [animalType, id] = animalId.split('_') as [AnimalType, string]
 
-    const data = await fetchItemById(endpoint, animalId)
+    const endpoint = `api/${animalType}s/`
+    const data = await fetchItemById(endpoint, id)
 
-    return { data }
+    console.log(endpoint);
+    console.log(id);
+
+    return { animalType, data }
   },
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  // const { animal, data } = Route.useLoaderData({from: '/$animal/$animalId'}) as {
-  //   animal: AnimalType
-  //   data: AnimalDtoMap[AnimalType]
-  // }
-
-  const loaderData = Route.useLoaderData({from: '/$animal/$animalId'})
+  const { animalType, data } = Route.useLoaderData() as {
+    animalType: AnimalType
+    data: AnimalDtoMap[AnimalType]
+  }
 
   return (
-    <>
-      <h2 className="text-xl font-semibold capitalize mb-2">{animal} Info</h2>
+    <div style={{ padding: '1rem' }}>
       <DetailTable data={data} />
-    </>
+    </div>
   )
 }
-

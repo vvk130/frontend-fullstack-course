@@ -187,3 +187,19 @@ export interface AlpacaDto {
   }>;
 }
 
+export interface AnimalDto {
+  id: string;
+  name: string;
+  imgUrl: string | null;
+  gender: string;
+  age?: number;
+  breed?: string;
+  color?: string;
+}
+
+export type AnimalType = 'horse' | 'alpaca'
+export type AnimalDtoMap = {
+  horse: HorseDto
+  alpaca: AlpacaDto
+}
+

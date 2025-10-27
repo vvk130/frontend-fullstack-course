@@ -23,6 +23,7 @@
 |24-10-2025 | | 3 | Tanstack dataloader different use cases, components, refactoring
 |25-10-2025 | | 2 | Wallet
 |25-10-2025 | | 2 | Components
+|26-10-2025 | | 2 | Reusable animal page, refactoring // Final week starts!
 
 total. h
 

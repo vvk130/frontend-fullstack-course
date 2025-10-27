@@ -1,7 +1,7 @@
 import GenericPaginatedList from '@/components/GenericPaginatedList'
 import type { HorseShortDto } from '@/utils/dtos'
 import { createFileRoute, Link, useLoaderData, useParams} from '@tanstack/react-router'
-import {Route as ParentRoute} from '@/routes/horse.$horseId'
+import {Route as ParentRoute} from '@/routes/$animal.$animalId'
 
 export const Route = createFileRoute('/horse/$horseId/foals')({
   component: RouteComponent,

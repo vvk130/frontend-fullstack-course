@@ -24,6 +24,7 @@
 |25-10-2025 | | 2 | Wallet
 |25-10-2025 | | 2 | Components
 |26-10-2025 | | 2 | Reusable animal page, refactoring // Final week starts!
+|26-10-2025 | | 2 | Refactoring, tanstack router problem
 
 total. h
 

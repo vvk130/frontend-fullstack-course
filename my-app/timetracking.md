@@ -23,9 +23,10 @@
 |24-10-2025 | | 3 | Tanstack dataloader different use cases, components, refactoring
 |25-10-2025 | | 2 | Wallet
 |25-10-2025 | | 2 | Components
-|26-10-2025 | | 2 | Reusable animal page, refactoring // Final week starts!
-|26-10-2025 | | 2 | Refactoring, tanstack router problem
-|26-10-2025 | | 3 | Refactoring
+|27-10-2025 | | 2 | Reusable animal page, refactoring // Final week starts!
+|27-10-2025 | | 2 | Refactoring, tanstack router problem
+|27-10-2025 | | 3 | Refactoring
+|29-10-2025 | | 1 | Forms
 
 total. h
 

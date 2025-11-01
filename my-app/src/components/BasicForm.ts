@@ -1,20 +1,27 @@
 import { useState } from 'react'
 
-export default function BasicForm<T extends object>({
+type EnumDefinition = {
+  values: Record<string, string | number>
+  labels: Record<string, string>
+}
+
+type EnumsMap<T> = Partial<Record<keyof T, EnumDefinition>>
+
+export default function BasicForm<T extends Record<string, any>>({
   model,
   onSubmit,
-  enums = {},
+  enums = {} as EnumsMap<T>,
   readOnlyFields = [],
 }: {
   model: T
   onSubmit: (data: T) => void
-  enums?: Record<string, { values: Record<string, string>; labels: Record<string, string> }>
-  readOnlyFields?: string[]
+  enums?: EnumsMap<T>
+  readOnlyFields?: (keyof T)[]
 }) {
-  const [formData, setFormData] = useState<T>(model)
+  const [formData, setFormData] = useState<T>({ ...model })
 
   const handleChange = (field: keyof T, value: any) => {
-    setFormData({ ...formData, [field]: value })
+    setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
   return (
@@ -27,20 +34,23 @@ export default function BasicForm<T extends object>({
       {(Object.keys(model) as (keyof T)[]).map((key) => {
         const value = formData[key]
 
-        if (readOnlyFields.includes(String(key)))
+        if (readOnlyFields.includes(key))
           return (
             <div key={String(key)}>
               <label>{String(key)}</label>
-              <input value={value ?? ''} readOnly />
+              <input value={value as string | number | undefined} readOnly />
             </div>
           )
 
-        if (enums[key as string]) {
-          const { values, labels } = enums[key as string]
+        if (enums[key]) {
+          const { values, labels } = enums[key]!
           return (
             <div key={String(key)}>
               <label>{String(key)}</label>
-              <select value={value as string} onChange={(e) => handleChange(key, e.target.value)}>
+              <select
+                value={String(value)}
+                onChange={(e) => handleChange(key, e.target.value)}
+              >
                 {Object.keys(values).map((k) => (
                   <option key={k} value={k}>
                     {labels[k]}
@@ -54,7 +64,10 @@ export default function BasicForm<T extends object>({
         return (
           <div key={String(key)}>
             <label>{String(key)}</label>
-            <input value={value ?? ''} onChange={(e) => handleChange(key, e.target.value)} />
+            <input
+              value={value as string | number | undefined}
+              onChange={(e) => handleChange(key, e.target.value)}
+            />
           </div>
         )
       })}

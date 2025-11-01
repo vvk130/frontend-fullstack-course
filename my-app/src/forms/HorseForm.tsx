@@ -1,17 +1,15 @@
-import type { HorseShortDto } from '@/utils/dtos';
+import type { HorseEditDto } from '@/utils/dtos';
 import BasicForm from './BasicForm';
 
-const initialHorse: HorseShortDto = {
+const initialHorse: HorseEditDto = {
   id: '',
   name: '',
-  imgUrl: '',
-  breed: 'Unknown',
-  gender: 'Mare'
+  imgUrl: ''
 };
 
 function HorseForm() {
-  const handleHorseSubmit = (data: HorseShortDto) => {
-    console.log('Horse Data Submitted:', data);
+  const handleHorseSubmit = (data: HorseEditDto) => {
+    alert('Horse Data Submitted: ' + JSON.stringify(data, null, 2));
   };
 
   return (

@@ -1,21 +1,21 @@
-import { useQuery, useMutation } from '@tanstack/react-query'
-import { useParams } from '@tanstack/react-router'
+import { useState, useEffect } from 'react'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import BasicForm from './BasicForm'
 import { modelRegistry } from '@/utils/modelRegistry'
+import { useParams } from '@tanstack/react-router'
 
 type GenericEditFormProps<T extends object> = {
   modelKey: keyof typeof modelRegistry
-  idParam: string
+  onSuccess?: () => void
 }
 
-export default function GenericEditForm<T extends object>({ modelKey, idParam }: GenericEditFormProps<T>) {
-  const params = useParams<{ [key: string]: string }>()
-  const id = params[idParam]
-  const entry = modelRegistry[modelKey] as typeof modelRegistry[keyof typeof modelRegistry]
-  const { endpoint, enums, sample, displayName } = entry
+export default function GenericEditForm<T extends object>({ modelKey, onSuccess }: GenericEditFormProps<T>) {
+  const { id } = useParams<{ id: string }>()
+  const registryEntry = modelRegistry[modelKey as string]!
+  const { endpoint, enums } = registryEntry
 
-  const { data, isLoading, error } = useQuery({
-    queryKey: [modelKey, id],
+  const { data, status, error } = useQuery<T>({
+    queryKey: [endpoint, id],
     queryFn: async () => {
       const res = await fetch(`http://localhost:5263/${endpoint}${id}`)
       if (!res.ok) throw new Error('Failed to fetch item')
@@ -23,31 +23,35 @@ export default function GenericEditForm<T extends object>({ modelKey, idParam }:
     },
   })
 
+  const [formData, setFormData] = useState<T | null>(null)
+
+  useEffect(() => {
+    if (data) setFormData(data)
+  }, [data])
+
   const mutation = useMutation({
-    mutationFn: async (formData: T) => {
+    mutationFn: async (data: T) => {
       const res = await fetch(`http://localhost:5263/${endpoint}${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(data),
       })
       if (!res.ok) throw new Error('Failed to update item')
       return res.json()
     },
+    onSuccess,
   })
 
-  const handleSubmit = (formData: T) => mutation.mutate(formData)
-
-  if (isLoading) return <div>Loading...</div>
-  if (error) return <div>Error loading item</div>
-  if (!data) return <div>Item not found</div>
+  if (status === 'pending' || !formData) return <div>Loading...</div>
+  if (status === 'error') return <div>Error: {(error as Error).message}</div>
+  if (mutation.status === 'pending') return <div>Saving...</div>
+  if (mutation.status === 'error') return <div>Error: {(mutation.error as Error).message}</div>
 
   return (
-    <div>
-      <h2>Edit {displayName}</h2>
-      <BasicForm model={data} onSubmit={handleSubmit} enums={enums} />
-      {mutation.status === 'pending' && <div>Saving...</div>}
-      {mutation.status === 'error' && <div>Error: {(mutation.error as Error).message}</div>}
-      {mutation.status === 'success' && <div>Updated successfully!</div>}
-    </div>
+    <BasicForm<T>
+      model={formData}
+      onSubmit={(data) => mutation.mutate(data)}
+      enums={enums}
+    />
   )
 }

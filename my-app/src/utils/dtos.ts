@@ -118,10 +118,16 @@ export interface QuestionDto {
   difficulty: number; 
 }
 
-export interface HorseShortDto {
+export interface Id {
   id: string;
+}
+
+export interface HorseEditDto extends Id {
   name: string;
   imgUrl: string | null;
+}
+
+export interface HorseShortDto extends HorseEditDto {
   breed: keyof typeof Breed;
   gender: keyof typeof Gender;
 }

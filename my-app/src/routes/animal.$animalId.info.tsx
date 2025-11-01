@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { DetailTable } from '@/components/DetailTable'
 import { fetchItemById } from '@/fetch'
 import type { AnimalDtoMap, AnimalType } from '@/utils/dtos'
+import HorseForm from '@/forms/HorseForm'
 
 export const Route = createFileRoute('/animal/$animalId/info')({
   loader: async ({ params }) => {
@@ -28,6 +29,7 @@ function RouteComponent() {
 
   return (
     <div style={{ padding: '1rem' }}>
+      <HorseForm/>
       <DetailTable data={data} />
     </div>
   )

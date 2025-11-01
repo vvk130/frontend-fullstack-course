@@ -27,6 +27,7 @@
 |27-10-2025 | | 2 | Refactoring, tanstack router problem
 |27-10-2025 | | 3 | Refactoring
 |29-10-2025 | | 1 | Forms
+|01-11-2025 | | 3 | Generic Form fix errors
 
 total. h
 

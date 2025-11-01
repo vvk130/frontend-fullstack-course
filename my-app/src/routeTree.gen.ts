@@ -138,9 +138,9 @@ const MarketAdUpdateRoute = MarketAdUpdateRouteImport.update({
   getParentRoute: () => MarketAdRoute,
 } as any)
 const HorseHorseIdUpdateRoute = HorseHorseIdUpdateRouteImport.update({
-  id: '/update',
-  path: '/update',
-  getParentRoute: () => HorseHorseIdRoute,
+  id: '/horse/$horseId/update',
+  path: '/horse/$horseId/update',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const HorseHorseIdFoalsRoute = HorseHorseIdFoalsRouteImport.update({
   id: '/horse/$horseId/foals',
@@ -153,9 +153,9 @@ const HorseHorseIdCompstatsRoute = HorseHorseIdCompstatsRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const HorseHorseIdBreedRoute = HorseHorseIdBreedRouteImport.update({
-  id: '/breed',
-  path: '/breed',
-  getParentRoute: () => HorseHorseIdRoute,
+  id: '/horse/$horseId/breed',
+  path: '/horse/$horseId/breed',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const CompetitionCompetitionIdUpdateRoute =
   CompetitionCompetitionIdUpdateRouteImport.update({
@@ -359,8 +359,10 @@ export interface RootRouteChildren {
   CompetitionCompetitionIdRoute: typeof CompetitionCompetitionIdRouteWithChildren
   MarketAdRoute: typeof MarketAdRouteWithChildren
   WalletWalletIdRoute: typeof WalletWalletIdRoute
+  HorseHorseIdBreedRoute: typeof HorseHorseIdBreedRoute
   HorseHorseIdCompstatsRoute: typeof HorseHorseIdCompstatsRoute
   HorseHorseIdFoalsRoute: typeof HorseHorseIdFoalsRoute
+  HorseHorseIdUpdateRoute: typeof HorseHorseIdUpdateRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -507,10 +509,10 @@ declare module '@tanstack/react-router' {
     }
     '/horse/$horseId/update': {
       id: '/horse/$horseId/update'
-      path: '/update'
+      path: '/horse/$horseId/update'
       fullPath: '/horse/$horseId/update'
       preLoaderRoute: typeof HorseHorseIdUpdateRouteImport
-      parentRoute: typeof HorseHorseIdRoute
+      parentRoute: typeof rootRouteImport
     }
     '/horse/$horseId/foals': {
       id: '/horse/$horseId/foals'
@@ -528,10 +530,10 @@ declare module '@tanstack/react-router' {
     }
     '/horse/$horseId/breed': {
       id: '/horse/$horseId/breed'
-      path: '/breed'
+      path: '/horse/$horseId/breed'
       fullPath: '/horse/$horseId/breed'
       preLoaderRoute: typeof HorseHorseIdBreedRouteImport
-      parentRoute: typeof HorseHorseIdRoute
+      parentRoute: typeof rootRouteImport
     }
     '/competition/$competitionId/update': {
       id: '/competition/$competitionId/update'
@@ -628,8 +630,10 @@ const rootRouteChildren: RootRouteChildren = {
   CompetitionCompetitionIdRoute: CompetitionCompetitionIdRouteWithChildren,
   MarketAdRoute: MarketAdRouteWithChildren,
   WalletWalletIdRoute: WalletWalletIdRoute,
+  HorseHorseIdBreedRoute: HorseHorseIdBreedRoute,
   HorseHorseIdCompstatsRoute: HorseHorseIdCompstatsRoute,
   HorseHorseIdFoalsRoute: HorseHorseIdFoalsRoute,
+  HorseHorseIdUpdateRoute: HorseHorseIdUpdateRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -135,6 +135,7 @@ export const AlpacaBreed = {
 } as const;
 
 export const AlpacaBreedLabels: Record<number, string> = {
+  [AlpacaBreed.Unknown]: "Unknown",
   [AlpacaBreed.Huacaya]: "Huacaya",
   [AlpacaBreed.Suri]: "Suri",
 };

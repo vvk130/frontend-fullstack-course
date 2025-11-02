@@ -31,8 +31,12 @@
 |01-11-2025 | | 1 | Forms
 |02-11-2025 | | 2,5 | Forms
 |02-11-2025 | | 2 | Forms
+|02-11-2025 | | 3 | Forms, backend (time tracked here): validators, AnimalDbSet
+|03-11-2025 | |  |
 
 total. h
+
+Axios error handling? Prob not time for it? https://www.vivienfabing.com/react/2020/11/25/aspnetcore-simple-shared-generic-errors-with-react.html
 
 TODO TODAY:
 [x] horse individual page

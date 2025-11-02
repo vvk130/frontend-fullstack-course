@@ -13,7 +13,23 @@ export default function HorseForm({ horseId }: { horseId: string }) {
       model={horse}
       onSubmit={(data) => mutation.mutate(data)}
       title="Edit Horse"
-      disabledFields={['id', 'ownerId']} 
+      disabledFields={[
+        'id',
+        'breed',
+        'gender',
+        'age',
+        'color',
+        'capacity',
+        'relationship',
+        'energy',
+        'height',
+        'ownerId',
+        'sireId',
+        'damId',
+        'qualities',
+        'fears',
+        'personalities',
+      ]}
     />
   );
 }

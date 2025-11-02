@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { DetailTable } from '@/components/DetailTable'
 import { fetchItemById } from '@/fetch'
 import type { AnimalDtoMap, AnimalType } from '@/utils/dtos'
+import AlpacaForm from '@/forms/AlpacaForm'
 import HorseForm from '@/forms/HorseForm'
 
 export const Route = createFileRoute('/animal/$animalId/info')({
@@ -29,6 +30,7 @@ function RouteComponent() {
 
   return (
     <div style={{ padding: '1rem' }}>
+      <AlpacaForm alpacaId={data.id}/>
       <HorseForm horseId={data.id}/>
       <DetailTable data={data} />
     </div>

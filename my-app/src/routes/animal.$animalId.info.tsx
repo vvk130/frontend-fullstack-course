@@ -29,7 +29,7 @@ function RouteComponent() {
 
   return (
     <div style={{ padding: '1rem' }}>
-      <HorseForm/>
+      <HorseForm horseId={data.id}/>
       <DetailTable data={data} />
     </div>
   )

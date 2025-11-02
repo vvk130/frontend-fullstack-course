@@ -1,15 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import './form.css';
 
 type FormProps<T> = {
   model: T;
-  onSubmit: (data: T) => void;
+  fetchUrl?: string;
+  postUrl: string;
+  method?: 'POST' | 'PUT';
   title?: string;
 };
 
-function BasicForm<T extends object>({ model, onSubmit, title = 'Open Form' }: FormProps<T>) {
+async function fetchItem<T>(url: string): Promise<T> {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
+  return res.json();
+}
+
+export default function BasicForm<T extends object>({
+  model,
+  fetchUrl,
+  postUrl,
+  method = 'POST',
+  title = 'Submit Form',
+}: FormProps<T>) {
+  const queryClient = useQueryClient();
   const [formData, setFormData] = useState<T>(model);
-  const [open, setOpen] = useState(false);
+
+  const { data, isLoading } = useQuery({
+    queryKey: fetchUrl ? [fetchUrl] : [],
+    queryFn: fetchUrl ? () => fetchItem<T>(fetchUrl) : undefined,
+    enabled: !!fetchUrl,
+  });
+
+  useEffect(() => {
+    if (data) setFormData(data);
+  }, [data]);
+
+  const mutation = useMutation({
+    mutationFn: async (newData: T) => {
+      const API_URL = 'http://localhost:5263/';
+      const res = await fetch(`${API_URL}${postUrl}`, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newData),
+      });
+      if (!res.ok) throw new Error(`Failed to ${method}: ${res.status}`);
+      return res.json();
+    },
+    onSuccess: () => {
+      alert(`${method === 'POST' ? 'Created' : 'Updated'} successfully!`);
+      queryClient.invalidateQueries(); 
+    },
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -18,17 +60,13 @@ function BasicForm<T extends object>({ model, onSubmit, title = 'Open Form' }: F
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(formData);
+    mutation.mutate(formData);
   };
 
-  const toggleDetails = (e: React.MouseEvent<HTMLDetailsElement>) => {
-    const target = e.target as HTMLElement;
-    if (target.closest('form')) return;
-    setOpen((prev) => !prev);
-  };
+  if (isLoading) return <div>Loading...</div>;
 
   return (
-    <details className="form-details" open={open} onClick={toggleDetails}>
+    <details className="form-details" open>
       <summary className="form-btn">{title}</summary>
       <form onSubmit={handleSubmit}>
         {Object.keys(formData).map((key) => (
@@ -37,16 +75,20 @@ function BasicForm<T extends object>({ model, onSubmit, title = 'Open Form' }: F
             <input
               type="text"
               name={key}
-              value={(formData as any)[key] || ''}
+              value={(formData as any)[key] ?? ''}
               onChange={handleChange}
               className="form-input"
             />
           </div>
         ))}
-        <button type="submit" className="form-btn">Submit</button>
+        <button
+          type="submit"
+          className="form-btn"
+          disabled={mutation.isPending}
+        >
+          {mutation.isPending ? 'Saving...' : 'Submit'}
+        </button>
       </form>
     </details>
   );
 }
-
-export default BasicForm;

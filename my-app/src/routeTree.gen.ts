@@ -34,7 +34,7 @@ import { Route as HorseHorseIdFoalsRouteImport } from './routes/horse.$horseId.f
 import { Route as HorseHorseIdCompstatsRouteImport } from './routes/horse.$horseId.compstats'
 import { Route as HorseHorseIdBreedRouteImport } from './routes/horse.$horseId.breed'
 import { Route as CompetitionCompetitionIdUpdateRouteImport } from './routes/competition.$competitionId.update'
-import { Route as AnimalAnimalIdInfoRouteImport } from './routes/animal.$animalId.info'
+import { Route as AnimalAnimalIdInfoRouteImport } from './routes/animal/$animalId/info'
 
 const QuizesRoute = QuizesRouteImport.update({
   id: '/quizes',

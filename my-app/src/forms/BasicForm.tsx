@@ -1,57 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import './form.css';
 
 type FormProps<T> = {
   model: T;
-  fetchUrl?: string;
-  postUrl: string;
-  method?: 'POST' | 'PUT';
+  onSubmit: (data: T) => void;
   title?: string;
+  disabledFields?: string[];
 };
-
-async function fetchItem<T>(url: string): Promise<T> {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
-  return res.json();
-}
 
 export default function BasicForm<T extends object>({
   model,
-  fetchUrl,
-  postUrl,
-  method = 'POST',
+  onSubmit,
   title = 'Submit Form',
+  disabledFields = [],
 }: FormProps<T>) {
-  const queryClient = useQueryClient();
   const [formData, setFormData] = useState<T>(model);
 
-  const { data, isLoading } = useQuery({
-    queryKey: fetchUrl ? [fetchUrl] : [],
-    queryFn: fetchUrl ? () => fetchItem<T>(fetchUrl) : undefined,
-    enabled: !!fetchUrl,
-  });
-
   useEffect(() => {
-    if (data) setFormData(data);
-  }, [data]);
-
-  const mutation = useMutation({
-    mutationFn: async (newData: T) => {
-      const API_URL = 'http://localhost:5263/';
-      const res = await fetch(`${API_URL}${postUrl}`, {
-        method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newData),
-      });
-      if (!res.ok) throw new Error(`Failed to ${method}: ${res.status}`);
-      return res.json();
-    },
-    onSuccess: () => {
-      alert(`${method === 'POST' ? 'Created' : 'Updated'} successfully!`);
-      queryClient.invalidateQueries(); 
-    },
-  });
+    setFormData(model);
+  }, [model]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -60,10 +27,8 @@ export default function BasicForm<T extends object>({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    mutation.mutate(formData);
+    onSubmit(formData);
   };
-
-  if (isLoading) return <div>Loading...</div>;
 
   return (
     <details className="form-details" open>
@@ -78,16 +43,11 @@ export default function BasicForm<T extends object>({
               value={(formData as any)[key] ?? ''}
               onChange={handleChange}
               className="form-input"
+              disabled={disabledFields.includes(key)}
             />
           </div>
         ))}
-        <button
-          type="submit"
-          className="form-btn"
-          disabled={mutation.isPending}
-        >
-          {mutation.isPending ? 'Saving...' : 'Submit'}
-        </button>
+        <button type="submit" className="form-btn">Submit</button>
       </form>
     </details>
   );

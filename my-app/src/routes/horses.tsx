@@ -14,7 +14,7 @@ return (
     <>
     <h1>Horses Page</h1>
     <h2>Breed a horse</h2>
-    <HorseForm/>
+    {/* <HorseForm/> */}
     <HorseSearchForm/>
     <p>Here is a list of horses:</p>
     <HorsesFetch/>

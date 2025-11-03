@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { fetchItemById } from './animal.$animalId'
+import { fetchItemById } from './$animal.$animalId'
 import type { HorseCompDto } from '@/utils/dtos'
 
 export const Route = createFileRoute('/horse/$horseId/compstats')({

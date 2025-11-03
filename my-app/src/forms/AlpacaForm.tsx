@@ -9,12 +9,14 @@ export default function AlpacaForm({ alpacaId }: { alpacaId: string }) {
   if (isError || !alpaca) return <div>Error loading</div>;
 
   return (
-  <BasicForm<AlpacaDto>
-    model={alpaca}
-    postUrl={`alpacas/${alpacaId}`}
-    method="PUT"
-    title="Edit Alpaca"
-    disabledFields={['id', 'ownerId']}
-  />
+    <BasicForm<AlpacaDto>
+      model={alpaca}
+      onSubmit={(data) => mutation.mutate(data)}
+      title="Edit Alpaca"
+      disabledFields={[
+        'sireId',
+        'damId',
+      ]}
+    />
   );
 }

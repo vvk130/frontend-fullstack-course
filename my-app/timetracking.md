@@ -33,6 +33,7 @@
 |02-11-2025 | | 2 | Forms
 |02-11-2025 | | 3 | Forms, backend (time tracked here): validators, AnimalDbSet
 |03-11-2025 | | 2 | Pages
+|05-11-2025 | | 2 | Backend validation form errors to frontend
 
 total. h
 

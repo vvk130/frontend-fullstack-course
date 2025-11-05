@@ -1,6 +1,6 @@
-import type { HorseDto } from '@/utils/dtos';
-import { useItem } from '@/reusableFetch';
-import BasicForm from './BasicForm';
+import type { HorseDto } from "@/utils/dtos";
+import BasicForm from "./BasicForm";
+import { useItem } from "@/reusableFetch";
 
 export default function HorseForm({ horseId }: { horseId: string }) {
   const { data: horse, isLoading, isError, mutation } = useItem<HorseDto>('horses', horseId);
@@ -11,7 +11,6 @@ export default function HorseForm({ horseId }: { horseId: string }) {
   return (
     <BasicForm<HorseDto>
       model={horse}
-      onSubmit={(data) => mutation.mutate(data)}
       title="Edit Horse"
       disabledFields={[
         'id',
@@ -30,6 +29,21 @@ export default function HorseForm({ horseId }: { horseId: string }) {
         'fears',
         'personalities',
       ]}
+      onSubmit={(data) => 
+        mutation.mutate(data, {
+          onError: (error: any) => {
+            alert(
+              `Error: ${error.title}\n` +
+              Object.entries(error.errors)
+                .map(([field, messages]) => `${field}: ${(messages as string[]).join(', ')}`)
+                .join('\n')
+            );
+          },
+          onSuccess: () => {
+            alert('Updated successfully!');
+          }
+        })
+      }
     />
   );
 }

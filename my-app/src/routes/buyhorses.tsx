@@ -32,7 +32,7 @@ function RouteComponent() {
 function AdsFetch() {
   return (
     <GenericPaginatedList<SalesDto>
-      url="api/salesad/paginated-with-horse?PageNumber=1&PageSize=10"
+      url="api/salesads/paginated-with-horse?PageNumber=1&PageSize=10"
       queryKey="horses"
       renderItem={(ad: SalesDto) => (
         <div key={ad.horse.id} className="horse-row">

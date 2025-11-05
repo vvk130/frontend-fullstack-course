@@ -35,7 +35,7 @@ function FoalsFetch({ endpoint }: { endpoint: string }) {
             <div className="no-image">No Image</div>
           )}
           <div className="horse-info">
-            <Link to="/horse/$horseId" params={{horseId: horse.id}}>{horse.name}</Link> — {horse.breed}
+            <Link to="/horse/$horseId" params={{horseId: horse.id}}>{horse.name}</Link>
           </div>
           <button className="btn" id="updateButton" type="button">
             Update

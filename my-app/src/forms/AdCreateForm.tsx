@@ -1,23 +1,25 @@
-import type { AlpacaDto } from '@/utils/dtos';
+import type { SalesAdCreateDto } from "@/utils/dtos";
 import BasicForm from './BasicForm';
-import { useItem } from '@/reusableFetch';
-import { apiUrl } from '@/apiUrl';
+import { apiUrl } from "@/apiUrl";
 
-export default function AlpacaForm({ alpacaId }: { alpacaId: string }) {
- const { data: alpaca, isLoading, isError } = useItem<AlpacaDto>('alpacas', alpacaId);
+const ad: SalesAdCreateDto = {
+  price: 1500,
+  endDate: new Date("2025-12-31").toISOString(),
+  horseId: "",
+  ownerId: ""
+};
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError || !alpaca) return <div>Error loading</div>;
+function AdCreateForm() {
 
   return (
-    <BasicForm<AlpacaDto>
-      model={alpaca}
-      title="Edit Alpaca"
-      disabledFields={['id', 'sireId', 'damId', 'personalities', 'alpacaQualities', 'alpacaColor', 'alpacaBreed']}
+    <BasicForm<SalesAdCreateDto>
+      model={ad}
+      title="Create Sales Ad"
+      disabledFields={[]}
       onSubmit={async (data) => {
         try {
-          const res = await fetch(`${apiUrl}alpacas/${alpacaId}`, {
-            method: 'PUT',
+          const res = await fetch(`${apiUrl}salesads/create-sales-ad`, {
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
           });
@@ -38,7 +40,7 @@ export default function AlpacaForm({ alpacaId }: { alpacaId: string }) {
             return;
           }
 
-          alert('Updated successfully!');
+          alert('Created successfully!');
         } catch (err) {
           alert('Unexpected error occurred.');
           console.error(err);
@@ -47,3 +49,5 @@ export default function AlpacaForm({ alpacaId }: { alpacaId: string }) {
     />
   );
 }
+
+export default AdCreateForm;

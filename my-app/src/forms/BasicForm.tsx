@@ -27,7 +27,6 @@ export default function BasicForm<T extends object>({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // alert('Submitting...');
     onSubmit(formData);
   };
 

@@ -1,7 +1,7 @@
 import Dropdown from '@/components/dropdown';
 import GenericPaginatedList from '@/components/GenericPaginatedList';
+import AdCreateForm from '@/forms/AdCreateForm';
 // import AdSearchForm from '@/forms/AdSearchForm';
-import SalesAdForm from '@/forms/SalesAdForm';
 import type { SalesDto } from '@/utils/dtos';
 import { createFileRoute, Link } from '@tanstack/react-router'
 
@@ -24,7 +24,7 @@ function RouteComponent() {
   options={['Volvo', 'Saab', 'Opel', 'Audi']}
   onSubmit={handleHorseSelectionSubmit}
   />
-  <SalesAdForm/>
+  <AdCreateForm/>
   <AdsFetch/>
   </>);
 }

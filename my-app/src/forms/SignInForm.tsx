@@ -1,23 +1,22 @@
-import type { AlpacaDto } from '@/utils/dtos';
+import { apiUrlWithoutApiWord } from '@/apiUrl';
+import type { UserLoginDto } from '@/utils/dtos';
 import BasicForm from './BasicForm';
-import { useItem } from '@/reusableFetch';
-import { apiUrl } from '@/apiUrl';
 
-export default function AlpacaForm({ alpacaId }: { alpacaId: string }) {
- const { data: alpaca, isLoading, isError } = useItem<AlpacaDto>('alpacas', alpacaId);
-
-  if (isLoading) return <div>Loading...</div>;
-  if (isError || !alpaca) return <div>Error loading</div>;
+export default function AuthForm() {
+  const initialUser: UserLoginDto = {
+    email: 'YourUserName@example.com',
+    password: 'ExamplePassword123!',
+  };
 
   return (
-    <BasicForm<AlpacaDto>
-      model={alpaca}
-      title="Edit Alpaca"
-      disabledFields={['id', 'sireId', 'damId', 'personalities', 'alpacaQualities', 'alpacaColor', 'alpacaBreed']}
+    <BasicForm<UserLoginDto>
+      model={initialUser}
+      title="Login"
+      disabledFields={[]}
       onSubmit={async (data) => {
         try {
-          const res = await fetch(`${apiUrl}alpacas/${alpacaId}`, {
-            method: 'PUT',
+          const res = await fetch(`${apiUrlWithoutApiWord}login`, {
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
           });
@@ -38,7 +37,7 @@ export default function AlpacaForm({ alpacaId }: { alpacaId: string }) {
             return;
           }
 
-          alert('Updated successfully!');
+          alert('Form submitted!');
         } catch (err) {
           alert('Unexpected error occurred.');
           console.error(err);

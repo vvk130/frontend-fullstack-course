@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
-import AuthForm from '@/forms/AuthForm'
+import SignInForm from '@/forms/SignInForm'
+import LogInForm from '@/forms/LogInForm'
 
 export const Route = createFileRoute('/')({
   component: App,
@@ -7,6 +8,6 @@ export const Route = createFileRoute('/')({
 
 function App() {
   return (
-      <><AuthForm message="Sign Up" endpoint='register'/><AuthForm message="Log In" endpoint='login'/></>
+      <><SignInForm/><LogInForm/></>
   )
 }

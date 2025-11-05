@@ -1,5 +1,10 @@
 import {Gender, Breed, AdType, AlpacaBreed, AlpacaColor} from "./enums"
 
+export interface UserLoginDto {
+  email: string;
+  password: string;
+}
+
 export interface HorseShortDto {
 breed: keyof typeof Breed;
 gender: keyof typeof Gender;

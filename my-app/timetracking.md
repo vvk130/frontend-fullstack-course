@@ -34,15 +34,18 @@
 |02-11-2025 | | 3 | Forms, backend (time tracked here): validators, AnimalDbSet
 |03-11-2025 | | 2 | Pages
 |05-11-2025 | | 2 | Backend validation form errors to frontend
+|05-11-2025 | | 4 | more forms, refactoring
 
 total. h
 
 Axios error handling? Prob not time for it? https://www.vivienfabing.com/react/2020/11/25/aspnetcore-simple-shared-generic-errors-with-react.html
 
-TODO TODAY:
+TODO:
 [x] horse individual page
-[] horse individual sub pages
-[] paginated listing components
+[x] update horse, update alpaca
+
+[] competition individual page
+[] competition update page
 [] Add state to paginations that need it
 [] fix script add pages to nav
 [] puzzle page 

@@ -1,7 +1,5 @@
-import Dropdown from '@/components/dropdown';
 import GenericPaginatedList from '@/components/GenericPaginatedList';
 import AdCreateForm from '@/forms/AdCreateForm';
-// import AdSearchForm from '@/forms/AdSearchForm';
 import type { SalesDto } from '@/utils/dtos';
 import { createFileRoute, Link } from '@tanstack/react-router'
 
@@ -10,20 +8,11 @@ export const Route = createFileRoute('/buyhorses')({
 })
 
 function RouteComponent() {
-  function handleHorseSelectionSubmit(_selectedValue: string): void {
-    throw new Error('Function not implemented.');
-  }
 
   return (
   <>
   <h1>Market</h1>
   <p>You can buy and sell horses</p>
-  <Dropdown
-  label="Choose a horse to sell"
-  name="horses"
-  options={['Volvo', 'Saab', 'Opel', 'Audi']}
-  onSubmit={handleHorseSelectionSubmit}
-  />
   <AdCreateForm/>
   <AdsFetch/>
   </>);

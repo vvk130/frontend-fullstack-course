@@ -1,4 +1,4 @@
-import {Gender, Breed, AdType, AlpacaBreed, AlpacaColor} from "./enums"
+import {Gender, Breed, AdType, AlpacaBreed, AlpacaColor, ItemType} from "./enums"
 
 export interface UserLoginDto {
   email: string;
@@ -33,9 +33,11 @@ compEntriesCount: number;
 
 export interface SalesAdCreateDto {
   price: number;
-  endDate: string;
-  horseId: string; 
-  ownerId: string; 
+  adType: keyof typeof AdType;
+  daysAdIsValid: number;
+  horseId: string;  
+  ownerId: string;
+  itemType: keyof typeof ItemType;
 }
 
 export interface SalesDto {

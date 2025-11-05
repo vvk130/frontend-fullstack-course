@@ -158,4 +158,14 @@ export enum AdType {
 
 export type AdTypeKey = keyof typeof AdType;
 
+export enum ItemType {
+  Horse = 0,
+  Alpaca = 1
+}
 
+export const ItemTypeLabels: Record<ItemType, string> = {
+  [ItemType.Horse]: 'Horse',
+  [ItemType.Alpaca]: 'Alpaca',
+};
+
+export type ItemTypeKey = keyof typeof ItemType;

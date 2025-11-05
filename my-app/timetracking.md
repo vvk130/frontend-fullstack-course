@@ -35,6 +35,8 @@
 |03-11-2025 | | 2 | Pages
 |05-11-2025 | | 2 | Backend validation form errors to frontend
 |05-11-2025 | | 4 | more forms, refactoring
+|05-11-2025 | | 3 | forms
+
 
 total. h
 
@@ -43,10 +45,15 @@ Axios error handling? Prob not time for it? https://www.vivienfabing.com/react/2
 TODO:
 [x] horse individual page
 [x] update horse, update alpaca
+[x] login, signup
+[x] make an ad
+[] buy an horse
+[] image upload form
+[] resolve ads
+[] add user id to nav bar after logged it
 
 [] competition individual page
 [] competition update page
 [] Add state to paginations that need it
-[] fix script add pages to nav
 [] puzzle page 
 [] quiz page

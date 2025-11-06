@@ -36,7 +36,7 @@
 |05-11-2025 | | 2 | Backend validation form errors to frontend
 |05-11-2025 | | 4 | more forms, refactoring
 |05-11-2025 | | 3 | forms
-|06-11-2025 | |  |
+|06-11-2025 | | 3 | deployment, solving issues etc
 |06-11-2025 | |  |
 
 total. h

@@ -1,7 +1,6 @@
 import type { SalesAdCreateDto } from "@/utils/dtos";
 import BasicForm from './BasicForm';
 import { apiUrl } from "@/apiUrl";
-import { AdType, ItemType } from "@/utils/enums";
 
 const ad: SalesAdCreateDto = {
   price: 1500,

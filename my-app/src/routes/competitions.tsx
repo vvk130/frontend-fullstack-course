@@ -1,6 +1,5 @@
 import GenericPaginatedList from '@/components/GenericPaginatedList';
 import CompeteForm from '@/forms/CompeteForm';
-import CompetitionSearchForm from '@/forms/CompetitionSearchForm';
 import type { CompDto } from '@/utils/dtos';
 import { createFileRoute, Link } from '@tanstack/react-router'
 

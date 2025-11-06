@@ -31,7 +31,13 @@ function AdsFetch() {
             <div className="no-image">No Image</div>
           )}
           <div className="horse-info">
-            <Link to="/horse/$horseId/info" params={{horseId: ad.horse.id}}>{ad.horse.name}</Link> — {ad.horse.breed}
+            <Link
+            to="/$animal/$animalId"
+            params={{ animal: "horse", animalId: ad.horse.id}}
+          >
+            {ad.horse.name}
+          </Link>
+          — {ad.horse.breed}
           </div>
           <button className="btn" id="buyButton" type="button">
             Buy Horse for {ad.price} | {ad.type}

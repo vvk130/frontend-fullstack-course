@@ -1,4 +1,4 @@
-import type { AlpacaDto, HorseShortDto } from '@/utils/dtos';
+import type { AlpacaDto } from '@/utils/dtos';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import HorseSearchForm from '@/forms/HorseSearchForm';
 import '../css/horses.css';
@@ -34,7 +34,13 @@ function HorsesFetch() {
             <div className="no-image">No Image</div>
           )}
           <div className="horse-info">
-            <Link to="/alpaca/$horseId/info" params={{horseId: horse.id}}>{horse.name}</Link> — {horse.gender}
+          <Link
+          to="/$animal/$animalId"
+          params={{ animal: "horse", animalId: horse.id }}
+        >
+          {horse.id}
+        </Link>
+        — {horse.gender}
           </div>
           <button className="btn" id="updateButton" type="button">
             Update

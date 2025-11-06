@@ -1,6 +1,6 @@
 import GenericPaginatedList from '@/components/GenericPaginatedList';
 import type { HorseShortDto } from '@/utils/dtos';
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/myhorses')({
   component: RouteComponent,

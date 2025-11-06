@@ -24,7 +24,13 @@ function LeaderBoardFetch() {
       renderItem={(horse: HorseCompDto) => (
         <div key={horse.horseId} className="horse-row">
           <div className="horse-info">
-            <Link to="/horse/$horseId" params={{horseId: horse.horseId}}>{horse.horseId}</Link> — {horse.totalMoneyWon} — {horse.averageRanking} — {horse.bestRanking} — {horse.compEntriesCount}
+            <Link
+            to="/$animal/$animalId"
+            params={{ animal: "horse", animalId: horse.horseId }}
+          >
+            {horse.horseId}
+          </Link>
+          — {horse.totalMoneyWon} — {horse.averageRanking} — {horse.bestRanking} — {horse.compEntriesCount}
           </div>
         </div>
       )}

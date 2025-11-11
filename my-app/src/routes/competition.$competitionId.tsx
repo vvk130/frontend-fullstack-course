@@ -1,9 +1,21 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { DetailTable } from '@/components/DetailTable'
+import { fetchItemById } from '@/fetch'
+import { createFileRoute, useLoaderData} from '@tanstack/react-router'
 
 export const Route = createFileRoute('/competition/$competitionId')({
+  loader: async ({ params }) => {
+    const { competitionId } = params
+
+    const endpoint = `api/competition/${competitionId}s/`
+    const data = await fetchItemById(endpoint, competitionId)
+
+    return { data }
+  },
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  return (<><div>Hello "/competition/$competitionId"!</div></>)
+  const data = useLoaderData({ from: '/competition/$competitionId' })
+
+  return (<><DetailTable data={data} /></>)
 }

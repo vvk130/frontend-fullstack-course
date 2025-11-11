@@ -25,7 +25,6 @@ import { Route as MarketAdRouteImport } from './routes/market.$ad'
 import { Route as CompetitionCompetitionIdRouteImport } from './routes/competition.$competitionId'
 import { Route as AnimalAnimalIdRouteImport } from './routes/$animal.$animalId'
 import { Route as QuizQuizIdUpdateRouteImport } from './routes/quiz.$quizId.update'
-import { Route as HorseHorseIdUpdateRouteImport } from './routes/horse.$horseId.update'
 import { Route as HorseHorseIdBreedRouteImport } from './routes/horse.$horseId.breed'
 import { Route as AnimalAnimalIdInfoRouteImport } from './routes/$animal.$animalId.info'
 
@@ -110,11 +109,6 @@ const QuizQuizIdUpdateRoute = QuizQuizIdUpdateRouteImport.update({
   path: '/update',
   getParentRoute: () => QuizQuizIdRoute,
 } as any)
-const HorseHorseIdUpdateRoute = HorseHorseIdUpdateRouteImport.update({
-  id: '/horse/$horseId/update',
-  path: '/horse/$horseId/update',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const HorseHorseIdBreedRoute = HorseHorseIdBreedRouteImport.update({
   id: '/horse/$horseId/breed',
   path: '/horse/$horseId/breed',
@@ -144,7 +138,6 @@ export interface FileRoutesByFullPath {
   '/wallet/$walletId': typeof WalletWalletIdRoute
   '/$animal/$animalId/info': typeof AnimalAnimalIdInfoRoute
   '/horse/$horseId/breed': typeof HorseHorseIdBreedRoute
-  '/horse/$horseId/update': typeof HorseHorseIdUpdateRoute
   '/quiz/$quizId/update': typeof QuizQuizIdUpdateRoute
 }
 export interface FileRoutesByTo {
@@ -165,7 +158,6 @@ export interface FileRoutesByTo {
   '/wallet/$walletId': typeof WalletWalletIdRoute
   '/$animal/$animalId/info': typeof AnimalAnimalIdInfoRoute
   '/horse/$horseId/breed': typeof HorseHorseIdBreedRoute
-  '/horse/$horseId/update': typeof HorseHorseIdUpdateRoute
   '/quiz/$quizId/update': typeof QuizQuizIdUpdateRoute
 }
 export interface FileRoutesById {
@@ -187,7 +179,6 @@ export interface FileRoutesById {
   '/wallet/$walletId': typeof WalletWalletIdRoute
   '/$animal/$animalId/info': typeof AnimalAnimalIdInfoRoute
   '/horse/$horseId/breed': typeof HorseHorseIdBreedRoute
-  '/horse/$horseId/update': typeof HorseHorseIdUpdateRoute
   '/quiz/$quizId/update': typeof QuizQuizIdUpdateRoute
 }
 export interface FileRouteTypes {
@@ -210,7 +201,6 @@ export interface FileRouteTypes {
     | '/wallet/$walletId'
     | '/$animal/$animalId/info'
     | '/horse/$horseId/breed'
-    | '/horse/$horseId/update'
     | '/quiz/$quizId/update'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -231,7 +221,6 @@ export interface FileRouteTypes {
     | '/wallet/$walletId'
     | '/$animal/$animalId/info'
     | '/horse/$horseId/breed'
-    | '/horse/$horseId/update'
     | '/quiz/$quizId/update'
   id:
     | '__root__'
@@ -252,7 +241,6 @@ export interface FileRouteTypes {
     | '/wallet/$walletId'
     | '/$animal/$animalId/info'
     | '/horse/$horseId/breed'
-    | '/horse/$horseId/update'
     | '/quiz/$quizId/update'
   fileRoutesById: FileRoutesById
 }
@@ -272,7 +260,6 @@ export interface RootRouteChildren {
   MarketAdRoute: typeof MarketAdRoute
   WalletWalletIdRoute: typeof WalletWalletIdRoute
   HorseHorseIdBreedRoute: typeof HorseHorseIdBreedRoute
-  HorseHorseIdUpdateRoute: typeof HorseHorseIdUpdateRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -389,13 +376,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuizQuizIdUpdateRouteImport
       parentRoute: typeof QuizQuizIdRoute
     }
-    '/horse/$horseId/update': {
-      id: '/horse/$horseId/update'
-      path: '/horse/$horseId/update'
-      fullPath: '/horse/$horseId/update'
-      preLoaderRoute: typeof HorseHorseIdUpdateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/horse/$horseId/breed': {
       id: '/horse/$horseId/breed'
       path: '/horse/$horseId/breed'
@@ -463,7 +443,6 @@ const rootRouteChildren: RootRouteChildren = {
   MarketAdRoute: MarketAdRoute,
   WalletWalletIdRoute: WalletWalletIdRoute,
   HorseHorseIdBreedRoute: HorseHorseIdBreedRoute,
-  HorseHorseIdUpdateRoute: HorseHorseIdUpdateRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

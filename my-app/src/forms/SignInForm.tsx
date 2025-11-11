@@ -1,4 +1,4 @@
-import { apiUrlWithoutApiWord } from '@/apiUrl';
+import { apiUrl, apiUrlWithoutApiWord } from '@/apiUrl';
 import type { UserLoginDto } from '@/utils/dtos';
 import BasicForm from './BasicForm';
 
@@ -22,8 +22,12 @@ export default function AuthForm() {
           });
 
           const responseData = await res.json().catch(() => null);
+
         if (res.ok){
-          // todo
+          fetch(`${apiUrl}user/wallet-by-username?username=${encodeURIComponent(data.email)}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+          }).catch(() => {});
         }
         if (!res.ok) {
         if (responseData?.errors) {
@@ -38,6 +42,7 @@ export default function AuthForm() {
         } else {
             alert(responseData?.title || 'An unknown error occurred');
         }
+          return;
         }
           alert('Form submitted!');
         } catch (err) {

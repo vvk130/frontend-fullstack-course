@@ -38,6 +38,10 @@
 |05-11-2025 | | 3 | forms
 |06-11-2025 | | 3 | deployment, solving issues etc
 |11-11-2025 | | 2 | forms
+|11-11-2025 || 2,5 | forms
+|11-11-2025 |
+|11-11-2025 |
+|11-11-2025 |
 
 total. h
 
@@ -53,10 +57,19 @@ TODO:
 [] buy an horse
 [] image upload form
 [] resolve ads
-[] add user id to nav bar after logged it
+[] add user id to nav bar after logged in
 
 [] competition individual page
 [] competition update page
+
+Don't do
 [] Add state to paginations that need it
 [] puzzle page 
 [] quiz page
+
+So I needed to have multiple create, delete, edit endpoints
+[] horse: create, delete, edit endpoints
+[] alpaca: create, delete, edit endpoints
+[] image: add
+[] salesAd: create, delete, edit endpoints
+[] competition: create, delete, edit endpoints

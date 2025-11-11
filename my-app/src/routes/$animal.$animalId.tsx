@@ -29,7 +29,6 @@ function RouteComponent() {
     { label: 'Basic Info', path: `/${animalType}/${animalIdParam}/info` },
     { label: 'Foals', path: `/${animalType}/${animalIdParam}/foals` },
     { label: 'CompStats', path: `/${animalType}/${animalIdParam}/compstats` },
-    { label: 'Update', path: `/${animalType}/${animalIdParam}/update` },
     { label: 'Breed', path: `/${animalType}/${animalIdParam}/breed` },
   ]
 

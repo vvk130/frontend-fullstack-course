@@ -35,6 +35,7 @@ export default function AuthForm() {
         } else {
             alert(responseData?.title || 'An unknown error occurred');
         }
+          return;
         }
           alert('Form submitted!');
         } catch (err) {

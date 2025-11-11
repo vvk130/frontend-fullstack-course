@@ -30,9 +30,9 @@ function RouteComponent() {
 
   return (
     <div style={{ padding: '1rem' }}>
+      <DetailTable data={data} />
       {animalType === 'alpaca' && <AlpacaForm alpacaId={data.id} />}
       {animalType === 'horse' && <HorseForm horseId={data.id} />}
-      <DetailTable data={data} />
     </div>
   )
 }

@@ -4,7 +4,7 @@ import type { AlpacaDto } from '@/utils/dtos'
 
 interface WalletResponse {
   id: string,
-  ownerdId: string,
+  ownerId: string,
   balance: number
 }
 
@@ -12,7 +12,7 @@ export function useWalletBalance(walletId: string) {
   return useQuery({
     queryKey: ['wallet-balance', walletId],
     queryFn: () => fetchItemById<WalletResponse>('api/wallet/', walletId),
-    select: (data) => data.balance
+    select: (data) => data
   })
 }
 

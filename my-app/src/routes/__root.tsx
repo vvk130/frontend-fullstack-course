@@ -3,18 +3,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import ImageBanner from '../components/ImageBanner'
 import WalletBalance from '@/components/walletBalance'
-            // <a href="/">Login/SignUp</a>
-            // <a href="/leaderboard">Leaderboard</a>
-            // <a href="/myhorses">MyHorses</a>
-            // <a href="/horses">Search Horses</a>
-            // <a href="/puzzles">Puzzles</a>
-            // <a href="/breeds">Breeds</a>
-            // <a href="/levels">Levels</a>
-            // <a href="/instructions">Instructions</a>
-            // <a href="/competitions">Competitions</a>
-            // <a href="/market">Market</a>
-            // <a href="/quiz">Quiz</a>
-            // <a href="/wallet">Wallet</a>
+import { Link } from '@tanstack/react-router'
 
 export const Route = createRootRoute({
   component: () => (
@@ -22,22 +11,19 @@ export const Route = createRootRoute({
       <ImageBanner />
         <nav>
           <ul>
-          {/* NAV START */}
-          <a href="/">Login/SignUp</a>
-          <a href="/leaderboard">Leaderboard</a>
-          <a href="/myhorses">MyHorses</a>
-          <a href="/horses">Search Horses</a>
-          <a href="/puzzles">Puzzles</a>
-          <a href="/breeds">Breeds</a>
-          <a href="/competitions">Competitions</a>
-          <a href="/quiz">Quiz</a>
-          <a href="/wallet">Wallet</a>
-          <a href="/cleanstable">Clean stable</a>
-          <a href="/buyhorses">Buy Horses</a>
-          {/* NAV END */}
+        <Link to="/">Login / Sign Up</Link>
+        <Link to="/leaderboard">Leaderboard</Link>
+        <Link to="/myhorses">My Horses</Link>
+        <Link to="/horses">Search Horses</Link>
+        <Link to="/puzzles">Puzzles</Link>
+        <Link to="/competitions">Competitions</Link>
+        <Link to="/quiz">Quiz</Link>
+        {/* <Link to="/wallet/$walletId">Wallet</Link> */}
+        <Link to="/cleanstable">Clean Stable</Link>
+        <Link to="/buyhorses">Buy Horses</Link>
           </ul>
         </nav>
-        <div className="item-bar"><WalletBalance walletId='d63793de-dd66-4130-bf13-e78292f074a8'/> <span>Level: 1</span> Weather:☀️</div>
+        <div className="item-bar"><WalletBalance walletId='35edb2bb-8822-4db5-bb2b-2a0c3b26d54d'/> Weather:☀️</div>
       <Outlet />
       <TanStackDevtools
         config={{

@@ -5,5 +5,5 @@ export const Route = createFileRoute('/competition/$competitionId')({
 })
 
 function RouteComponent() {
-  return (<><div>Hello "/competition/$competitionId"!</div><Outlet /></>)
+  return (<><div>Hello "/competition/$competitionId"!</div></>)
 }

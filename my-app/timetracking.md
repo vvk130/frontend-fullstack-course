@@ -37,9 +37,11 @@
 |05-11-2025 | | 4 | more forms, refactoring
 |05-11-2025 | | 3 | forms
 |06-11-2025 | | 3 | deployment, solving issues etc
-|06-11-2025 | |  |
+|11-11-2025 | | 2 | forms
 
 total. h
+
+https://community.render.com/t/error-err-module-not-found-cannot-find-package-vitejs-plugin-react/21598
 
 Axios error handling? Prob not time for it? https://www.vivienfabing.com/react/2020/11/25/aspnetcore-simple-shared-generic-errors-with-react.html
 

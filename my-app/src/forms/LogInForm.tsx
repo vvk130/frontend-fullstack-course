@@ -22,8 +22,6 @@ export default function AuthForm() {
           });
 
           const responseData = await res.json().catch(() => null);
-
-
         if (!res.ok) {
         if (responseData?.errors) {
             const allErrors = Object.entries(responseData.errors)

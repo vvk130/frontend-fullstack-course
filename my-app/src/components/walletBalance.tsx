@@ -5,10 +5,10 @@ interface WalletBalanceProps {
 }
 
 export default function WalletBalance({ walletId }: WalletBalanceProps) {
-  const { data: balance, isLoading, isError } = useWalletBalance(walletId)
+  const { data: data, isLoading, isError } = useWalletBalance(walletId)
 
   if (isLoading) return <span>Wallet: loading...</span>
   if (isError) return <span>Wallet: error</span>
 
-  return <span>Wallet: ${balance}</span>
+  return <span>User: {data?.ownerId} Wallet: ${data?.balance}</span>
 }

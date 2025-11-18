@@ -39,9 +39,8 @@
 |06-11-2025 | | 3 | deployment, solving issues etc
 |11-11-2025 | | 2 | forms
 |11-11-2025 || 2,5 | forms
-|11-11-2025 |
-|11-11-2025 |
-|11-11-2025 |
+|18-11-2025 | 2,5 | forms
+
 
 total. h
 
@@ -54,6 +53,7 @@ TODO:
 [x] update horse, update alpaca
 [x] login, signup
 [x] make an ad
+[] delete horse, delete alpaca
 [] buy an horse
 [] image upload form
 [] resolve ads

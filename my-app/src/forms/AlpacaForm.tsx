@@ -2,6 +2,7 @@ import type { AlpacaDto } from '@/utils/dtos';
 import BasicForm from './BasicForm';
 import { useItem } from '@/reusableFetch';
 import { apiUrl } from '@/apiUrl';
+import { handleApiErrors } from '@/utils/handleApiErrors';
 
 export default function AlpacaForm({ alpacaId }: { alpacaId: string }) {
  const { data: alpaca, isLoading, isError } = useItem<AlpacaDto>('alpacas', alpacaId);
@@ -24,17 +25,8 @@ export default function AlpacaForm({ alpacaId }: { alpacaId: string }) {
 
           const responseData = await res.json().catch(() => null);
 
-          if (!res.ok) {
-            if (responseData?.errors) {
-              alert(
-                `${responseData.title}\n` +
-                Object.entries(responseData.errors)
-                  .map(([field, messages]) => `${field}: ${(messages as string[]).join(', ')}`)
-                  .join('\n')
-              );
-            } else {
-              alert(`Error ${res.status}: ${res.statusText}`);
-            }
+          if (!res.ok || responseData?.validationErrors) {
+            handleApiErrors(responseData, res.status, res.statusText);
             return;
           }
 

@@ -1,6 +1,7 @@
 import type { SalesAdCreateDto } from "@/utils/dtos";
 import BasicForm from './BasicForm';
 import { apiUrl } from "@/apiUrl";
+import { handleApiErrors } from "@/utils/handleApiErrors";
 
 const ad: SalesAdCreateDto = {
   price: 1500,
@@ -28,17 +29,8 @@ function AdCreateForm() {
 
           const responseData = await res.json().catch(() => null);
 
-          if (!res.ok) {
-            if (responseData?.errors) {
-              alert(
-                `${responseData.title}\n` +
-                Object.entries(responseData.errors)
-                  .map(([field, messages]) => `${field}: ${(messages as string[]).join(', ')}`)
-                  .join('\n')
-              );
-            } else {
-              alert(`Error ${res.status}: ${res.statusText}`);
-            }
+          if (!res.ok || responseData?.validationErrors) {
+            handleApiErrors(responseData, res.status, res.statusText);
             return;
           }
 

@@ -1,10 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { DetailTable } from '@/components/DetailTable'
 import { fetchItemById } from '@/fetch'
+import AlpacaForm from '@/forms/AlpacaForm'
+import HorseForm from '@/forms/HorseForm'
 import type { AnimalDtoMap, AnimalType } from '@/utils/dtos'
-import { useLoaderData } from '@tanstack/react-router'
+import { createFileRoute, useLoaderData } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/$animal/$animalId/info')({
+export const Route = createFileRoute('/$animal/$animalId/update')({
   loader: async ({ params }) => {
     const { animal, animalId } = params
 
@@ -21,13 +21,15 @@ export const Route = createFileRoute('/$animal/$animalId/info')({
 
 function RouteComponent() {
   const loaderData = useLoaderData({ from: '/$animal/$animalId' })
-  const { data } = loaderData as {
+  const { animal: animalType, data } = loaderData as {
+    animal: AnimalType
     data: AnimalDtoMap[AnimalType]
   }
 
   return (
     <div style={{ padding: '1rem' }}>
-      <DetailTable data={data} />
+      {animalType === 'alpaca' && <AlpacaForm alpacaId={data.id} />}
+      {animalType === 'horse' && <HorseForm horseId={data.id} />}
     </div>
   )
 }

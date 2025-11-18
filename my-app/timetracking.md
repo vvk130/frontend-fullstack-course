@@ -53,13 +53,16 @@ TODO:
 [x] update horse, update alpaca
 [x] login, signup
 [x] make an ad
-[] delete horse, delete alpaca
+[x] delete horse, delete alpaca
+[x] compete horses
+[] create sales ad form
+[] create new competition form
 [] buy an horse
 [] image upload form
 [] resolve ads
 [] add user id to nav bar after logged in
 
-[] competition individual page
+[] competition form page
 [] competition update page
 
 Don't do

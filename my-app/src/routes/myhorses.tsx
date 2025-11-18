@@ -17,7 +17,7 @@ function RouteComponent() {
 function HorsesFetch() {
   return (
     <GenericPaginatedList<HorseShortDto>
-      url="api/Horses/search?Filter.OwnerId=f47ac10b-58cc-4372-a567-0e02b2c3d479&Pagination.PageNumber=1&Pagination.PageSize=10"
+      url="api/Horses/search?Filter.OwnerId=03514f70-08c2-429b-9f17-ca992ac4b93a&Pagination.PageNumber=1&Pagination.PageSize=10"
       queryKey="horses"
       renderItem={(horse: HorseShortDto) => (
         <div key={horse.id} className="horse-row">

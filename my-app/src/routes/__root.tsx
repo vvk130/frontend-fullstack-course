@@ -14,11 +14,11 @@ export const Route = createRootRoute({
         <Link to="/">Login / Sign Up</Link>
         <Link to="/leaderboard">Leaderboard</Link>
         <Link to="/myhorses">My Horses</Link>
+        <Link to="/myhorses">My Alpacas</Link>
         <Link to="/horses">Search Horses</Link>
         <Link to="/puzzles">Puzzles</Link>
         <Link to="/competitions">Competitions</Link>
         <Link to="/quiz">Quiz</Link>
-        {/* <Link to="/wallet/$walletId">Wallet</Link> */}
         <Link to="/cleanstable">Clean Stable</Link>
         <Link to="/buyhorses">Buy Horses</Link>
           </ul>

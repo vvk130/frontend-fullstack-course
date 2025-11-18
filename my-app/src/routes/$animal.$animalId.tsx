@@ -30,6 +30,7 @@ function RouteComponent() {
     { label: 'Foals', path: `/${animalType}/${animalIdParam}/foals` },
     { label: 'CompStats', path: `/${animalType}/${animalIdParam}/compstats` },
     { label: 'Breed', path: `/${animalType}/${animalIdParam}/breed` },
+    { label: 'Delete', path: `/${animalType}/${animalIdParam}/delete` },
   ]
 
   return (

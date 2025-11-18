@@ -1,5 +1,4 @@
 import GenericPaginatedList from '@/components/GenericPaginatedList';
-import CheckResultsForm from '@/forms/CheckResults'
 import type { HorseCompDto } from '@/utils/dtos';
 import { createFileRoute, Link } from '@tanstack/react-router'
 
@@ -10,7 +9,7 @@ export const Route = createFileRoute('/leaderboard')({
 function RouteComponent() {
   return (
   <>
-  <div>Hello "/leaderboard"!</div><CheckResultsForm/>
+  <h1>Leaderboard</h1>
   <LeaderBoardFetch/>
   </>)
 }

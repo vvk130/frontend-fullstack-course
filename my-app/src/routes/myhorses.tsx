@@ -9,7 +9,7 @@ export const Route = createFileRoute('/myhorses')({
 function RouteComponent() {
   return (
   <>
-  <div>Hello "/myhorses"!</div>
+  <div>Your horses</div>
   <HorsesFetch/>
   </>);
 }

@@ -13,6 +13,7 @@ import { Route as QuizesRouteImport } from './routes/quizes'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as PuzzlesRouteImport } from './routes/puzzles'
 import { Route as MyhorsesRouteImport } from './routes/myhorses'
+import { Route as MyalpacasRouteImport } from './routes/myalpacas'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as HorsesRouteImport } from './routes/horses'
 import { Route as CompetitionsRouteImport } from './routes/competitions'
@@ -46,6 +47,11 @@ const PuzzlesRoute = PuzzlesRouteImport.update({
 const MyhorsesRoute = MyhorsesRouteImport.update({
   id: '/myhorses',
   path: '/myhorses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyalpacasRoute = MyalpacasRouteImport.update({
+  id: '/myalpacas',
+  path: '/myalpacas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LeaderboardRoute = LeaderboardRouteImport.update({
@@ -127,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/competitions': typeof CompetitionsRoute
   '/horses': typeof HorsesRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/myalpacas': typeof MyalpacasRoute
   '/myhorses': typeof MyhorsesRoute
   '/puzzles': typeof PuzzlesRoute
   '/quiz': typeof QuizRouteWithChildren
@@ -147,6 +154,7 @@ export interface FileRoutesByTo {
   '/competitions': typeof CompetitionsRoute
   '/horses': typeof HorsesRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/myalpacas': typeof MyalpacasRoute
   '/myhorses': typeof MyhorsesRoute
   '/puzzles': typeof PuzzlesRoute
   '/quiz': typeof QuizRouteWithChildren
@@ -168,6 +176,7 @@ export interface FileRoutesById {
   '/competitions': typeof CompetitionsRoute
   '/horses': typeof HorsesRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/myalpacas': typeof MyalpacasRoute
   '/myhorses': typeof MyhorsesRoute
   '/puzzles': typeof PuzzlesRoute
   '/quiz': typeof QuizRouteWithChildren
@@ -190,6 +199,7 @@ export interface FileRouteTypes {
     | '/competitions'
     | '/horses'
     | '/leaderboard'
+    | '/myalpacas'
     | '/myhorses'
     | '/puzzles'
     | '/quiz'
@@ -210,6 +220,7 @@ export interface FileRouteTypes {
     | '/competitions'
     | '/horses'
     | '/leaderboard'
+    | '/myalpacas'
     | '/myhorses'
     | '/puzzles'
     | '/quiz'
@@ -230,6 +241,7 @@ export interface FileRouteTypes {
     | '/competitions'
     | '/horses'
     | '/leaderboard'
+    | '/myalpacas'
     | '/myhorses'
     | '/puzzles'
     | '/quiz'
@@ -251,6 +263,7 @@ export interface RootRouteChildren {
   CompetitionsRoute: typeof CompetitionsRoute
   HorsesRoute: typeof HorsesRoute
   LeaderboardRoute: typeof LeaderboardRoute
+  MyalpacasRoute: typeof MyalpacasRoute
   MyhorsesRoute: typeof MyhorsesRoute
   PuzzlesRoute: typeof PuzzlesRoute
   QuizRoute: typeof QuizRouteWithChildren
@@ -290,6 +303,13 @@ declare module '@tanstack/react-router' {
       path: '/myhorses'
       fullPath: '/myhorses'
       preLoaderRoute: typeof MyhorsesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myalpacas': {
+      id: '/myalpacas'
+      path: '/myalpacas'
+      fullPath: '/myalpacas'
+      preLoaderRoute: typeof MyalpacasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/leaderboard': {
@@ -434,6 +454,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompetitionsRoute: CompetitionsRoute,
   HorsesRoute: HorsesRoute,
   LeaderboardRoute: LeaderboardRoute,
+  MyalpacasRoute: MyalpacasRoute,
   MyhorsesRoute: MyhorsesRoute,
   PuzzlesRoute: PuzzlesRoute,
   QuizRoute: QuizRouteWithChildren,

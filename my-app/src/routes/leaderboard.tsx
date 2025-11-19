@@ -24,12 +24,12 @@ function LeaderBoardFetch() {
         <div key={horse.horseId} className="horse-row">
           <div className="horse-info">
             <Link
-            to="/$animal/$animalId"
+            to="/$animal/$animalId/info"
             params={{ animal: "horse", animalId: horse.horseId }}
           >
             {horse.horseId}
           </Link>
-          — {horse.totalMoneyWon} — {horse.averageRanking} — {horse.bestRanking} — {horse.compEntriesCount}
+          — Money Won: {horse.totalMoneyWon} — Average Ranking: {horse.averageRanking} — Best Ranking: {horse.bestRanking} — Competitions Entered Count: {horse.compEntriesCount}
           </div>
         </div>
       )}

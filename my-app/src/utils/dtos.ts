@@ -1,5 +1,12 @@
 import {Gender, Breed, AdType, AlpacaBreed, AlpacaColor, ItemType, CompetitionType} from "./enums"
 
+export interface BuyAdDto {
+  buyerId: string;   
+  adId: string;      
+  itemType: 'Horse' | 'Alpaca'; 
+  bid: number;       
+}
+
 export interface UserLoginDto {
   email: string;
   password: string;
@@ -221,3 +228,8 @@ export type AnimalDtoMap = {
   alpaca: AlpacaDto
 }
 
+export interface CompetitionCreateDto {
+  competitionType: keyof typeof CompetitionType;
+  daysToStart: number;
+  daysToEnd: number;
+}

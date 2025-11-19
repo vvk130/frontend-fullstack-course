@@ -28,6 +28,7 @@ import { Route as AdAdIdRouteImport } from './routes/ad.$adId'
 import { Route as AnimalAnimalIdRouteImport } from './routes/$animal.$animalId'
 import { Route as QuizQuizIdUpdateRouteImport } from './routes/quiz.$quizId.update'
 import { Route as HorseHorseIdBreedRouteImport } from './routes/horse.$horseId.breed'
+import { Route as CompetitionCompIdUpdateRouteImport } from './routes/competition.$compId.update'
 import { Route as AnimalAnimalIdUpdateRouteImport } from './routes/$animal.$animalId.update'
 import { Route as AnimalAnimalIdInfoRouteImport } from './routes/$animal.$animalId.info'
 import { Route as AnimalAnimalIdDeleteRouteImport } from './routes/$animal.$animalId.delete'
@@ -127,6 +128,11 @@ const HorseHorseIdBreedRoute = HorseHorseIdBreedRouteImport.update({
   path: '/horse/$horseId/breed',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompetitionCompIdUpdateRoute = CompetitionCompIdUpdateRouteImport.update({
+  id: '/competition/$compId/update',
+  path: '/competition/$compId/update',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AnimalAnimalIdUpdateRoute = AnimalAnimalIdUpdateRouteImport.update({
   id: '/update',
   path: '/update',
@@ -164,6 +170,7 @@ export interface FileRoutesByFullPath {
   '/$animal/$animalId/delete': typeof AnimalAnimalIdDeleteRoute
   '/$animal/$animalId/info': typeof AnimalAnimalIdInfoRoute
   '/$animal/$animalId/update': typeof AnimalAnimalIdUpdateRoute
+  '/competition/$compId/update': typeof CompetitionCompIdUpdateRoute
   '/horse/$horseId/breed': typeof HorseHorseIdBreedRoute
   '/quiz/$quizId/update': typeof QuizQuizIdUpdateRoute
 }
@@ -188,6 +195,7 @@ export interface FileRoutesByTo {
   '/$animal/$animalId/delete': typeof AnimalAnimalIdDeleteRoute
   '/$animal/$animalId/info': typeof AnimalAnimalIdInfoRoute
   '/$animal/$animalId/update': typeof AnimalAnimalIdUpdateRoute
+  '/competition/$compId/update': typeof CompetitionCompIdUpdateRoute
   '/horse/$horseId/breed': typeof HorseHorseIdBreedRoute
   '/quiz/$quizId/update': typeof QuizQuizIdUpdateRoute
 }
@@ -213,6 +221,7 @@ export interface FileRoutesById {
   '/$animal/$animalId/delete': typeof AnimalAnimalIdDeleteRoute
   '/$animal/$animalId/info': typeof AnimalAnimalIdInfoRoute
   '/$animal/$animalId/update': typeof AnimalAnimalIdUpdateRoute
+  '/competition/$compId/update': typeof CompetitionCompIdUpdateRoute
   '/horse/$horseId/breed': typeof HorseHorseIdBreedRoute
   '/quiz/$quizId/update': typeof QuizQuizIdUpdateRoute
 }
@@ -239,6 +248,7 @@ export interface FileRouteTypes {
     | '/$animal/$animalId/delete'
     | '/$animal/$animalId/info'
     | '/$animal/$animalId/update'
+    | '/competition/$compId/update'
     | '/horse/$horseId/breed'
     | '/quiz/$quizId/update'
   fileRoutesByTo: FileRoutesByTo
@@ -263,6 +273,7 @@ export interface FileRouteTypes {
     | '/$animal/$animalId/delete'
     | '/$animal/$animalId/info'
     | '/$animal/$animalId/update'
+    | '/competition/$compId/update'
     | '/horse/$horseId/breed'
     | '/quiz/$quizId/update'
   id:
@@ -287,6 +298,7 @@ export interface FileRouteTypes {
     | '/$animal/$animalId/delete'
     | '/$animal/$animalId/info'
     | '/$animal/$animalId/update'
+    | '/competition/$compId/update'
     | '/horse/$horseId/breed'
     | '/quiz/$quizId/update'
   fileRoutesById: FileRoutesById
@@ -308,6 +320,7 @@ export interface RootRouteChildren {
   CompetitionCompeteRoute: typeof CompetitionCompeteRoute
   CompetitionCreateRoute: typeof CompetitionCreateRoute
   WalletWalletIdRoute: typeof WalletWalletIdRoute
+  CompetitionCompIdUpdateRoute: typeof CompetitionCompIdUpdateRoute
   HorseHorseIdBreedRoute: typeof HorseHorseIdBreedRoute
 }
 
@@ -446,6 +459,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HorseHorseIdBreedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/competition/$compId/update': {
+      id: '/competition/$compId/update'
+      path: '/competition/$compId/update'
+      fullPath: '/competition/$compId/update'
+      preLoaderRoute: typeof CompetitionCompIdUpdateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/$animal/$animalId/update': {
       id: '/$animal/$animalId/update'
       path: '/update'
@@ -525,6 +545,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompetitionCompeteRoute: CompetitionCompeteRoute,
   CompetitionCreateRoute: CompetitionCreateRoute,
   WalletWalletIdRoute: WalletWalletIdRoute,
+  CompetitionCompIdUpdateRoute: CompetitionCompIdUpdateRoute,
   HorseHorseIdBreedRoute: HorseHorseIdBreedRoute,
 }
 export const routeTree = rootRouteImport

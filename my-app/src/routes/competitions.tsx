@@ -10,7 +10,7 @@ function RouteComponent() {
   return (
   <>
   <h1>Competitions</h1>
-  <Link to="/competition/new">Create new competition</Link>
+  <Link to="/competition/create">Create new competition</Link>
   <CompFetch/>
   </>
   );
@@ -24,7 +24,9 @@ function CompFetch() {
       renderItem={(comp: CompDto) => (
         <div key={comp.id} className="horse-row">
           <div className="horse-info">
-            <Link to="/competition/compete" params={{competitionId: comp.id}}>Click to compete</Link> {comp.id} — Competition ends: {comp.endTime} 
+            <Link to="/competition/compete" params={{competitionId: comp.id}}>Click to compete</Link> {comp.id} — Competition ends: {comp.endTime}
+              — 
+            <Link to="/competition/$compId/update" params={{compId: comp.id}}>Update</Link>
           </div>
         </div>
       )}

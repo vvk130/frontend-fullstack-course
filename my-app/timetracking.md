@@ -42,43 +42,7 @@
 |18-11-2025 | 2,5 | forms
 |18-11-2025 | 2,5 | forms
 |19-11-2025 | 2 | forms
+|19-11-2025 | 2 | forms
 
 total. h
 
-https://community.render.com/t/error-err-module-not-found-cannot-find-package-vitejs-plugin-react/21598
-
-Axios error handling? Prob not time for it? https://www.vivienfabing.com/react/2020/11/25/aspnetcore-simple-shared-generic-errors-with-react.html
-
-TODO:
-[x] horse individual page
-[x] update horse, update alpaca
-[x] login, signup
-[x] make an ad
-[x] delete horse, delete alpaca
-[x] compete horses
-[x] create sales ad form
-[X] fix list for sales ads
-[] buy an horse form
-[] create horse, create alpaca
-[] foaling to work, horse alpaca
-[] create new competition form
-[] image upload form
-[] resolve ads button
-[] add user id to nav bar after logged in
-[] cascade delete form comp results backend
-[] puzzle create page, without solving (should be pretty simple?)
-
-[] competition form page
-[] competition update page
-
-Don't do
-[] Add state to paginations that need it
-
-[] quiz page
-
-So I needed to have multiple create, delete, edit endpoints
-[] horse: create, delete, edit endpoints
-[] alpaca: create, delete, edit endpoints
-[] image: add
-[] salesAd: create, delete, edit endpoints
-[] competition: create, delete, edit endpoints

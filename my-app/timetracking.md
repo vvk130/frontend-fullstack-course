@@ -40,7 +40,8 @@
 |11-11-2025 | | 2 | forms
 |11-11-2025 || 2,5 | forms
 |18-11-2025 | 2,5 | forms
-
+|18-11-2025 | 2,5 | forms
+|19-11-2025 | 2 | forms
 
 total. h
 
@@ -55,19 +56,24 @@ TODO:
 [x] make an ad
 [x] delete horse, delete alpaca
 [x] compete horses
-[] create sales ad form
+[x] create sales ad form
+[X] fix list for sales ads
+[] buy an horse form
+[] create horse, create alpaca
+[] foaling to work, horse alpaca
 [] create new competition form
-[] buy an horse
 [] image upload form
-[] resolve ads
+[] resolve ads button
 [] add user id to nav bar after logged in
+[] cascade delete form comp results backend
+[] puzzle create page, without solving (should be pretty simple?)
 
 [] competition form page
 [] competition update page
 
 Don't do
 [] Add state to paginations that need it
-[] puzzle page 
+
 [] quiz page
 
 So I needed to have multiple create, delete, edit endpoints

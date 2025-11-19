@@ -5,5 +5,5 @@ export const Route = createFileRoute('/competition/compete')({
 })
 
 function RouteComponent() {
-  return (<><CreateCompForm /></>)
+  return (<><CompNewForm /></>)
 }

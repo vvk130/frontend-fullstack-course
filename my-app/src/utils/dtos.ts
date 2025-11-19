@@ -1,4 +1,4 @@
-import {Gender, Breed, AdType, AlpacaBreed, AlpacaColor, ItemType} from "./enums"
+import {Gender, Breed, AdType, AlpacaBreed, AlpacaColor, ItemType, CompetitionType} from "./enums"
 
 export interface UserLoginDto {
   email: string;
@@ -30,6 +30,16 @@ averageRanking: number;
 bestRanking: number;
 compEntriesCount: number;     
 }
+
+export type SalesAdDto = {
+  id: string;
+  price: number;
+  adType: string;
+  itemType: string | null;
+  endTime: string;
+  horseId: string;
+  ownerId: string;
+};
 
 export interface SalesAdCreateDto {
   price: number;
@@ -73,16 +83,11 @@ export interface CompetitionSearchDto {
   endTimeAfter: Date;       
 }
 
-// export enum CompetitionType {
-
-// }
-
-// export interface CompetitionDto {
-// id: string;
-// name: string;
-// competitionType: CompetitionType;
-// endTime: string;   
-// }
+export interface CompetitionDto {
+competitionType: keyof typeof CompetitionType;
+startTimeDaysFromNow: number;
+endTimeDaysFromNow: number; 
+}
 
 export interface FoalHorseRequestDto {
 sireId: string;

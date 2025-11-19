@@ -169,3 +169,15 @@ export const ItemTypeLabels: Record<ItemType, string> = {
 };
 
 export type ItemTypeKey = keyof typeof ItemType;
+
+export enum CompetitionType {
+    ShowJumping = 0,
+    FlatRacing = 1
+}
+
+export const CompetitionTypeLabels: Record<ItemType, string> = {
+  [CompetitionType.ShowJumping]: 'ShowJumping',
+  [CompetitionType.FlatRacing]: 'FlatRacing',
+};
+
+export type CompetitionTypeKey = keyof typeof CompetitionType;

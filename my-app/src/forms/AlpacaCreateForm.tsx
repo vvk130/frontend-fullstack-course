@@ -1,30 +1,22 @@
-import type { AdDto, BuyAdDto } from '@/utils/dtos';
 import BasicForm from './BasicForm';
 import { apiUrl } from '@/apiUrl';
 import { handleApiErrors } from '@/utils/handleApiErrors';
-import { useItem } from '@/reusableFetch';
+import type { AlpacaCreateDto } from '@/routes/alpaca-create';
 
-export default function BuyAnimalForm({ adId }: { adId: string }) {
-    const { data: ad, isLoading, isError } = useItem<AdDto>('ad', adId);
-
-    if (isLoading) return <div>Loading...</div>;
-    if (isError || !ad) return <div>Error loading</div>;
-    
-    const emptyBuyAd: BuyAdDto = {
-    buyerId: '',
-    adId: ad.id,
-    itemType: 'Horse',
-    bid: ad.price,
+export default function HorseCreateForm() {
+    const newAlpaca: AlpacaCreateDto = {
+    id: "Add Guid from bar under navigation",
+    alpacaBreed: "Unknown", 
     };
 
   return (
-    <BasicForm<BuyAdDto>
-      model={emptyBuyAd}
-      title="Buy an item"
-      disabledFields={['adId']}
+    <BasicForm<AlpacaCreateDto>
+      model={newAlpaca}
+      title="Create a alpaca for user"
+      disabledFields={[]}
       onSubmit={async (data) => {
         try {
-          const res = await fetch(`${apiUrl}salesads/buy-horse`, {
+          const res = await fetch(`${apiUrl}Horses/create-alpaca`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
@@ -37,7 +29,7 @@ export default function BuyAnimalForm({ adId }: { adId: string }) {
             return;
           }
 
-          alert('Updated successfully!');
+          alert('Created successfully!');
         } catch (err) {
           alert('Unexpected error occurred.');
           console.error(err);

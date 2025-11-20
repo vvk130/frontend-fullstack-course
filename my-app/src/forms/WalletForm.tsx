@@ -1,22 +1,41 @@
 import type { WalletCreateDto } from '@/utils/dtos';
 import BasicForm from './BasicForm';
+import { handleApiErrors } from '@/utils/handleApiErrors';
+import { apiUrl } from '@/apiUrl';
 
-const newAd: WalletCreateDto = {
-  money: 1500,
+const walletUpdate: WalletCreateDto = {
+  balance: 0,
   ownerId: "d2719d3f-e4fc-4c8f-bf1d-6e2c75b4768c"
 };
 
-function WalletForm() {
-  const handleAdSubmit = (data: WalletCreateDto) => {
-    console.log('Wallet Data Submitted:', data);
-  };
+export default function WalletForm() {
 
   return (
-    <div>
-      <h2>Add money to wallet</h2>
-      <BasicForm model={newAd} onSubmit={handleAdSubmit} />
-    </div>
+    <BasicForm<WalletCreateDto>
+      model={walletUpdate}
+      title="Update your wallet balance"
+      disabledFields={[]}
+      onSubmit={async (data) => {
+        try {
+          const res = await fetch(`${apiUrl}wallet/36593704-5d33-4618-8a0c-2c35a1c89123`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          const responseData = await res.json().catch(() => null);
+
+          if (!res.ok || responseData?.validationErrors) {
+            handleApiErrors(responseData, res.status, res.statusText);
+            return;
+          }
+
+          alert('Updated successfully!');
+        } catch (err) {
+          alert('Unexpected error occurred.');
+          console.error(err);
+        }
+      }}
+    />
   );
 }
-
-export default WalletForm;

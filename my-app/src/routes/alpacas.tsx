@@ -1,27 +1,27 @@
-import type { AlpacaDto } from '@/utils/dtos';
-import { createFileRoute, Link } from '@tanstack/react-router';
-import '../css/horses.css';
 import GenericPaginatedList from '@/components/GenericPaginatedList';
+import type { AlpacaDto } from '@/utils/dtos';
+import { createFileRoute, Link } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/horses')({
-  component: Horses,
+export const Route = createFileRoute('/alpacas')({
+  component: RouteComponent,
 })
 
-function Horses() {
-return (
-    <>
-    <h1>Horses Page</h1>
-    <p>Here is a list of horses:</p>
-    <HorsesFetch/>
+function RouteComponent() {
+  return (     
+  <>
+    <h1>Alpacas Page</h1>
+    <p>Here is a list of alpacas:</p>
+    <AlpacasFetch/>
   </>
 );
 };
 
-function HorsesFetch() {
+
+function AlpacasFetch() {
   return (
     <GenericPaginatedList<AlpacaDto>
-      url="api/horses/paginated?"
-      queryKey="horses"
+      url="api/alpacas/paginated?"
+      queryKey="alpacas"
       renderItem={(horse: AlpacaDto) => (
         <div key={horse.id} className="horse-row">
           {horse.imgUrl ? (
@@ -32,16 +32,16 @@ function HorsesFetch() {
           <div className="horse-info">
           <Link
           to="/$animal/$animalId/info"
-          params={{ animal: "horse", animalId: horse.id }}
+          params={{ animal: "alpaca", animalId: horse.id }}
         >
           {horse.id}
         </Link>
-        — {horse.gender} 
+        — {horse.gender}
           </div>
           <button className="btn" id="updateButton" type="button">
           <Link
           to="/$animal/$animalId/update"
-          params={{ animal: "horse", animalId: horse.id }}
+          params={{ animal: "alpaca", animalId: horse.id }}
           >
             Update
             </Link>
@@ -49,7 +49,7 @@ function HorsesFetch() {
           <button className="btn" id="deleteButton" type="button">
           <Link
           to="/$animal/$animalId/delete"
-          params={{ animal: "horse", animalId: horse.id }}
+          params={{ animal: "alpaca", animalId: horse.id }}
           >
             Delete
             </Link>

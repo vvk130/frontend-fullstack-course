@@ -37,7 +37,7 @@ export default function AuthForm() {
         }
           return;
         }
-          alert('Form submitted!');
+          alert('Register successful!');
         } catch (err) {
           alert('Unexpected error occurred.');
           console.error(err);

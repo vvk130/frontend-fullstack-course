@@ -1,6 +1,6 @@
 import GenericPaginatedList from '@/components/GenericPaginatedList';
-import type { AnimalDto } from '@/utils/dtos';
-import { createFileRoute } from '@tanstack/react-router'
+import type { AlpacaShortDto } from '@/utils/dtos';
+import { createFileRoute, Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/myalpacas')({
   component: RouteComponent,
@@ -10,18 +10,28 @@ function RouteComponent() {
   return (
   <>
   <div>Your alpacas</div>
+    <Link
+    to="/alpaca-create"
+  >
+    Create alpaca
+  </Link>
   <AlpacasFetch/>
   </>);
 }
 
 function AlpacasFetch() {
   return (
-    <GenericPaginatedList<AnimalDto>
-      url="api/Alpacas/search?Filter.OwnerId=f47ac10b-58cc-4372-a567-0e02b2c3d479&Pagination.PageNumber=1&Pagination.PageSize=10"
+    <GenericPaginatedList<AlpacaShortDto>
+      url="api/Alpacas/search?Filter.OwnerId=76a21e67-a81b-4df0-b03c-9290bdc3db11"
       queryKey="alpacas"
-      renderItem={(animal: AnimalDto) => (
-        <div key={animal.id} className="horse-row">
-          {animal.id}
+      renderItem={(alpaca: AlpacaShortDto) => (
+        <div key={alpaca.id} className="horse-row">
+          <Link
+            to="/$animal/$animalId/info"
+            params={{ animal: "alpaca", animalId: alpaca.id}}
+          >
+            {alpaca.name}
+          </Link> - {alpaca.id} - {alpaca.gender} - {alpaca.breed}
         </div>
       )}
     />

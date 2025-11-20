@@ -1,6 +1,6 @@
 import GenericPaginatedList from '@/components/GenericPaginatedList';
 import type { HorseShortDto } from '@/utils/dtos';
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/myhorses')({
   component: RouteComponent,
@@ -10,6 +10,11 @@ function RouteComponent() {
   return (
   <>
   <div>Your horses</div>
+  <Link
+    to="/horse-create"
+  >
+    Create horse
+  </Link>
   <HorsesFetch/>
   </>);
 }
@@ -17,11 +22,16 @@ function RouteComponent() {
 function HorsesFetch() {
   return (
     <GenericPaginatedList<HorseShortDto>
-      url="api/Horses/search?Filter.OwnerId=03514f70-08c2-429b-9f17-ca992ac4b93a&Pagination.PageNumber=1&Pagination.PageSize=10"
+      url="api/Horses/search?Filter.OwnerId=76a21e67-a81b-4df0-b03c-9290bdc3db11"
       queryKey="horses"
       renderItem={(horse: HorseShortDto) => (
         <div key={horse.id} className="horse-row">
-          {horse.id}
+          <Link
+            to="/$animal/$animalId/info"
+            params={{ animal: "horse", animalId: horse.id}}
+          >
+            {horse.name}
+          </Link> - {horse.id} - {horse.gender} - {horse.breed}
         </div>
       )}
     />

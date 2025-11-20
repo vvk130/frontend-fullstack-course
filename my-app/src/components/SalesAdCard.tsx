@@ -4,8 +4,9 @@ import { Link } from "@tanstack/react-router";
 export function SalesAdCard({ ad }: { ad: SalesAdDto }) {
   const animalId = ad.horseId;
   const type = ad.itemType?.toLowerCase();
-  const animalType = type === "horse" ? "horse" : "alpaca";
+  const animal = type === "horse" ? "horse" : "alpaca";
   const adId = ad.id;
+
 
   return (
     <div className="sales-ad-card">
@@ -16,10 +17,10 @@ export function SalesAdCard({ ad }: { ad: SalesAdDto }) {
 
       <div className="sales-ad-body">
         <p>
-          <strong>{animalType}:</strong>{" "}
+          <strong>{animal}:</strong>{" "}
           <Link
             to="/$animal/$animalId/info"
-            params={{ animal: animalType, animalId }}
+            params={{ animal: animal, animalId }}
           >
             {animalId}
           </Link>

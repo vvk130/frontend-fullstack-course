@@ -67,7 +67,7 @@ export interface SalesDto {
 }
 
 export interface WalletCreateDto {
-money: number;       
+balance: number;       
 ownerId: string; 
 }
 
@@ -232,4 +232,24 @@ export interface CompetitionCreateDto {
   competitionType: keyof typeof CompetitionType;
   daysToStart: number;
   daysToEnd: number;
+}
+
+export interface AlpacaShortDto {
+  id: string;
+  name: string;
+  breed: string;
+  gender: Gender;
+  imgUrl?: string; 
+}
+
+export interface AdDto {
+  id: string;                  
+  adType: "NormalAd" | string; 
+  itemType: string | null;     
+  startTime: string;           
+  endTime: string;             
+  price: number;
+  ownerId: string;             
+  horseId: string;             
+  highestBidderId: string | null; 
 }

@@ -44,7 +44,7 @@ export default function AuthForm() {
         }
           return;
         }
-          alert('Form submitted!');
+          alert('Login Successful!');
         } catch (err) {
           alert('Unexpected error occurred.');
           console.error(err);

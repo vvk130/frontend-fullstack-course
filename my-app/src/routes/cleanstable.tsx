@@ -23,7 +23,7 @@ function RouteComponent() {
   };
 
   return (<>
-  <h1>Clean stable and earn money!</h1>
+  <h1>Clean stable!</h1>
   <div>
       <button className="btn" onClick={handleRemove}>
         Clean Stable

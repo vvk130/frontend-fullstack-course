@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Pagination from '@mui/material/Pagination';
+import { apiUrlWithoutApiWord } from '@/apiUrl';
 
 interface PaginatedResponse<T> {
   items: T[];
@@ -26,7 +27,7 @@ export default function GenericPaginatedList<T>({
   const { data, isLoading, error } = useQuery<PaginatedResponse<T>>({
     queryKey: Array.isArray(queryKey) ? [...queryKey, page] : [queryKey, page],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5263/${url}&Pagination.PageNumber=${page}&Pagination.PageSize=${pageSize}`);
+      const res = await fetch(`${apiUrlWithoutApiWord}${url}&Pagination.PageNumber=${page}&Pagination.PageSize=${pageSize}`);
       if (!res.ok) throw new Error('Failed to fetch');
       return res.json();
     },
@@ -42,11 +43,12 @@ export default function GenericPaginatedList<T>({
       {data.items.map((item: T) => (
         <React.Fragment key={(item as any).id}>{renderItem(item)}</React.Fragment>
       ))}
-      <Pagination
+        <Pagination
         count={data.totalPages}
         page={page}
         onChange={(_, value) => setPage(value)}
         variant="outlined"
+        color="primary" 
       />
     </div>
   );

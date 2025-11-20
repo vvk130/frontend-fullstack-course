@@ -14,18 +14,24 @@ TODO:
 [X] fix list for sales ads
 [x] backend adjustements for the comp forms
 [x] create new competition form
-[] update competition form
-[] user own alpacas/horses list
+[x] update competition form
+[x] user own alpacas/horses list
+[x] animalcards
+[x] Create horse / create alpaca
+[x] Create foal for horse / alpaca
+[x] create horse, create alpaca
+[] wallet form
 [] buy an animal form (needs the error messages)
-[] create horse, create alpaca
 [] image upload form
+[] tanstack store userID
+
+
 [] resolve ads button
 
 [] foaling to work, horse alpaca
 [] add user id to nav bar after logged in
 [] cascade delete form comp results backend
 [] puzzle create page, without solving (should be pretty simple?)
-
 
 Don't do
 [] Add state to paginations that need it

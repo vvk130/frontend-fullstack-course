@@ -13,8 +13,6 @@ function RouteComponent() {
   return (
   <>
   <h1>Market</h1>
-  <button>Resolve ads</button>
-  <button>Horse Ad list with inner join</button>
   <p>You can buy and sell animals, you can also sell alpacas, just put the alpacaId as horseId and write Alpaca as itemType</p>
   <AdCreateForm/>
   <AdsFetch/>
@@ -30,22 +28,3 @@ function AdsFetch() {
     />
   );
 }
-
-/* {ad.horse.imgUrl ? (
-  <img src={ad.horse.imgUrl} alt={ad.horse.name} className="horse-image" />
-) : (
-  <div className="no-image">No Image</div>
-)}
-<div className="horse-info">
-  <Link
-  to="/$animal/$animalId"
-  params={{ animal: "horse", animalId: ad.horse.id}}
->
-  {ad.horse.name}
-</Link>
-— {ad.horse.breed}
-</div>
-<button className="btn" id="buyButton" type="button">
-  Buy Horse for {ad.price} | {ad.type}
-</button> */
-

@@ -27,7 +27,17 @@ export default function AuthForm() {
           fetch(`${apiUrl}user/wallet-by-username?username=${encodeURIComponent(data.email)}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-          }).catch(() => {});
+          })
+          .then((res) => res.json())
+          .then((data) => {
+            const userId = data.ownerId;    
+            const walletId = data.id;      
+
+            localStorage.setItem('horseappinfo.userId', userId ?? '');
+            localStorage.setItem('horseappinfo.walletId', walletId ?? '');
+          })
+          .catch(() => {})
+
         }
         if (!res.ok) {
         if (responseData?.errors) {

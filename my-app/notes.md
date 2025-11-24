@@ -3,6 +3,10 @@ https://community.render.com/t/error-err-module-not-found-cannot-find-package-vi
 
 Axios error handling? Prob not time for it? https://www.vivienfabing.com/react/2020/11/25/aspnetcore-simple-shared-generic-errors-with-react.html
 
+
+
+
+
 TODO:
 [x] horse individual page
 [x] update horse, update alpaca
@@ -20,12 +24,13 @@ TODO:
 [x] Create horse / create alpaca
 [x] Create foal for horse / alpaca
 [x] create horse, create alpaca
+[x] foaling form
+[x] foal page for animals
+[] delete competition
 [] wallet form
 [] buy an animal form (needs the error messages)
 [] image upload form
 [] tanstack store userID
-
-
 [] resolve ads button
 
 [] foaling to work, horse alpaca

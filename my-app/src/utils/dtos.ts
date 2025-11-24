@@ -253,3 +253,17 @@ export interface AdDto {
   horseId: string;             
   highestBidderId: string | null; 
 }
+
+export interface FoalCreateDto {
+  sireId: string;
+  damId: string;
+  type: string; 
+}
+
+export interface CompResultDto {
+  id: string;              
+  horseId: string;         
+  ranking: number;
+  moneyWon: number;
+  competitionTime: string;
+}

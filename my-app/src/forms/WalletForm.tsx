@@ -9,6 +9,7 @@ const walletUpdate: WalletCreateDto = {
 };
 
 export default function WalletForm() {
+  const storedWalletId = localStorage.getItem('horseappinfo.walletId') || '';
 
   return (
     <BasicForm<WalletCreateDto>
@@ -17,7 +18,7 @@ export default function WalletForm() {
       disabledFields={[]}
       onSubmit={async (data) => {
         try {
-          const res = await fetch(`${apiUrl}wallet/36593704-5d33-4618-8a0c-2c35a1c89123`, {
+          const res = await fetch(`${apiUrl}wallet/${storedWalletId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),

@@ -1,6 +1,7 @@
 import { apiUrl } from '@/apiUrl';
 import BasicForm from './BasicForm';
 import { handleApiErrors } from '@/utils/handleApiErrors';
+import { useQueryClient } from '@tanstack/react-query';
 
 type ThreeGuidsDto = {
   competitionId: string;
@@ -9,14 +10,15 @@ type ThreeGuidsDto = {
   horseId3: string;
 };
 
-const initialGuids: ThreeGuidsDto = {
-  competitionId: "1b7e43d7-94c9-4c4c-b82c-c6dd3ec0d51a",
+function GuidsForm({ compId }: { compId: string }) {
+  const queryClient = useQueryClient();
+
+  const initialGuids: ThreeGuidsDto = {
+  competitionId: compId,
   horseId1: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
   horseId2: "a62b9941-f14c-4452-8f80-1fdd6f5599f1",
   horseId3: "3b5e43d7-94c9-4c4c-b82c-c6dd3ec0d51a",
-};
-
-function GuidsForm() {
+  };
 
   return (
     <div>
@@ -26,6 +28,8 @@ function GuidsForm() {
           title="Compete horses"
           disabledFields={[]}
           onSubmit={async (data) => {
+            const storedWalletId = localStorage.getItem('horseappinfo.walletId') || null;
+
             try {
               const res = await fetch(`${apiUrl}competitions/compete-horses`, {
                 method: 'POST',
@@ -35,10 +39,16 @@ function GuidsForm() {
     
               const responseData = await res.json().catch(() => null);
     
-              if (!res.ok || responseData?.validationErrors) {
-                handleApiErrors(responseData, res.status, res.statusText);
-                return;
-              }
+            if (!res.ok || (responseData?.validationErrors && Object.keys(responseData.validationErrors).length > 0)) {
+              handleApiErrors(responseData, res.status, res.statusText);
+              return;
+            }
+
+            if (storedWalletId) {
+            queryClient.invalidateQueries({ queryKey: ['wallet-balance', storedWalletId] });
+            }
+
+            queryClient.invalidateQueries({ queryKey: ['wallet-balance', storedWalletId] });
     
               alert('Updated successfully!');
             } catch (err) {

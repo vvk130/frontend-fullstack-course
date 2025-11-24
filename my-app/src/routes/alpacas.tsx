@@ -1,3 +1,4 @@
+import { DetailTable } from '@/components/DetailTable';
 import GenericPaginatedList from '@/components/GenericPaginatedList';
 import type { AlpacaDto } from '@/utils/dtos';
 import { createFileRoute, Link } from '@tanstack/react-router'

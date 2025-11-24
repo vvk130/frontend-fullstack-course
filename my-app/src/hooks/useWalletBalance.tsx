@@ -23,3 +23,7 @@ export function useAnimal(animalId: string) {
     select: (data) => data
   })
 }
+
+
+    
+

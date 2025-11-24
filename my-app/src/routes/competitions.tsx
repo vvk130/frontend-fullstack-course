@@ -24,7 +24,7 @@ function CompFetch() {
       renderItem={(comp: CompDto) => (
         <div key={comp.id} className="horse-row">
           <div className="horse-info">
-            <Link to="/competition/compete" params={{competitionId: comp.id}}>Click to compete</Link> {comp.id} — Competition ends: {comp.endTime}
+            <Link to="/competition/$compId/compete" params={{compId: comp.id}}>Click to compete</Link> {comp.id} — Competition ends: {comp.endTime}
               — 
             <Link to="/competition/$compId/update" params={{compId: comp.id}}>Update</Link>
           </div>

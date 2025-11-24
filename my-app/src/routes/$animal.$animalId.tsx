@@ -28,6 +28,8 @@ function RouteComponent() {
   const tabs = [
     { label: 'Basic Info', path: `/${animalType}/${animalIdParam}/info` },
     { label: 'Update', path: `/${animalType}/${animalIdParam}/update` },
+    { label: 'Foals', path: `/${animalType}/${animalIdParam}/foals` },
+    { label: 'Results', path: `/${animalType}/${animalIdParam}/results` },
     { label: 'Delete', path: `/${animalType}/${animalIdParam}/delete` },
   ]
 

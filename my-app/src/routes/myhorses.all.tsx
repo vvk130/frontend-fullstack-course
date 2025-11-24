@@ -11,9 +11,11 @@ function RouteComponent() {
 }
 
 function HorsesFetch() {
+  const storedUserId = localStorage.getItem('horseappinfo.userId') || null;
+
   return (
     <GenericPaginatedList<HorseShortDto>
-      url="api/Horses/search?Filter.OwnerId=76a21e67-a81b-4df0-b03c-9290bdc3db11"
+      url={`api/Horses/search?Filter.OwnerId=${storedUserId}`}
       queryKey="myhorses"
       renderItem={(horse: HorseShortDto) => (
         <div key={horse.id} className="horse-row">

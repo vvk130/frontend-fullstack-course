@@ -20,9 +20,11 @@ function RouteComponent() {
 }
 
 function AlpacasFetch() {
+  const storedUserId = localStorage.getItem('horseappinfo.userId') || null;
+
   return (
     <GenericPaginatedList<AlpacaShortDto>
-      url="api/Alpacas/search?Filter.OwnerId=76a21e67-a81b-4df0-b03c-9290bdc3db11"
+      url={`api/Alpacas/search?Filter.OwnerId=${storedUserId}`}
       queryKey="myalpacas"
       renderItem={(alpaca: AlpacaShortDto) => (
         <div key={alpaca.id} className="horse-row">

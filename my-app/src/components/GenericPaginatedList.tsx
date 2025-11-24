@@ -1,7 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Pagination from '@mui/material/Pagination';
-import { apiUrlWithoutApiWord } from '@/apiUrl';
 
 interface PaginatedResponse<T> {
   items: T[];

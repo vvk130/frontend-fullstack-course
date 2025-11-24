@@ -1,6 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { deleteItem } from '@/utils/deleteItem'
-import { frontEndUrl } from '@/apiUrl'
 
 export const Route = createFileRoute('/$animal/$animalId/delete')({
   loader: async ({ params }) => {
@@ -12,15 +11,13 @@ export const Route = createFileRoute('/$animal/$animalId/delete')({
 })
 
 function DeleteComponent() {
-  const { animal, animalId } = Route.useParams()
+  const { animal, animalId } = Route.useParams();
+  const navigate = useNavigate();
 
     function handleDelete() {
     deleteItem(`${animal}s`, animalId)
         .then(() => {
-        window.location.href = `${frontEndUrl}`
-        })
-        .catch(() => {
-        alert('Failed to delete item')
+          navigate({ to: '/' });
         })
     }
 

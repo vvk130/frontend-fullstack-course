@@ -10,36 +10,31 @@ export function SalesAdCard({ ad }: { ad: SalesAdDto }) {
 
   return (
     <div className="sales-ad-card">
-      <div className="sales-ad-header">
-        <h3>Ad #{ad.id.slice(0, 6)}</h3>
-        <span className="ad-type">{ad.adType}</span>
-      </div>
-
-      <div className="sales-ad-body">
-        <p>
+        Ad #{ad.id} || <span className="ad-type">{ad.adType}</span> || 
           <strong>{animal}:</strong>{" "}
           <Link
             to="/$animal/$animalId/info"
             params={{ animal: animal, animalId }}
           >
             {animalId}
-          </Link>
-        </p>
-
-        <p><strong>Price:</strong> {ad.price} coins</p>
-        <p><strong>Ends:</strong> {new Date(ad.endTime).toLocaleString()}</p>
-      </div>
-
-      <div className="sales-ad-footer">
+          </Link> || 
+        <strong>Price:</strong> {ad.price} coins || <strong>Ends:</strong> {new Date(ad.endTime).toLocaleString()}
         <button className="buy-btn">
             <Link
-            to="/ad/$adId"
+            to="/ad/$adId/update"
             params={{ adId }}
           >
           Buy /bid for {ad.price}
           </Link>
-        </button>
-      </div>
+          </button>
+           <button className="buy-btn">
+          <Link
+            to="/ad/$adId/delete"
+            params={{ adId }}
+          >
+          Delete
+          </Link>
+    </button>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import GenericPaginatedList from '@/components/GenericPaginatedList';
 import type { CompDto } from '@/utils/dtos';
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, Outlet } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/competitions')({
   component: RouteComponent,
@@ -18,6 +18,8 @@ function RouteComponent() {
 
 function CompFetch() {
   return (
+    <>
+    <Outlet/>
     <GenericPaginatedList<CompDto>
       url="api/competitions/paginated?PageNumber=1&PageSize=10"
       queryKey="competitions"
@@ -26,10 +28,12 @@ function CompFetch() {
           <div className="horse-info">
             <Link to="/competition/$compId/compete" params={{compId: comp.id}}>Click to compete</Link> {comp.id} — Competition ends: {comp.endTime}
               — 
-            <Link to="/competition/$compId/update" params={{compId: comp.id}}>Update</Link>
+            <Link to="/competition/$compId/update" params={{compId: comp.id}}>Update</Link>{ }||{ }
+            <Link to="/competitions/$itemId/delete" params={{itemId: comp.id}}>Delete</Link>
           </div>
         </div>
       )}
     />
+    </>
   );
 }

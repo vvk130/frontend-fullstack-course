@@ -267,3 +267,14 @@ export interface CompResultDto {
   moneyWon: number;
   competitionTime: string;
 }
+
+export interface PuzzlePieceDto {
+  xCoordinate: number;
+  yCoordinate: number;
+  imgUrl: string;
+}
+
+export interface PuzzleDto {
+  id: string;
+  puzzlePieces: PuzzlePieceDto[];
+}

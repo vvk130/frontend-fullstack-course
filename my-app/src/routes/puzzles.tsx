@@ -1,10 +1,33 @@
-import ImgList from '@/components/ImgList'
-import { createFileRoute } from '@tanstack/react-router'
+import GenericPaginatedList from '@/components/GenericPaginatedList';
+import PuzzleForm from '@/forms/PuzzleForm';
+import type { PuzzleDto } from '@/utils/dtos';
+import { createFileRoute, Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/puzzles')({
-  component: RouteComponent,
+  component: PuzzlesListRoute,
 })
 
-function RouteComponent() {
-  return (<><div>Hello "/puzzles"!</div><ImgList/></>)
+function PuzzlesListRoute() {
+  return (
+    <>
+    <PuzzleForm/>
+    <GenericPaginatedList<PuzzleDto>
+      url="api/puzzle/paginated?PageNumber=1&PageSize=10"
+      queryKey="puzzles"
+      renderItem={(puzzle: PuzzleDto) => (
+        <div key={puzzle.id} className="puzzle-row">
+          {puzzle.id}
+          ||
+          <Link
+            to="/puzzle/$puzzleId"
+            params={{ puzzleId: puzzle.id }}
+          >
+            See puzzle
+          </Link>
+        </div>
+      )}
+    />
+    </>
+  );
 }
+

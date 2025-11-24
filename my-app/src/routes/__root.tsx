@@ -23,7 +23,7 @@ export const Route = createRootRoute({
             <Link to="/images">Images</Link>
             <Link to="/cleanstable">Clean Stable</Link>
             <Link to="/buyhorses">Buy Animals</Link>
-            <Link to="/wallet">Wallet</Link>
+            <Link to="/puzzles">Puzzles</Link>
           </ul>
         </nav>
       <nav>

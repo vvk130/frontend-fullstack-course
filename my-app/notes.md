@@ -26,26 +26,21 @@ TODO:
 [x] create horse, create alpaca
 [x] foaling form
 [x] foal page for animals
-[] delete competition
-[] wallet form
-[] buy an animal form (needs the error messages)
-[] image upload form
-[] tanstack store userID
-[] resolve ads button
+[x] delete competition
+[x] buy an animal form (needs the error messages)
+[x] localstorage store userID
+[x] foaling to work, horse alpaca
+[x] add user id to nav bar after logged in
 
-[] foaling to work, horse alpaca
-[] add user id to nav bar after logged in
+[] image upload form
+[] resolve ads button
+[] wallet form
 [] cascade delete form comp results backend
 [] puzzle create page, without solving (should be pretty simple?)
-
-Don't do
-[] Add state to paginations that need it
-
 [] quiz page
 
 So I needed to have multiple create, delete, edit endpoints
-[] horse: create, delete, edit endpoints
-[] alpaca: create, delete, edit endpoints
-[] image: add
-[] salesAd: create
-[] competition: create, edit endpoints
+[x] horse: create, delete, edit endpoints
+[x] alpaca: create, delete, edit endpoints
+[x] salesAd: create
+[x] competition: create, edit endpoints

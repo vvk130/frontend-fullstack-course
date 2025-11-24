@@ -1,18 +1,22 @@
-import BuyAnimalForm from '@/forms/BuyAnimalForm'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Outlet } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/ad/$adId')({
-  loader: async ({ params }) => {
-    const { adId } = params
-    return { adId }
-  },
-  component: RouteComponent,
+    loader: async ({ params }) => {
+        const { adId } = params
+        return { adId}
+    },
+
+  component: DeleteComponent,
 })
 
-function RouteComponent() {
-  const { adId } = Route.useParams()
-  return <>
-  If the ad type is Auction you have to put a number over 200 higher than the price in the ad
-  <BuyAnimalForm adId={adId}/>
-  </>
+function DeleteComponent() {
+  const { adId } = Route.useParams();
+  const item = 'Salesad';
+
+  return (
+    <div>
+      <h2>{item} {adId}</h2>
+      <Outlet/>
+    </div>
+  )
 }

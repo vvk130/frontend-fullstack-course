@@ -1,6 +1,6 @@
 /*  /index.html  200
 
-/api/*    http://fullstackbackend.runasp.net/api/:splat    200
+/api/*    http://fullstackbackend.runasp.net/:splat    200
 
 /login    http://fullstackbackend.runasp.net/login         200
 /register http://fullstackbackend.runasp.net/register      200

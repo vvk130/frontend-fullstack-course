@@ -1,7 +1,6 @@
 import { apiUrl, apiUrlWithoutApiWord } from '@/apiUrl';
 import type { UserLoginDto } from '@/utils/dtos';
 import BasicForm from './BasicForm';
-import { useQueryClient } from '@tanstack/react-query';
 
 export default function AuthForm() {
   const initialUser: UserLoginDto = {

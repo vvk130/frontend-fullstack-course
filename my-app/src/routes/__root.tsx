@@ -1,12 +1,12 @@
 import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
 import ImageBanner from '@/components/ImageBanner'
 import WalletBalance from '@/components/walletBalance'
-import LogoutForm from '@/forms/Logout';
+// import LogoutForm from '@/forms/Logout';
 
 export const Route = createRootRoute({
   component: () => {
     const storedWalletId = localStorage.getItem('horseappinfo.walletId') || null;
-    const storedUser = localStorage.getItem('horseappinfo.userId') || null;
+    // const storedUser = localStorage.getItem('horseappinfo.userId') || null;
 
     return (
       <>
@@ -26,7 +26,7 @@ export const Route = createRootRoute({
             <Link to="/cleanstable">Clean Stable</Link>
             <Link to="/buyhorses">Buy Animals</Link>
             <Link to="/puzzles">Puzzles</Link>
-            {storedUser && <LogoutForm walletId={storedWalletId}/>}
+            {/* {storedUser && <LogoutForm walletId={storedWalletId}/>} */}
           </ul>
         </nav>
       <nav>

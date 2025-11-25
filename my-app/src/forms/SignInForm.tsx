@@ -1,6 +1,7 @@
 import { apiUrl, apiUrlWithoutApiWord } from '@/apiUrl';
 import type { UserLoginDto } from '@/utils/dtos';
 import BasicForm from './BasicForm';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function AuthForm() {
   const initialUser: UserLoginDto = {
@@ -14,6 +15,7 @@ export default function AuthForm() {
       title="Login"
       disabledFields={[]}
       onSubmit={async (data) => {
+        const queryClient = useQueryClient();
         try {
           const res = await fetch(`${apiUrlWithoutApiWord}login`, {
             method: 'POST',
@@ -35,6 +37,7 @@ export default function AuthForm() {
 
             localStorage.setItem("horseappinfo.userId", userId ? userId : "null");
             localStorage.setItem("horseappinfo.walletId", walletId ? walletId : "null");
+            queryClient.invalidateQueries({ queryKey: ['wallet-balance', walletId] });
           })
           .catch(() => {})
 

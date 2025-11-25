@@ -33,8 +33,8 @@ export default function AuthForm() {
             const userId = data.ownerId;    
             const walletId = data.id;      
 
-            localStorage.setItem('horseappinfo.userId', userId ?? '');
-            localStorage.setItem('horseappinfo.walletId', walletId ?? '');
+            localStorage.setItem("horseappinfo.userId", userId ? userId : "null");
+            localStorage.setItem("horseappinfo.walletId", walletId ? walletId : "null");
           })
           .catch(() => {})
 

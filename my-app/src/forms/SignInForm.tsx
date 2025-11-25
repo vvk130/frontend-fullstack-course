@@ -15,7 +15,6 @@ export default function AuthForm() {
       title="Login"
       disabledFields={[]}
       onSubmit={async (data) => {
-        const queryClient = useQueryClient();
         try {
           const res = await fetch(`${apiUrlWithoutApiWord}login`, {
             method: 'POST',
@@ -37,9 +36,6 @@ export default function AuthForm() {
 
             localStorage.setItem("horseappinfo.userId", userId ? userId : "null");
             localStorage.setItem("horseappinfo.walletId", walletId ? walletId : "null");
-            if (walletId){
-              queryClient.invalidateQueries({ queryKey: ['wallet-balance', walletId] });
-            }
           })
           .catch(() => {})
 

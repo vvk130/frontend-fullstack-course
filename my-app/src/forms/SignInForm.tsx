@@ -1,7 +1,6 @@
 import { apiUrl, apiUrlWithoutApiWord } from '@/apiUrl';
 import type { UserLoginDto } from '@/utils/dtos';
 import BasicForm from './BasicForm';
-import { useQueryClient } from '@tanstack/react-query';
 
 export default function AuthForm() {
   const initialUser: UserLoginDto = {
@@ -56,25 +55,8 @@ export default function AuthForm() {
           return;
         }
 
-        const walletRes = await fetch(
-          `${apiUrl}user/wallet-by-username?username=${encodeURIComponent(data.email)}`,
-          { method: 'POST', headers: { 'Content-Type': 'application/json' } }
-        );
-
-        const queryClient = useQueryClient();
-
-        const walletData = await walletRes.json().catch(() => ({}));
-
-        const userId = walletData.ownerId ?? null;
-        const walletId = walletData.id ?? null;
-
-        localStorage.setItem("horseappinfo.userId", userId);
-        localStorage.setItem("horseappinfo.walletId", walletId);
-
-        if (walletId) {
-          queryClient.invalidateQueries({ queryKey: ['wallet-balance', walletId] });
-        }
-        alert('Login Successful!');
+        alert('Login Successful, redirecting...');
+        window.location.href = "/myhorses";
         } catch (err) {
           alert('Unexpected error occurred.');
           console.error(err);

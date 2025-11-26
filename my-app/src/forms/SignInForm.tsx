@@ -55,13 +55,26 @@ export default function AuthForm() {
         }
           return;
         }
-        
+
+        const walletRes = await fetch(
+          `${apiUrl}user/wallet-by-username?username=${encodeURIComponent(data.email)}`,
+          { method: 'POST', headers: { 'Content-Type': 'application/json' } }
+        );
+
         const queryClient = useQueryClient();
-        const walletId = localStorage.getItem("horseappinfo.walletId");
-        if (walletId && walletId !== "null") {
+
+        const walletData = await walletRes.json().catch(() => ({}));
+
+        const userId = walletData.ownerId ?? null;
+        const walletId = walletData.id ?? null;
+
+        localStorage.setItem("horseappinfo.userId", userId);
+        localStorage.setItem("horseappinfo.walletId", walletId);
+
+        if (walletId) {
           queryClient.invalidateQueries({ queryKey: ['wallet-balance', walletId] });
         }
-          alert('Login Successful!');
+        alert('Login Successful!');
         } catch (err) {
           alert('Unexpected error occurred.');
           console.error(err);
@@ -70,3 +83,8 @@ export default function AuthForm() {
     />
   );
 }
+
+
+
+
+

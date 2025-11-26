@@ -55,7 +55,7 @@ export default function AuthForm() {
           return;
         }
 
-        alert('Login Successful, redirecting...');
+        alert('Login Successful, click to be redirected forward');
         window.location.href = "/myhorses";
         } catch (err) {
           alert('Unexpected error occurred.');

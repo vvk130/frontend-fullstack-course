@@ -1,4 +1,4 @@
-export default function LogoutForm({walletId}: {walletId: string | null}) {
+export default function LogoutForm() {
     function logout() {
         localStorage.removeItem("horseappinfo.userId");
         localStorage.removeItem("horseappinfo.walletId");

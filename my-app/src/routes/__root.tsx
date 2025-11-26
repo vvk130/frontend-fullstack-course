@@ -26,7 +26,7 @@ export const Route = createRootRoute({
             <Link to="/cleanstable">Clean Stable</Link>
             <Link to="/buyhorses">Buy Animals</Link>
             <Link to="/puzzles">Puzzles</Link>
-            {storedUserId && <LogoutForm walletId={storedUserId} />}
+            {storedUserId && <LogoutForm />}
           </ul>
         </nav>
       <nav>

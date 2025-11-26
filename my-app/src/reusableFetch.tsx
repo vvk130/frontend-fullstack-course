@@ -34,23 +34,3 @@ export function useItem<TData>(entity: string, id: string) {
 
   return { ...query, mutation }
 }
-
-
-
-// export function useItem<TData>(entity: string, id?: string) {
-//   const queryClient = useQueryClient();
-//   const key: QueryKey = [entity, id];
-
-//   const query = useQuery<TData>({
-//     queryKey: key,
-//     queryFn: () => fetchItem<TData>(entity, id!),
-//     enabled: !!id,
-//   });
-
-//   const mutation = useMutation({
-//     mutationFn: (data: TData) => updateItem<TData>(entity, id!, data),
-//     onSuccess: () => queryClient.invalidateQueries({ queryKey: key }),
-//   });
-
-//   return { ...query, mutation };
-// }

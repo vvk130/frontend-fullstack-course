@@ -15,7 +15,6 @@ export default function AuthForm() {
       title="Login"
       disabledFields={[]}
       onSubmit={async (data) => {
-        const queryClient = useQueryClient();
         try {
           const res = await fetch(`${apiUrlWithoutApiWord}login`, {
             method: 'POST',
@@ -35,9 +34,8 @@ export default function AuthForm() {
             const userId = data.ownerId;    
             const walletId = data.id;      
 
-            localStorage.setItem("horseappinfo.userId", userId ? userId : "null");
-            localStorage.setItem("horseappinfo.walletId", walletId ? walletId : "null");
-            queryClient.invalidateQueries({ queryKey: ['wallet-balance', walletId] });
+            localStorage.setItem("horseappinfo.userId", userId);
+            localStorage.setItem("horseappinfo.walletId", walletId);
           })
           .catch(() => {})
 
@@ -56,6 +54,12 @@ export default function AuthForm() {
             alert(responseData?.title || 'An unknown error occurred');
         }
           return;
+        }
+        
+        const queryClient = useQueryClient();
+        const walletId = localStorage.getItem("horseappinfo.walletId");
+        if (walletId && walletId !== "null") {
+          queryClient.invalidateQueries({ queryKey: ['wallet-balance', walletId] });
         }
           alert('Login Successful!');
         } catch (err) {

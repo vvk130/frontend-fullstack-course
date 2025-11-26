@@ -4,8 +4,10 @@ import { handleApiErrors } from '@/utils/handleApiErrors';
 import type { AlpacaCreateDto } from '@/routes/alpaca-create';
 
 export default function HorseCreateForm() {
+    const storedUserId = localStorage.getItem('horseappinfo.userId') || null;
+
     const newAlpaca: AlpacaCreateDto = {
-    id: "Add Guid from bar under navigation",
+    id: storedUserId ?? "",
     alpacaBreed: "Unknown", 
     };
 

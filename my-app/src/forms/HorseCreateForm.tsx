@@ -4,10 +4,12 @@ import { handleApiErrors } from '@/utils/handleApiErrors';
 import type { HorseCreateDto } from '@/routes/horse-create';
 
 export default function HorseCreateForm() {
-    const newHorse: HorseCreateDto = {
-    id: "user123",
-    breed: "Arabian", 
-    };
+  const storedUserId = localStorage.getItem('horseappinfo.userId') || null;
+  
+  const newHorse: HorseCreateDto = {
+  id: storedUserId ?? "",
+  breed: "Arabian", 
+  };
 
   return (
     <BasicForm<HorseCreateDto>

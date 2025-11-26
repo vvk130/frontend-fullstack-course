@@ -18,6 +18,7 @@ import { Route as HorsesRouteImport } from './routes/horses'
 import { Route as HorseCreateRouteImport } from './routes/horse-create'
 import { Route as CompetitionsRouteImport } from './routes/competitions'
 import { Route as CleanstableRouteImport } from './routes/cleanstable'
+import { Route as BuyhorsesinnerRouteImport } from './routes/buyhorsesinner'
 import { Route as BuyhorsesRouteImport } from './routes/buyhorses'
 import { Route as BreedRouteImport } from './routes/breed'
 import { Route as AlpacasRouteImport } from './routes/alpacas'
@@ -83,6 +84,11 @@ const CompetitionsRoute = CompetitionsRouteImport.update({
 const CleanstableRoute = CleanstableRouteImport.update({
   id: '/cleanstable',
   path: '/cleanstable',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyhorsesinnerRoute = BuyhorsesinnerRouteImport.update({
+  id: '/buyhorsesinner',
+  path: '/buyhorsesinner',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuyhorsesRoute = BuyhorsesRouteImport.update({
@@ -199,6 +205,7 @@ export interface FileRoutesByFullPath {
   '/alpacas': typeof AlpacasRoute
   '/breed': typeof BreedRoute
   '/buyhorses': typeof BuyhorsesRoute
+  '/buyhorsesinner': typeof BuyhorsesinnerRoute
   '/cleanstable': typeof CleanstableRoute
   '/competitions': typeof CompetitionsRouteWithChildren
   '/horse-create': typeof HorseCreateRoute
@@ -231,6 +238,7 @@ export interface FileRoutesByTo {
   '/alpacas': typeof AlpacasRoute
   '/breed': typeof BreedRoute
   '/buyhorses': typeof BuyhorsesRoute
+  '/buyhorsesinner': typeof BuyhorsesinnerRoute
   '/cleanstable': typeof CleanstableRoute
   '/competitions': typeof CompetitionsRouteWithChildren
   '/horse-create': typeof HorseCreateRoute
@@ -264,6 +272,7 @@ export interface FileRoutesById {
   '/alpacas': typeof AlpacasRoute
   '/breed': typeof BreedRoute
   '/buyhorses': typeof BuyhorsesRoute
+  '/buyhorsesinner': typeof BuyhorsesinnerRoute
   '/cleanstable': typeof CleanstableRoute
   '/competitions': typeof CompetitionsRouteWithChildren
   '/horse-create': typeof HorseCreateRoute
@@ -298,6 +307,7 @@ export interface FileRouteTypes {
     | '/alpacas'
     | '/breed'
     | '/buyhorses'
+    | '/buyhorsesinner'
     | '/cleanstable'
     | '/competitions'
     | '/horse-create'
@@ -330,6 +340,7 @@ export interface FileRouteTypes {
     | '/alpacas'
     | '/breed'
     | '/buyhorses'
+    | '/buyhorsesinner'
     | '/cleanstable'
     | '/competitions'
     | '/horse-create'
@@ -362,6 +373,7 @@ export interface FileRouteTypes {
     | '/alpacas'
     | '/breed'
     | '/buyhorses'
+    | '/buyhorsesinner'
     | '/cleanstable'
     | '/competitions'
     | '/horse-create'
@@ -395,6 +407,7 @@ export interface RootRouteChildren {
   AlpacasRoute: typeof AlpacasRoute
   BreedRoute: typeof BreedRoute
   BuyhorsesRoute: typeof BuyhorsesRoute
+  BuyhorsesinnerRoute: typeof BuyhorsesinnerRoute
   CleanstableRoute: typeof CleanstableRoute
   CompetitionsRoute: typeof CompetitionsRouteWithChildren
   HorseCreateRoute: typeof HorseCreateRoute
@@ -475,6 +488,13 @@ declare module '@tanstack/react-router' {
       path: '/cleanstable'
       fullPath: '/cleanstable'
       preLoaderRoute: typeof CleanstableRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buyhorsesinner': {
+      id: '/buyhorsesinner'
+      path: '/buyhorsesinner'
+      fullPath: '/buyhorsesinner'
+      preLoaderRoute: typeof BuyhorsesinnerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/buyhorses': {
@@ -692,6 +712,7 @@ const rootRouteChildren: RootRouteChildren = {
   AlpacasRoute: AlpacasRoute,
   BreedRoute: BreedRoute,
   BuyhorsesRoute: BuyhorsesRoute,
+  BuyhorsesinnerRoute: BuyhorsesinnerRoute,
   CleanstableRoute: CleanstableRoute,
   CompetitionsRoute: CompetitionsRouteWithChildren,
   HorseCreateRoute: HorseCreateRoute,

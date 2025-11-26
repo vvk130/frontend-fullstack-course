@@ -7,7 +7,6 @@ export function SalesAdCard({ ad }: { ad: SalesAdDto }) {
   const animal = type === "horse" ? "horse" : "alpaca";
   const adId = ad.id;
 
-
   return (
     <div className="sales-ad-card">
         Ad #{ad.id} || <span className="ad-type">{ad.adType}</span> || 

@@ -278,3 +278,12 @@ export interface PuzzleDto {
   id: string;
   puzzlePieces: PuzzlePieceDto[];
 }
+
+export interface AdInnerJoinDto {
+  id: string;
+  type: keyof typeof AdType; 
+  price: number;
+  endTime: string; 
+  ownerId: string;
+  horse: HorseShortDto;
+}

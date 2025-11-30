@@ -12,7 +12,7 @@ function PuzzlesListRoute() {
     <>
     <PuzzleForm/>
     <GenericPaginatedList<PuzzleDto>
-      url="api/puzzle/paginated?PageNumber=1&PageSize=10"
+      url="api/puzzle/paginated?"
       queryKey="puzzles"
       renderItem={(puzzle: PuzzleDto) => (
         <div key={puzzle.id} className="puzzle-row">

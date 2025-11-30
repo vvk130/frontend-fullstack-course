@@ -53,11 +53,6 @@ return (
       queryKey={`foals-${data.id}`}
       renderItem={(horse: AnimalDto) => (
         <div key={horse.id} className="horse-row">
-          {horse.imgUrl ? (
-            <img src={horse.imgUrl} alt={horse.name} className="horse-image" />
-          ) : (
-            <div className="no-image">No Image</div>
-          )}
           <div className="horse-info">
           <Link
           to="/$animal/$animalId/info"

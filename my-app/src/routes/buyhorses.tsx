@@ -25,7 +25,7 @@ function RouteComponent() {
 function AdsFetch() {
   return (
     <GenericPaginatedList<SalesAdDto>
-      url="api/salesads/paginated?PageNumber=1&PageSize=10"
+      url="api/salesads/paginated?"
       queryKey="salesAds"
       renderItem={(ad) => <SalesAdCard key={ad.id} ad={ad} />}
     />

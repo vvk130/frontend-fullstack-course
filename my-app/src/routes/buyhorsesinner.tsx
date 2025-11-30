@@ -15,7 +15,7 @@ function RouteComponent() {
 function AdsFetch() {
   return (
     <GenericPaginatedList<AdInnerJoinDto>
-      url="api/salesads/paginated-with-horse?PageNumber=1&PageSize=10"
+      url="api/salesads/paginated-with-horse?"
       queryKey="salesAds-innejoin"
       renderItem={(ad) => (
         <div key={ad.id} className="ad-card">

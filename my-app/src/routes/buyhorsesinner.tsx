@@ -21,12 +21,6 @@ function AdsFetch() {
         <div key={ad.id} className="ad-card">
           <h3>{ad.horse.name}</h3>
 
-        {ad.horse.imgUrl && <img
-            src={ad.horse.imgUrl}
-            alt={ad.horse.name}
-            style={{ width: "150px", borderRadius: "8px" }}
-          />}
-
           <p><b>Breed:</b> {ad.horse.breed}</p>
           <p><b>Gender:</b> {ad.horse.gender}</p>
 

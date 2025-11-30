@@ -24,11 +24,6 @@ function HorsesFetch() {
       queryKey="horses"
       renderItem={(horse: AlpacaDto) => (
         <div key={horse.id} className="horse-row">
-          {horse.imgUrl ? (
-            <img src={horse.imgUrl} alt={horse.name} className="horse-image" />
-          ) : (
-            <div className="no-image">No Image</div>
-          )}
           <div className="horse-info">
           <Link
           to="/$animal/$animalId/info"

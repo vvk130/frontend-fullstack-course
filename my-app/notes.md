@@ -4,9 +4,6 @@ https://community.render.com/t/error-err-module-not-found-cannot-find-package-vi
 Axios error handling? Prob not time for it? https://www.vivienfabing.com/react/2020/11/25/aspnetcore-simple-shared-generic-errors-with-react.html
 
 
-
-
-
 TODO:
 [x] horse individual page
 [x] update horse, update alpaca

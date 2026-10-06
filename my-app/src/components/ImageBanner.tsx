@@ -1,6 +1,6 @@
 import type { JSX } from 'react';
 import './ImageBanner.css';
-import bannerImg from '../assets/bannerImg.jpg'; 
+import bannerImg from '../assets/header-img.png'; 
 
 const ImageBanner = (): JSX.Element => {
   return (

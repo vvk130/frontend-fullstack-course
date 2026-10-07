@@ -1,9 +1,13 @@
 import { apiUrl } from "@/apiUrl"
 
 export async function deleteItem(endpoint: string, id: string) {
+  const accessToken = localStorage.getItem("horseappinfo.accessToken")
 
   const response = await fetch(`${apiUrl}${endpoint}/${id}`, {
     method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
   })
 
   if (!response.ok) {

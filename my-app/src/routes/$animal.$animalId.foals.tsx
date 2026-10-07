@@ -12,9 +12,6 @@ export const Route = createFileRoute('/$animal/$animalId/foals')({
     const endpoint = `api/${animal}s/`
     const data = await fetchItemById(endpoint, animalId)
 
-    console.log(endpoint);
-    console.log(animalId);
-
     return { animal, data }
   },
   component: RouteComponent,

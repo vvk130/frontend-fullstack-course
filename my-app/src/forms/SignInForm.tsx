@@ -35,6 +35,7 @@ export default function AuthForm() {
 
             localStorage.setItem("horseappinfo.userId", userId);
             localStorage.setItem("horseappinfo.walletId", walletId);
+            localStorage.setItem("horseappinfo.accessToken", responseData.accessToken);
           })
           .catch(() => {})
 
@@ -65,8 +66,3 @@ export default function AuthForm() {
     />
   );
 }
-
-
-
-
-

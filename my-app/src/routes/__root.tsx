@@ -24,7 +24,8 @@ export const Route = createRootRoute({
           <nav>
             <ul>
               <li><Link to="/">Login / Sign Up</Link></li>
-
+              {storedUserId && (
+              <>
               <li><Link to="/myhorses/all">My Horses</Link></li>
               <li><Link to="/myalpacas">My Alpacas</Link></li>
 
@@ -35,15 +36,14 @@ export const Route = createRootRoute({
 
               <li><Link to="/leaderboard">Leaderboard</Link></li>
               <li><Link to="/competitions">Competitions</Link></li>
-              <li><Link to="/images">Images</Link></li>
+              {/* <li><Link to="/images">Images</Link></li> */}
               <li><Link to="/cleanstable">Clean Stable</Link></li>
               <li><Link to="/buyhorses">Buy/Sell Animals</Link></li>
-              <li><Link to="/puzzles">Puzzles</Link></li>
-
-              {storedUserId && (
-                <li>
-                  <LogoutForm />
-                </li>
+              {/* <li><Link to="/puzzles">Puzzles</Link></li> */}
+              <li>
+                <LogoutForm />
+              </li>
+              </>
               )}
             </ul>
           </nav>

@@ -2,6 +2,7 @@ import { apiUrl } from '@/apiUrl';
 import BasicForm from './BasicForm';
 import { handleApiErrors } from '@/utils/handleApiErrors';
 import { useQueryClient } from '@tanstack/react-query';
+import { apiFetch } from '@/utils/apiFetch';
 
 type ThreeGuidsDto = {
   competitionId: string;
@@ -31,7 +32,7 @@ function GuidsForm({ compId }: { compId: string }) {
             const storedWalletId = localStorage.getItem('horseappinfo.walletId') || null;
 
             try {
-              const res = await fetch(`${apiUrl}competitions/compete-horses`, {
+              const res = await apiFetch(`competitions/compete-horses`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),

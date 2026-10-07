@@ -1,8 +1,9 @@
 import { useQuery, useMutation, useQueryClient, type QueryKey } from '@tanstack/react-query'
 import { apiUrl } from '@/apiUrl';
+import { apiFetch } from './utils/apiFetch';
 
 export async function fetchItem<T>(entity: string, id: string): Promise<T> {
-  const res = await fetch(`${apiUrl}${entity}/${id}`)
+  const res = await apiFetch(`${entity}/${id}`)
   if (!res.ok) throw new Error(`Failed to fetch ${entity}: ${res.status}`)
   return res.json()
 }

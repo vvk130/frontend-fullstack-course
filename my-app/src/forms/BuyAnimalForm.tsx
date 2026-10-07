@@ -1,9 +1,9 @@
 import type { AdDto, BuyAdDto } from '@/utils/dtos';
 import BasicForm from './BasicForm';
-import { apiUrl } from '@/apiUrl';
 import { handleApiErrors } from '@/utils/handleApiErrors';
 import { useItem } from '@/reusableFetch';
 import { useQueryClient } from '@tanstack/react-query';
+import { apiFetch } from '@/utils/apiFetch';
 
 export default function BuyAnimalForm({ adId }: { adId: string }) {
     const queryClient = useQueryClient();
@@ -28,7 +28,7 @@ export default function BuyAnimalForm({ adId }: { adId: string }) {
         const storedWalletId = localStorage.getItem('horseappinfo.walletId') || null;
 
         try {
-          const res = await fetch(`${apiUrl}salesads/buy-horse`, {
+          const res = await apiFetch(`salesads/buy-horse`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),

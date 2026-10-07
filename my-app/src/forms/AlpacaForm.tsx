@@ -3,6 +3,7 @@ import BasicForm from './BasicForm';
 import { useItem } from '@/reusableFetch';
 import { apiUrl } from '@/apiUrl';
 import { handleApiErrors } from '@/utils/handleApiErrors';
+import { apiFetch } from '@/utils/apiFetch';
 
 export default function AlpacaForm({ alpacaId }: { alpacaId: string }) {
  const { data: alpaca, isLoading, isError } = useItem<AlpacaDto>('alpacas', alpacaId);
@@ -17,7 +18,7 @@ export default function AlpacaForm({ alpacaId }: { alpacaId: string }) {
       disabledFields={['id', 'sireId', 'damId', 'personalities', 'alpacaQualities', 'alpacaColor', 'alpacaBreed']}
       onSubmit={async (data) => {
         try {
-          const res = await fetch(`${apiUrl}alpacas/${alpacaId}`, {
+          const res = await apiFetch(`alpacas/${alpacaId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),

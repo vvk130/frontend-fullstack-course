@@ -1,5 +1,6 @@
 import BasicForm from './BasicForm';
 import { apiUrl } from '@/apiUrl';
+import { apiFetch } from '@/utils/apiFetch';
 import type { FoalCreateDto } from '@/utils/dtos';
 import { handleApiErrors } from '@/utils/handleApiErrors';
 
@@ -18,7 +19,7 @@ export default function FoalForm() {
       disabledFields={[]}
       onSubmit={async (data) => {
         try {
-          const res = await fetch(`${apiUrl}Foals`, {
+          const res = await apiFetch(`Foals`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),

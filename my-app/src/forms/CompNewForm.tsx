@@ -2,6 +2,7 @@ import { apiUrl } from "@/apiUrl";
 import { handleApiErrors } from "@/utils/handleApiErrors";
 import BasicForm from "./BasicForm";
 import type { CompetitionCreateDto } from "@/utils/dtos";
+import { apiFetch } from "@/utils/apiFetch";
 
 function CompNewForm() {
 
@@ -20,7 +21,7 @@ function CompNewForm() {
           disabledFields={[]}
           onSubmit={async (data) => {
             try {
-              const res = await fetch(`${apiUrl}competitions`, {
+              const res = await apiFetch(`competitions`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),

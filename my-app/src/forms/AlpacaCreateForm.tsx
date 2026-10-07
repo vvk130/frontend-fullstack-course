@@ -2,6 +2,7 @@ import BasicForm from './BasicForm';
 import { apiUrl } from '@/apiUrl';
 import { handleApiErrors } from '@/utils/handleApiErrors';
 import type { AlpacaCreateDto } from '@/routes/alpaca-create';
+import { apiFetch } from '@/utils/apiFetch';
 
 export default function HorseCreateForm() {
     const storedUserId = localStorage.getItem('horseappinfo.userId') || null;
@@ -18,7 +19,7 @@ export default function HorseCreateForm() {
       disabledFields={[]}
       onSubmit={async (data) => {
         try {
-          const res = await fetch(`${apiUrl}Horses/create-alpaca`, {
+          const res = await apiFetch(`${apiUrl}Horses/create-alpaca`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),

@@ -1,6 +1,5 @@
 import type { SalesAdCreateDto } from "@/utils/dtos";
 import BasicForm from './BasicForm';
-import { apiUrl } from "@/apiUrl";
 import { handleApiErrors } from "@/utils/handleApiErrors";
 import { useQueryClient } from "@tanstack/react-query";
 import { apiFetch } from "@/utils/apiFetch";

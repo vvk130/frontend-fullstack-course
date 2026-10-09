@@ -1,4 +1,3 @@
-import { apiUrl } from '@/apiUrl';
 import BasicForm from './BasicForm';
 import { handleApiErrors } from '@/utils/handleApiErrors';
 import { useQueryClient } from '@tanstack/react-query';

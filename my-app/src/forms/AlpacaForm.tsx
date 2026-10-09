@@ -1,7 +1,6 @@
 import type { AlpacaDto } from '@/utils/dtos';
 import BasicForm from './BasicForm';
 import { useItem } from '@/reusableFetch';
-import { apiUrl } from '@/apiUrl';
 import { handleApiErrors } from '@/utils/handleApiErrors';
 import { apiFetch } from '@/utils/apiFetch';
 

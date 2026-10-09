@@ -1,0 +1,307 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #202820;
+  color: #eee4d0;
+  font-family: Georgia, serif;
+}
+
+.stable {
+  max-width: 1200px;
+  margin: auto;
+  padding: 55px 24px;
+}
+
+.stable-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.stable-header span {
+  color: #c5a875;
+  font: 10px sans-serif;
+  letter-spacing: 3px;
+}
+
+.stable-header h1 {
+  margin: 14px 0;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: normal;
+}
+
+.stable-header p {
+  color: #b5b8a9;
+  font: 14px sans-serif;
+}
+
+.stalls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stall {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 38px,
+      #ffffff08 39px 40px
+    ),
+    linear-gradient(#4b5946, #303b2e);
+  border: 9px solid #4c3826;
+  border-bottom: 14px solid #4c3826;
+  box-shadow:
+    inset 0 0 0 2px #98744b,
+    0 12px 25px #0004;
+}
+
+/* Stable floor */
+.stall::after {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background:
+    repeating-linear-gradient(
+      165deg,
+      transparent 0 8px,
+      #c3a56d 9px 10px
+    ),
+    #8b7650;
+}
+
+/* CSS horse silhouette */
+.horse {
+  --coat: #8b5c3d;
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+  left: 2%;
+  width: 96%;
+  height: 230px;
+  color: var(--coat);
+  transition: transform 500ms ease;
+}
+
+.horse > div {
+  position: absolute;
+  background: currentColor;
+}
+
+.horse .body {
+  left: 23%;
+  top: 37%;
+  width: 68%;
+  height: 29%;
+  border-radius: 48% 40% 35% 40%;
+}
+
+.horse .neck {
+  left: 17%;
+  top: 12%;
+  width: 27%;
+  height: 52%;
+  transform: rotate(16deg);
+  border-radius: 60% 35% 20% 30%;
+}
+
+.horse .head {
+  left: 3%;
+  top: 8%;
+  width: 24%;
+  height: 27%;
+  transform: rotate(-12deg);
+  border-radius: 55% 45% 38% 55%;
+}
+
+.horse .head::after {
+  content: "";
+  position: absolute;
+  left: -13%;
+  top: 55%;
+  width: 38%;
+  height: 30%;
+  background: currentColor;
+  border-radius: 70% 10% 40% 60%;
+}
+
+.horse .ears {
+  left: 12%;
+  top: 0;
+  width: 5%;
+  height: 14%;
+  transform: rotate(-18deg);
+  border-radius: 100% 0;
+}
+
+.horse .tail {
+  left: 85%;
+  top: 40%;
+  width: 5%;
+  height: 34%;
+  transform: rotate(-22deg);
+  border-radius: 50%;
+}
+
+.horse .legs {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: none;
+}
+
+.horse .legs i {
+  position: absolute;
+  top: 59%;
+  width: 5%;
+  height: 39%;
+  background: currentColor;
+  border-radius: 0 0 30% 30%;
+}
+
+.horse .legs i:nth-child(1) { left: 32%; }
+.horse .legs i:nth-child(2) { left: 43%; height: 34%; }
+.horse .legs i:nth-child(3) { left: 70%; }
+.horse .legs i:nth-child(4) { left: 80%; height: 34%; }
+
+.grey { --coat: #b9b8aa; }
+.black { --coat: #252824; }
+.chestnut { --coat: #a85e38; }
+
+/* SINGLE sliding stable door */
+.sliding-door {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /* Transparent door frame */
+  background: transparent;
+
+  border: 3px solid #302218;
+  box-shadow: inset 0 0 0 3px #8d6842;
+
+  transform: translateX(0);
+  transition:
+    transform 750ms cubic-bezier(.2, .8, .2, 1);
+}
+
+/* Upper half: horse visible behind metal bars */
+.bars {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 8px;
+  padding: 5px 12px 0;
+
+  background: transparent;
+  border-bottom: 7px solid #1e211e;
+}
+
+/* Vertical metal bars */
+.bars i {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 5px;
+  height: 100%;
+  flex-shrink: 0;
+
+  background: linear-gradient(
+    90deg,
+    #171a17,
+    #73786b 45%,
+    #282c27 75%,
+    #101210
+  );
+
+  border-radius: 2px;
+}
+
+/* Solid wooden lower half */
+.wood {
+  position: relative;
+  flex-shrink: 0;
+  height: 43%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 5px;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 28px,
+      #0002 29px 31px
+    ),
+    linear-gradient(
+      90deg,
+      #5d3c25,
+      #986b40 45%,
+      #67452b
+    );
+
+  border-top: 2px solid #bd9560;
+}
+
+/* Slide door sideways on hover */
+.stall:hover .sliding-door {
+  transform: translateX(100%);
+}
+.stall:hover .horse {
+  transform: scale(1.08) translateY(-4px);
+}
+
+/* Horse nameplate */
+.plaque {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: 7px;
+  transform: translateX(-50%);
+  width: 72%;
+  padding: 5px 2px;
+  background: #c5a875;
+  border: 2px solid #64472b;
+  color: #30251a;
+  text-align: center;
+  font: 10px sans-serif;
+  letter-spacing: 2px;
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .stalls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stall {
+    height: 300px;
+  }
+
+  .stable {
+    padding: 35px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sliding-door,
+  .horse {
+    transition: none;
+  }
+}

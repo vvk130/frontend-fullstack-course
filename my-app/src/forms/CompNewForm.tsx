@@ -1,4 +1,3 @@
-import { apiUrl } from "@/apiUrl";
 import { handleApiErrors } from "@/utils/handleApiErrors";
 import BasicForm from "./BasicForm";
 import type { CompetitionCreateDto } from "@/utils/dtos";

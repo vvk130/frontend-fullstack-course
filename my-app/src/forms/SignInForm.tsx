@@ -1,6 +1,7 @@
 import { apiUrl, apiUrlWithoutApiWord } from '@/apiUrl';
 import type { UserLoginDto } from '@/utils/dtos';
 import BasicForm from './BasicForm';
+import { apiFetch } from '@/utils/apiFetch';
 
 export default function AuthForm() {
   const initialUser: UserLoginDto = {
@@ -24,7 +25,8 @@ export default function AuthForm() {
           const responseData = await res.json().catch(() => null);
 
         if (res.ok){
-          fetch(`${apiUrl}user/wallet-by-username?username=${encodeURIComponent(data.email)}`, {
+          localStorage.setItem("horseappinfo.accessToken", responseData.accessToken);
+          apiFetch(`${apiUrl}user/wallet-by-username?username=${encodeURIComponent(data.email)}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
           })
@@ -35,7 +37,6 @@ export default function AuthForm() {
 
             localStorage.setItem("horseappinfo.userId", userId);
             localStorage.setItem("horseappinfo.walletId", walletId);
-            localStorage.setItem("horseappinfo.accessToken", responseData.accessToken);
           })
           .catch(() => {})
 

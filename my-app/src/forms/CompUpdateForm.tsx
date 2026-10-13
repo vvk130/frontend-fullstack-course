@@ -1,9 +1,7 @@
 import type { CompetitionCreateDto } from '@/utils/dtos';
 import BasicForm from './BasicForm';
 import { useItem } from '@/reusableFetch';
-import { apiUrl } from '@/apiUrl';
 import { handleApiErrors } from '@/utils/handleApiErrors';
-import { apiFetch } from '@/utils/apiFetch';
 
 export default function CompUpdateForm({ compId }: { compId: string }) {
  const { data: comp, isLoading, isError } = useItem<CompetitionCreateDto>('competitions/dto', compId);
@@ -18,7 +16,7 @@ export default function CompUpdateForm({ compId }: { compId: string }) {
       disabledFields={[]}
       onSubmit={async (data) => {
         try {
-          const res = await apiFetch(`competitions/${compId}`, {
+          const res = await fetch(`competitions/${compId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
